@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function ReadYourData() {
     return (
-        <div className='max-w-[1320px] mx-auto'>
-            <div className=' py-20' style={{
+        <div className='max-w-[1320px] mx-auto px-5 md:px-0'>
+            <div className=' py-8 lg:py-20 ' style={{
                 background: "url(/assets/worksWithTools/readyBg.png)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -12,7 +12,7 @@ export default function ReadYourData() {
             }}>
 
                 <div className='max-w-[800px] mx-auto text-center'>
-                    <h2 className="text-[#151513] font-semibold text-[40px]">
+                    <h2 className="text-[#151513] font-semibold text-[40px] text-3xl md:text-4xl">
                         Ready to Let Your Data Do the Talking?
                     </h2>
                     <p className="text-[#3D3D3C] font-normal text-[20px] pt-4">

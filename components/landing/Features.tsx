@@ -6,7 +6,7 @@ import SettinCorectIcon from "../icons/SettingCorectIcon";
 export default function Features() {
     return (
         <div className=" bg-[linear-gradient(180deg,rgba(14,105,249,0.05)_0%,rgba(0,147,255,0)_100%)]">
-            <section className="py-25">
+            <section className="py-8 lg:py-25 px-5 sm:px-10 lg:px-[140px]">
                 <div className="max-w-[1320px] mx-auto ">
                     {/* Top */}
                     <div className="flex items-center gap-2">
@@ -84,16 +84,16 @@ export default function Features() {
 
 
 
-                    <div className="py-6 flex flex-col-reverse items-center gap-16 rounded-[32px]  bg-white pt-6 lg:flex-row">
+                    <div className="py-6 flex flex-col-reverse items-center gap-16  pt-6 lg:flex-row">
                         {/* Left */}
 
-                        <div className="flex flex-1 w-full">
+                        <div className="">
                             <Image
                                 src="/assets/worksWithTools/Frame 2147226709.png"
-                                alt="Dashboard"
-                                width={650}
-                                height={500}
-                                className="h-auto w-full max-w-[650px]"
+                                alt=""
+                                width={1200}
+                                height={800}
+                                className="w-full h-auto"
                             />
                         </div>
 

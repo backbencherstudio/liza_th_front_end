@@ -46,17 +46,17 @@ export default function AboutUs() {
     return (
         <div>
 
-            <section className="py-25">
-                <div className=" max-w-[1320px] mx-auto justify-center flex flex-col lg:flex-row items-center gap-16">
+            <section className="py-8 lg:py-25 ">
+                <div className=" max-w-[1600px]  mx-auto justify-center flex flex-col lg:flex-row items-center gap-16 px-5 sm:px-10 lg:px-[140px]">
                     {/* Left */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1 order-2 md:order-1">
                         {features.map((item, index) => {
                             const Icon = item.icon;
 
                             return (
                                 <div
                                     key={index}
-                                    className="rounded-2xl bg-white p-4 shadow-sm"
+                                    className="rounded-2xl p-4 shadow-sm bg-white  "
                                 >
                                     <div
                                         style={{ backgroundColor: item.bg }}
@@ -78,8 +78,8 @@ export default function AboutUs() {
                     </div>
 
                     {/* Right */}
-                    <div className="flex-1">
-                        <div className='flex gap-2.5 pt-10'>
+                    <div className="flex-1 order-1 md:order-2">
+                        <div className='flex gap-2.5 pt-0 md:pt-10'>
                             <StarIcon />
 
                             <span className="text-[#151513] font-normal text-lg">

@@ -53,8 +53,8 @@ const steps = [
 
 export default function HowItWork() {
     return (
-        <section className="py-20">
-            <div className="max-w-[1320px] justify-center mx-auto">
+        <section className="py-8 lg:py-20">
+            <div className="max-w-[1600px] justify-center mx-auto px-5 sm:px-10 lg:px-[140px]">
                 {/* Header */}
                 <div className="flex flex-col items-center">
                     <div className="flex items-center gap-2.5">
@@ -75,7 +75,7 @@ export default function HowItWork() {
                 </div>
 
                 {/* Steps */}
-                <div className="mt-16 space-y-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="mt-16 space-y-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                     {steps.map((step) => {
                         const Icon = step.icon;
 

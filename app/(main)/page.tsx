@@ -7,8 +7,7 @@ import HeroSection from "@/components/landing/HeroSection";
     <div>
         
         <HeroSection />
-        <HeroSection />
-        <HeroSection />
+        
     </div>
   )
 }

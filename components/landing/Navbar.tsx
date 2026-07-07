@@ -7,7 +7,7 @@ import { Menu, X, Bell } from "lucide-react";
 import { useAuthModalStore } from "@/store/auth-modal.store";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = ["Home", "About", "Services", "Contact"];
+const NAV_LINKS = ["About Us", "Features", "Pricing", "Contact Us"];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,6 +18,8 @@ export default function Navbar() {
       <nav className="flex mx-auto w-full max-w-[1600px] h-[80px] lg:h-[120px] justify-between items-center px-5 sm:px-10 lg:px-[140px]">
 
         {/* Logo */}
+        <div className="">
+           
         <Link href="/" className="shrink-0">
           <Image
             src="/images/spike-logo.png"
@@ -27,6 +29,12 @@ export default function Navbar() {
             className="w-[72px] lg:w-[100px] h-auto"
           />
         </Link>
+       
+        </div>
+
+        <div className="hidden md:block border ml-24">
+
+        </div>
 
         {/* Desktop nav links — hidden on mobile */}
         <div className="hidden lg:flex gap-12">
@@ -98,7 +106,8 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu — absolute so it floats over page content */}
+     {/* Mobile dropdown menu — absolute so it floats over page content */}
+
      {/* Updated Mobile dropdown menu overlay */}
      <div
         className={cn(

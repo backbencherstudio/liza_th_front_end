@@ -1,7 +1,14 @@
 import React from 'react'
 
-export default function page() {
+import HeroSection from "@/components/landing/HeroSection";
+
+    export default function page() {
   return (
-    <div>page</div>
+    <div>
+        
+        <HeroSection />
+        <HeroSection />
+        <HeroSection />
+    </div>
   )
 }

@@ -20,6 +20,9 @@ export default function page() {
       <HeroSection />
       <HeroSection />
       <HeroSection />
+
+      <HeroSection />
+
     </div>
   )
 }

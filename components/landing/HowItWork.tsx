@@ -1,32 +1,50 @@
 import React from "react";
+import StarIcon from "../icons/StarIcon";
+import LongArrowIcon from "../icons/LongArrowIcon";
+import UploadIcon from "../icons/UploadIcon";
+import AiIcon from "../icons/AiIcon";
+import FindTrands from "../icons/FindTrandsIcon";
+import { Icon } from "lucide-react";
+import TirIcon from "../icons/TirIcon";
+import DatabaseIcon from "../icons/DatabaseIcon";
 
 const steps = [
     {
         id: 1,
+        icon: UploadIcon,
+        bg: "#F3F2FB",
         title: "Upload Your Reports",
         description:
             "Upload your financial reports in PDF, Excel, CSV, or other supported formats.",
     },
     {
         id: 2,
+        icon: DatabaseIcon,
+        bg: "#EAF7F2",
         title: "AI Processes Your Data",
         description:
             "Our AI extracts, cleans, and organizes your financial data automatically.",
     },
     {
         id: 3,
+        icon: AiIcon,
+        bg: "#FFF7E6",
         title: "Review & Customize",
         description:
             "Review the generated dashboards and customize them to fit your needs.",
     },
     {
         id: 4,
+        icon: FindTrands,
+        bg: "#FDF2F8",
         title: "Generate Insights",
         description:
             "Receive AI-powered insights, trends, and recommendations instantly.",
     },
     {
         id: 5,
+        icon: TirIcon,
+        bg: "#F3F2FB",
         title: "Export & Share",
         description:
             "Export reports or share dashboards with your team in one click.",
@@ -36,15 +54,11 @@ const steps = [
 export default function HowItWork() {
     return (
         <section className="py-20">
-            <div className="container mx-auto">
+            <div className="max-w-[1320px] justify-center mx-auto">
                 {/* Header */}
-                <div>
+                <div className="flex flex-col items-center">
                     <div className="flex items-center gap-2.5">
-                        <img
-                            src="/assets/about/about-icon.svg"
-                            alt="How It Works"
-                            className="h-12 w-12"
-                        />
+                        <StarIcon />
                         <span className="text-lg font-normal text-[#151513]">
                             How It Works
                         </span>
@@ -61,39 +75,39 @@ export default function HowItWork() {
                 </div>
 
                 {/* Steps */}
-                <div className="mt-16 space-y-6 flex gap-6">
-                    {steps.map((step) => (
-                        <div
-                            key={step.id}
-                            className=" items-start gap-6 rounded-2xl border border-[#E5E7EB] p-6"
-                        >
-                            {/* Left Icon */}
-                            <div className="flex justify-between items-center gap-3">
-                                <img
-                                    src="/assets/how-it-work/icon.svg"
-                                    alt=""
-                                    className="h-10 w-10"
-                                />
+                <div className="mt-16 space-y-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    {steps.map((step) => {
+                        const Icon = step.icon;
 
-                                <img
-                                    src="/assets/how-it-work/arrow-right.svg"
-                                    alt=""
-                                    className="h-5 w-5"
-                                />
+                        return (
+                            <div
+                                key={step.id}
+                                className="items-start gap-6 rounded-2xl border border-[#E5E7EB] p-6"
+                            >
+                                {/* Left Icon */}
+                                <div className="flex items-center justify-between gap-3">
+                                    <div
+                                        style={{ backgroundColor: step.bg }}
+                                        className="flex h-12 w-12 items-center justify-center rounded-md"
+                                    >
+                                        <Icon />
+                                    </div>
+                                    <LongArrowIcon />
+                                </div>
+
+                                {/* Content */}
+                                <div className="mt-6">
+                                    <h3 className="text-2xl font-semibold text-[#151513]">
+                                        {step.title}
+                                    </h3>
+
+                                    <p className="mt-2 text-[#3D3D3C]">
+                                        {step.description}
+                                    </p>
+                                </div>
                             </div>
-
-                            {/* Content */}
-                            <div>
-                                <h3 className="text-2xl font-semibold text-[#151513]">
-                                    {step.title}
-                                </h3>
-
-                                <p className="mt-2 text-[#3D3D3C]">
-                                    {step.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

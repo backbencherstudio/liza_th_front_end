@@ -4,6 +4,9 @@ import HowItWork from '@/components/landing/HowItWork'
 import WorksWithTools from '@/components/landing/Works-with-tools'
 import React from 'react'
 
+import HeroSection from "@/components/landing/HeroSection";
+import ReadYourData from '@/components/landing/ReadYourData'
+
 export default function page() {
   return (
     <div>
@@ -11,6 +14,12 @@ export default function page() {
       <AboutUs />
       <Features />
       <HowItWork />
+      <ReadYourData />
+
+
+      <HeroSection />
+      <HeroSection />
+      <HeroSection />
     </div>
   )
 }

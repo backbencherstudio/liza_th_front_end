@@ -56,7 +56,7 @@ export default function AboutUs() {
                             return (
                                 <div
                                     key={index}
-                                    className="rounded-2xl bg-white p-4 shadow-sm"
+                                    className="rounded-2xl p-4 shadow-sm bg-white  "
                                 >
                                     <div
                                         style={{ backgroundColor: item.bg }}

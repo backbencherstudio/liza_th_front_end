@@ -87,13 +87,13 @@ export default function Features() {
                     <div className="pt-6  flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px] lg:flex-row">
                         {/* Left */}
 
-                        <div className="flex flex-1 w-full">
+                        <div className="">
                             <Image
                                 src="/assets/worksWithTools/Frame 2147226709.png"
-                                alt="Dashboard"
-                                width={650}
-                                height={500}
-                                className="h-auto w-full max-w-[650px]"
+                                alt=""
+                                width={1200}
+                                height={800}
+                                className="w-full h-auto"
                             />
                         </div>
 

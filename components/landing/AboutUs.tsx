@@ -46,10 +46,10 @@ export default function AboutUs() {
     return (
         <div>
 
-            <section className="py-25">
-                <div className=" max-w-[1320px] mx-auto justify-center flex flex-col lg:flex-row items-center gap-16">
+            <section className="pb-8 md:py-25">
+                <div className="  w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto justify-center flex flex-col lg:flex-row items-start gap-8 md:gap-16">
                     {/* Left */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1 order-2 md:order-1">
                         {features.map((item, index) => {
                             const Icon = item.icon;
 
@@ -78,8 +78,8 @@ export default function AboutUs() {
                     </div>
 
                     {/* Right */}
-                    <div className="flex-1">
-                        <div className='flex gap-2.5 pt-10'>
+                    <div className="flex-1 order-1 md:order-2">
+                        <div className='flex gap-2.5 pt-0 '>
                             <StarIcon />
 
                             <span className="text-[#151513] font-normal text-lg">
@@ -87,15 +87,15 @@ export default function AboutUs() {
                             </span>
 
                         </div>
-                        <h2 className="text-[#151513] font-semibold text-[32px] md:text-[48px] py-4">
+                        <h2 className="text-[#151513] font-semibold text-[32px] md:text-4xl lg:text-4xl xl:text-[48px] py-3 md:py-4">
                             Spike delivers executive-level financial guidance
                         </h2>
 
-                        <p className=" text-[#3D3D3C] font-normal text-[20px]">
+                        <p className=" text-[#3D3D3C] font-normal text-base md:text-lg lg:text-[20px]">
                             We believe that financial intelligence should be accurate, understandable, and accessible to every business. Every business deserves access to CFO-level intelligence.
                         </p>
 
-                        <div className="mt-10.5 space-y-4">
+                        <div className="mt-5 md:mt-10.5 space-y-4">
                             {aboutTags.map((tag, index) => (
                                 <div key={index} className="flex items-center gap-3">
                                     <CurrectIcon />

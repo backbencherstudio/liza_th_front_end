@@ -53,10 +53,10 @@ const steps = [
 
 export default function HowItWork() {
     return (
-        <section className="py-20">
-            <div className="max-w-[1320px] justify-center mx-auto">
+        <section className="pb-8 md:py-15 lg:py-20">
+            <div className="w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px]   justify-center mx-auto">
                 {/* Header */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center justify-center">
                     <div className="flex items-center gap-2.5">
                         <StarIcon />
                         <span className="text-lg font-normal text-[#151513]">
@@ -64,25 +64,25 @@ export default function HowItWork() {
                         </span>
                     </div>
 
-                    <h2 className="py-4 text-[32px] font-semibold text-[#151513] md:text-[48px]">
+                    <h2 className="py-4 text-[32px] text-center md:text-start md:text-4xl  font-semibold text-[#151513] lg:text-[48px]">
                         From raw data to executive insights in minutes
                     </h2>
 
-                    <p className="text-[20px] font-normal text-[#3D3D3C]">
+                    <p className="text-base text-center md:text-start md:text-[20px] font-normal text-[#3D3D3C]">
                         No setup headaches, no manual number-crunching — just five simple
                         steps.
                     </p>
                 </div>
 
                 {/* Steps */}
-                <div className="mt-16 space-y-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="mt-14 space-y-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {steps.map((step) => {
                         const Icon = step.icon;
 
                         return (
                             <div
                                 key={step.id}
-                                className="items-start gap-6 rounded-2xl border border-[#E5E7EB] p-6"
+                                className="items-start gap-6 rounded-2xl "
                             >
                                 {/* Left Icon */}
                                 <div className="flex items-center justify-between gap-3">
@@ -92,18 +92,22 @@ export default function HowItWork() {
                                     >
                                         <Icon />
                                     </div>
-                                    <LongArrowIcon />
+                                    <LongArrowIcon className="hidden md:block" />
                                 </div>
 
                                 {/* Content */}
-                                <div className="mt-6">
-                                    <h3 className="text-2xl font-semibold text-[#151513]">
-                                        {step.title}
+                                <div className="mt-5">
+                                    <h3 className="text-lg md:text-xl font-semibold text-[#151513]">
+                                        {step.id}. {step.title}
                                     </h3>
 
-                                    <p className="mt-2 text-[#3D3D3C]">
+                                    <p className="mt-3 text-[#3D3D3C] text-base ">
                                         {step.description}
                                     </p>
+                                </div>
+
+                                <div className="flex justify-center items-center  md:hidden origin-center mt-9">
+                                    <LongArrowIcon className="block rotate-90" />
                                 </div>
                             </div>
                         );

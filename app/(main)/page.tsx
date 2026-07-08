@@ -6,6 +6,7 @@ import React from 'react'
 
 import HeroSection from "@/components/landing/HeroSection";
 import ReadYourData from '@/components/landing/ReadYourData'
+import ContactUs from '@/components/landing/ContactUs'
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
       <AboutUs />
       <Features />
       <HowItWork />
+      <ContactUs />
       <ReadYourData />
 
 

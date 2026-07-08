@@ -6,8 +6,8 @@ import SettinCorectIcon from "../icons/SettingCorectIcon";
 export default function Features() {
     return (
         <div className=" bg-[linear-gradient(180deg,rgba(14,105,249,0.05)_0%,rgba(0,147,255,0)_100%)]">
-            <section className="py-25">
-                <div className="max-w-[1320px] mx-auto ">
+            <section className="py-8 md:py-15 lg:py-25">
+                <div className="w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto justify-center ">
                     {/* Top */}
                     <div className="flex items-center gap-2">
                         <StarIcon />
@@ -17,12 +17,12 @@ export default function Features() {
                     </div>
 
                     {/* Heading */}
-                    <div className="mt-4 flex flex-col gap-6 pb-14 lg:flex-row lg:items-center lg:justify-between">
-                        <h2 className="max-w-[650px] text-3xl font-semibold leading-tight text-[#151513] md:text-5xl">
+                    <div className="mt-4 flex flex-col gap-6 pb-8 md:pb-14 lg:flex-row lg:items-center lg:justify-between">
+                        <h2 className="max-w-[650px] text-[32px] md:text-[40px] lg:text-[48px] font-semibold leading-tight text-[#151513] md:text-5xl">
                             Everything You Need, Built Into One Workflow
                         </h2>
 
-                        <p className="max-w-[500px] text-lg leading-8 text-[#3D3D3C]">
+                        <p className="max-w-[500px] text-xl leading-8 text-[#3D3D3C]">
                             Spike transforms complex financial reports into clear dashboards and
                             AI-powered insights your team can act on.
                         </p>
@@ -31,10 +31,10 @@ export default function Features() {
                     {/* Card */}
 
 
-                    <div className="py-6 flex flex-col-reverse items-center gap-16 rounded-[32px]   lg:flex-row">
+                    <div className="py-5 md:py-0 px-0 md:px-6 flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px]   lg:flex-row">
 
-                        <div className=" flex-1">
-                            <h3 className="text-[32px] font-semibold leading-[44px] text-[#151513]">
+                        <div className=" flex-1 order-2 md:order-1">
+                            <h3 className=" text-2xl md:text-[32px] font-semibold leading-[44px] text-[#151513]">
                                 AI-Powered Operational Dashboards
                                 <span className="text-[#2563EB]">
                                     {" "} <br />
@@ -42,13 +42,13 @@ export default function Features() {
                                 </span>
                             </h3>
 
-                            <p className="mt-6 text-lg leading-8 text-[#3D3D3C]">
+                            <p className="mt-4 md:mt-6 text-lg leading-8 text-[#3D3D3C]">
                                 Stop wasting time on manual reporting. Our AI analyzes your data
                                 and creates custom dashboards tailored to your business needs—no
                                 coding or data expertise required.
                             </p>
 
-                            <div className="mt-8 space-y-5">
+                            <div className="mt-8  md:space-x-5 space-y-3">
                                 <div className="flex items-start gap-3">
                                     <SettinCorectIcon />
                                     <p>Choose from pre-built Executive, Financial, or Operational dashboards.</p>
@@ -69,7 +69,7 @@ export default function Features() {
                             </div>
                         </div>
 
-                        <div className="flex flex-1 justify-center w-full">
+                        <div className="flex flex-1 justify-center w-full order-1 md:order-2">
                             <Image
                                 src="/assets/worksWithTools/Frame 2147226707.png"
                                 alt="Dashboard"
@@ -84,7 +84,7 @@ export default function Features() {
 
 
 
-                    <div className="py-6 flex flex-col-reverse items-center gap-16 rounded-[32px]  bg-white pt-6 lg:flex-row">
+                    <div className="pt-6  flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px] lg:flex-row">
                         {/* Left */}
 
                         <div className="flex flex-1 w-full">
@@ -98,19 +98,19 @@ export default function Features() {
                         </div>
 
                         <div className=" flex-1">
-                            <h3 className="text-[32px] font-semibold leading-[44px] text-[#151513]">
+                            <h3 className=" text-2xl md: md:text-[32px] font-semibold leading-[44px] text-[#151513]">
                                 More than charts.
-                                <span className="text-[#2563EB]">
+                                <span className="text-[#2563EB]" > <br className="block md:hidden" />
                                     {" "}
                                     Understand why performance changed.
                                 </span>
                             </h3>
 
-                            <p className="mt-6 text-lg leading-8 text-[#3D3D3C]">
+                            <p className="mt-3 md:mt-6 text-lg leading-8 text-[#3D3D3C]">
                                 Get actionable insights, not overwhelming charts. Our platform identifies trends, highlights risks, and suggests next steps - so you can make confident decisions faster.
                             </p>
 
-                            <div className="mt-8 space-y-5">
+                            <div className="mt-8 space-y-3  md:space-y-5">
                                 <div className="flex items-start gap-3">
                                     <SettinCorectIcon />
                                     <p>Every dashboard comes with an AI-written executive summary.</p>

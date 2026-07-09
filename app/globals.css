@@ -136,16 +136,25 @@ button{
 
 @layer components {
   .auth-title {
-    @apply text-center font-semibold text-[#151513] text-3xl font-semibold leading-[46px] text-center;
+    @apply text-center font-semibold text-3xl leading-[46px] text-[#151513];
   }
 
   .auth-subtitle {
-    @apply self-stretch text-[#4A4C56] text-center  text-lg leading-6;
+    @apply self-stretch text-center text-lg leading-6 text-[#4A4C56];
   }
 
   .auth-link {
     @apply text-[#2563EB] hover:text-blue-600 transition-colors;
   }
+
+  .auth-footer {
+    @apply text-center text-lg leading-6 text-gray-400;
+  }
+
+  .auth-footer-note {
+    @apply text-center text-lg font-medium leading-6 text-gray-500;
+  }
+
   .section-container {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }

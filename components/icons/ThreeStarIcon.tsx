@@ -13,19 +13,19 @@ export default function ThreeStarIcon() {
             </g>
             <defs>
                 <linearGradient id="paint0_linear_5292_303" x1="0.587891" y1="-0.0039068" x2="19.4117" y2="-0.00367859" gradientUnits="userSpaceOnUse">
-                    <stop offset="0.0001" stop-color="#E59CFF" />
-                    <stop offset="0.5001" stop-color="#BA9CFF" />
-                    <stop offset="1" stop-color="#9CB2FF" />
+                    <stop offset="0.0001" stopColor="#E59CFF" />
+                    <stop offset="0.5001" stopColor="#BA9CFF" />
+                    <stop offset="1" stopColor="#9CB2FF" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_5292_303" x1="0.591888" y1="-2.96791e-07" x2="19.4157" y2="0.000227913" gradientUnits="userSpaceOnUse">
-                    <stop offset="0.0001" stop-color="#E59CFF" />
-                    <stop offset="0.5001" stop-color="#BA9CFF" />
-                    <stop offset="1" stop-color="#9CB2FF" />
+                    <stop offset="0.0001" stopColor="#E59CFF" />
+                    <stop offset="0.5001" stopColor="#BA9CFF" />
+                    <stop offset="1" stopColor="#9CB2FF" />
                 </linearGradient>
                 <linearGradient id="paint2_linear_5292_303" x1="0.583756" y1="0.00195576" x2="19.4075" y2="0.00218397" gradientUnits="userSpaceOnUse">
-                    <stop offset="0.0001" stop-color="#E59CFF" />
-                    <stop offset="0.5001" stop-color="#BA9CFF" />
-                    <stop offset="1" stop-color="#9CB2FF" />
+                    <stop offset="0.0001" stopColor="#E59CFF" />
+                    <stop offset="0.5001" stopColor="#BA9CFF" />
+                    <stop offset="1" stopColor="#9CB2FF" />
                 </linearGradient>
                 <clipPath id="clip0_5292_303">
                     <rect width="20" height="20" fill="white" />

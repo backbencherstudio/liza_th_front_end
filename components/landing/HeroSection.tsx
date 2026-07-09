@@ -4,8 +4,12 @@ import React from "react";
 import ThreeStarIcon from "../icons/ThreeStarIcon";
 import TickIcon from "../icons/TickIcon";
 import CustomButton from "../reusable/CustomButton";
+import { useAuthModalStore } from "@/store/auth-modal.store";
 
 export default function   HeroSection() {
+
+    const { open } = useAuthModalStore();
+
     return (
         <section className="flex flex-col items-center justify-center px-4 md:pt-[86px] md:pb-20 py-6 text-center overflow-hidden ">
             <div className="max-w-[800px] mx-auto flex flex-col items-center">
@@ -44,7 +48,7 @@ export default function   HeroSection() {
                         </CustomButton>
 
                         {/* Secondary Outline Button with Fading Inner Accent Line */}
-                        <CustomButton variant="outline">
+                        <CustomButton onClick={() => open("sign-in")} variant="outline">
                             Get Started
                         </CustomButton>
 

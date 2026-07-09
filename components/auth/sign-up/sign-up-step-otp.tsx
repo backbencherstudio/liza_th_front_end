@@ -87,7 +87,7 @@ export function SignUpStepOtp() {
         <h2 className="auth-title mb-3">
           Enter OTP
         </h2>
-        <p className="auth-subtitle max-w-[340px] mx-auto">
+        <p className="auth-subtitle max-w-[380px] mx-auto">
           We have share a code of your registered email address{" "}
           <span className="text-[#151513] font-medium block mt-0.5">{targetEmail}</span>
         </p>

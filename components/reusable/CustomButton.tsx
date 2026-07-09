@@ -41,9 +41,9 @@ export default function CustomButton({
             className="pointer-events-none absolute inset-[3px] rounded-[10px] border border-white/40"
             style={{
               maskImage:
-                "linear-gradient(to bottom right, rgba(0,0,0,.9) 0%, rgba(0,0,0,.9) 30%, transparent 45%)",
+                "linear-gradient(to bottom right, rgba(0,0,0,.5) 0%, rgba(0,0,0,.5) 30%, transparent 45%)",
               WebkitMaskImage:
-                "linear-gradient(to bottom right, rgba(0,0,0,.9) 0%, rgba(0,0,0,.9) 30%, transparent 45%)",
+                "linear-gradient(to bottom right, rgba(0,0,0,.5) 0%, rgba(0,0,0,.5) 30%, transparent 45%)",
             }}
           />
         </>
@@ -58,9 +58,9 @@ export default function CustomButton({
             className="pointer-events-none absolute inset-[3px] rounded-[10px] border border-[#0A206D]"
             style={{
               maskImage:
-                "linear-gradient(to bottom right, rgba(0,0,0,.9) 0%, rgba(0,0,0,.9) 30%, transparent 45%)",
+                "linear-gradient(to bottom right, rgba(0,0,0,.5) 0%, rgba(0,0,0,.5) 10%, transparent 45%)",
               WebkitMaskImage:
-                "linear-gradient(to bottom right, rgba(0,0,0,.9) 0%, rgba(0,0,0,.9) 30%, transparent 45%)",
+                "linear-gradient(to bottom right, rgba(0,0,0,.5) 0%, rgba(0,0,0,.5) 10%, transparent 45%)",
             }}
           />
         </>

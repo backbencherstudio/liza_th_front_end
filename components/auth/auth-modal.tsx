@@ -1,6 +1,6 @@
 // components/auth/auth-modal.tsx
 "use client";
-import CustomModal from "@/components/ui/custom-modal";
+
 import { useAuthModalStore } from "@/store/auth-modal.store";
 
 // sign-up
@@ -18,6 +18,7 @@ import { MfaAuthenticator } from "./mfa/mfa-authenticator";
 import { FpStepEmail } from "./forgot-password/fp-step-email";
 import { FpStepOtp } from "./forgot-password/fp-step-otp";
 import { FpStepNewPassword } from "./forgot-password/fp-step-new-password";
+import CustomModal from "../reusable/CustomModal";
 
 const FLOW_TITLES = {
   "sign-in": "Welcome back",
@@ -50,15 +51,20 @@ export function AuthModal() {
   };
 
   return (
+
     <CustomModal
+      showCloseButton={false}
       open={isOpen}
-      onOpenChange={(open: boolean) => !open && close()}
-      title={FLOW_TITLES[flow]}
-      size="xsm"
-      showCloseButton={true}
-      closeButtonType="shadcn"
-    >
+      onOpenChange={(open: boolean) => !open && close()}>
+
       {renderStep()}
+      
     </CustomModal>
+
+
+
+
+
+
   );
 }

@@ -128,3 +128,25 @@
     @apply font-sans;
   }
 }
+
+button{
+  cursor: pointer;
+}
+
+
+@layer components {
+  .auth-title {
+    @apply text-center font-semibold text-[#151513] text-3xl font-semibold leading-[46px] text-center;
+  }
+
+  .auth-subtitle {
+    @apply self-stretch text-[#4A4C56] text-center  text-lg leading-6;
+  }
+
+  .auth-link {
+    @apply text-[#2563EB] hover:text-blue-600 transition-colors;
+  }
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+} 

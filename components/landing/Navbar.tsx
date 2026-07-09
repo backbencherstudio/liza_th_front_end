@@ -15,7 +15,7 @@ export default function Navbar() {
     const { open } = useAuthModalStore();
 
     return (
-        <div className="[background:#F9FAFF] backdrop-blur-[20px] sticky top-0 z-[100] relative">
+        <div className="[background:#F9FAFF] backdrop-blur-[20px] sticky top-0 z-[50] relative">
             <nav className="flex mx-auto w-full max-w-[1600px] h-[80px] lg:h-[120px] justify-between items-center px-5 sm:px-10 lg:px-[140px]">
 
                 {/* Logo */}

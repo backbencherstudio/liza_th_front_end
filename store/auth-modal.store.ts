@@ -4,7 +4,6 @@ type AuthFlow = 'sign-in' | 'sign-up' | 'forgot-password'
 
 type SignInStep = 'credentials' | 'mfa-select' | 'mfa-otp' | 'mfa-authenticator'
 type SignUpStep = 'credentials' | 'otp' | 'success'
-
 type ForgotStep = 'email' | 'otp' | 'new-password'
 
 type Step = SignInStep | SignUpStep | ForgotStep
@@ -21,6 +20,7 @@ interface AuthFlowData {
   email?: string;
   mfaMethod?: "email" | "authenticator";
 }
+
 
 interface AuthModalStore {
   isOpen: boolean

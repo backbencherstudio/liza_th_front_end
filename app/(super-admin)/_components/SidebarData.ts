@@ -35,31 +35,31 @@ export const sidebarData = [
     {
         id: 4,
         title: "Manage Subscription",
-        href: "/dashboard/subscription",
+        href: "/super-admin/manage-subscription",
         icon: ManageSubsIcon,
     },
     {
         id: 5,
         title: "Discounts & Promotions",
-        href: "/dashboard/promotions",
+        href: "/super-admin/promotions",
         icon: Tag,
     },
     {
         id: 6,
         title: "Content Management",
-        href: "/dashboard/content",
+        href: "/super-admin/content",
         icon: ContentIcon,
     },
     {
         id: 7,
         title: "Revenue Analytics",
-        href: "/dashboard/revenue",
+        href: "/super-admin/revenue",
         icon: ChartCoulumnIcon,
     },
     {
         id: 8,
         title: "Manage Role",
-        href: "/dashboard/role",
+        href: "/super-admin/role",
         icon: ManageRoleIcon,
     },
 ];

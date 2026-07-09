@@ -1,10 +1,13 @@
+"use client"
 import DashboardStatsIcons from '@/components/icons/SupAdminIcon';
 import StatsCard from '@/components/reusable/StatusCard';
+
 import { Calendar, Menu, Plus, Search } from 'lucide-react'
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function page() {
+    const [selectedId, setSelectedId] = useState<number | null>(null);
     const templateOverviewData = [
         {
             id: 1,
@@ -137,7 +140,15 @@ export default function page() {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 py-8 '>
                 {
                     templateAnalyticsData.map((item) => (
-                        <div key={item.id} className='p-4 bg-[#F2F5FB] rounded-xl'>
+                        <div
+                            key={item.id}
+                            onClick={() => setSelectedId(item.id)}
+                            className={`cursor-pointer rounded-xl p-4 transition-all
+            ${selectedId === item.id
+                                    ? "border-2 border-[#2563EB] bg-[#F2F5FB]"
+                                    : "border-2 border-transparent bg-[#F2F5FB] "
+                                }`}
+                        >
                             <Image src={item.img} alt="" width={328} height={216} className='w-full ' />
                             <div className='py-5'>
                                 <p className='text-xl font-medium leading-[22px] text-[#151513] pb-2'>{item.title}</p>

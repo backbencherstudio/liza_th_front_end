@@ -11,19 +11,14 @@ import ContactUs from '@/components/landing/ContactUs'
 export default function page() {
   return (
     <div>
+
+      <HeroSection />
       <WorksWithTools />
       <AboutUs />
       <Features />
       <HowItWork />
       <ContactUs />
       <ReadYourData />
-
-
-      <HeroSection />
-      <HeroSection />
-      <HeroSection />
-
-      <HeroSection />
 
     </div>
   )

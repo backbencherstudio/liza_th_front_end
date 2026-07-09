@@ -14,17 +14,22 @@ export default function Sidebar({ onClose }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside className="fixed left-0 top-0 z-40 hidden h-screen w-[260px] border-r bg-white px-4 py-6 lg:flex lg:flex-col">
+        <aside
+            className={`
+    w-[260px] bg-white px-4 py- flex flex-col
+    ${onClose ? "h-full" : "fixed left-0 top-0 h-screen border-r"}
+  `}
+        >
             {/* Logo */}
-            {/* <div className="flex justify-center mb-10">
+            <div className="flex justify-center py-6">
                 <Image
                     src="/images/spike-logo.png"
                     alt="Spike Technology"
                     width={140}
                     height={45}
-                    className="object-contain"
+                    className="object-contain  "
                 />
-            </div> */}
+            </div>
 
             {/* Menu Items */}
             <div className="space-y-1 flex-1">
@@ -41,7 +46,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                             href={item.href}
                             key={item.href}
                             onClick={onClose}
-                            className={`group relative flex items-center gap-3 px-3  py-[11px] text-[16px] font-normal rounded-[22px] transition-all leading-[22px]
+                            className={`group relative flex items-center gap-3 px-3  py-[11px] text-[16px] font-normal rounded-lg transition-all leading-[22px]
                                 ${isActive
                                     ? "bg-[#E9EFFD] text-base text-[#1E40AF] font-medium"
                                     : "text-[#374151] hover:bg-gray-100"

@@ -14,8 +14,11 @@ export default function Layout({
 
     return (
         <div className="flex min-h-screen">
+
             {/* Desktop Sidebar */}
-            <Sidebar onClose={() => setOpen(false)} />
+            <div className="hidden lg:block">
+                <Sidebar />
+            </div>
 
             {/* Mobile Sidebar */}
             {open && (
@@ -25,6 +28,7 @@ export default function Layout({
                 />
             )}
 
+            {/* Mobile Sidebar */}
             <div
                 className={`fixed left-0 top-0 z-50 h-screen w-[280px] bg-white transition-transform duration-300 lg:hidden ${open ? "translate-x-0" : "-translate-x-full"
                     }`}
@@ -45,13 +49,18 @@ export default function Layout({
                     <Header />
                 </div>
 
-                {/* Mobile Header */}
-                <div className="flex items-center justify-between border-b px-4 py-3 lg:hidden">
-                    <button onClick={() => setOpen(true)}>
-                        <Menu size={28} />
-                    </button>
 
-                    <Header />
+                {/* Mobile Header */}
+                <div className="sticky top-0 z-30 border-b bg-white lg:hidden">
+                    <div className="flex items-center gap-3 px-4 py-3">
+                        <button onClick={() => setOpen(true)}>
+                            <Menu size={28} />
+                        </button>
+
+                        <div className="flex-1">
+                            <Header />
+                        </div>
+                    </div>
                 </div>
 
                 {/* Page Content */}

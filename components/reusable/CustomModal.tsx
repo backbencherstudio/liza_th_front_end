@@ -18,9 +18,16 @@ type CustomModalProps = {
     showCloseButton?: boolean;
 } & CloseButtonConfig;
 
-
-
-
+interface FormData {
+    companySize: string;
+  }
+  
+  const COMPANY_SIZE_OPTIONS = [
+    { value: "1-10", label: "1 - 10 employees" },
+    { value: "11-50", label: "11 - 50 employees" },
+    { value: "51-200", label: "51 - 200 employees" },
+    { value: "201+", label: "201+ employees" },
+  ];
 
 export default function CustomModal(props: CustomModalProps) {
     const {
@@ -28,7 +35,7 @@ export default function CustomModal(props: CustomModalProps) {
         onOpenChange,
         children,
         title,
-        size = "sm",
+        size = "md",
         className,
         showCloseButton = true,
     } = props;
@@ -37,8 +44,8 @@ export default function CustomModal(props: CustomModalProps) {
 
     const sizeClasses = {
         sm: "sm:max-w-[580px]",
-        md: "sm:max-w-[620px]",
-        mmd: "sm:max-w-[634px]",
+        md: "sm:max-w-[680px]",
+        mmd: "sm:max-w-[684px]",
         lg: "sm:max-w-[1000px]",
         xsm: "sm:max-w-[500px]"
     };
@@ -58,7 +65,8 @@ export default function CustomModal(props: CustomModalProps) {
             <DialogContent
                 showCloseButton={false}
                 className={clsx(
-                    "[background:var(--BG-Color,#FEFEFE)]  rounded-2xl",
+                    "flex flex-col items-start gap-8 [background:var(--Greyscale-0,#FFF)] px-4 py-5 md:px-8 md:py-[42px] rounded-2xl",
+                    "max-h-[calc(100dvh-2rem)] overflow-hidden md:max-h-none md:overflow-visible",
                     sizeClasses[size],
                     className
                 )}
@@ -96,7 +104,7 @@ export default function CustomModal(props: CustomModalProps) {
                     )
                 )}
                 {/* Content Area */}
-                <div className="w-full">
+                <div className="w-full min-h-0 flex-1 overflow-y-auto overscroll-contain md:overflow-visible md:flex-none max-md:pr-1 max-md:[scrollbar-width:thin] max-md:[&::-webkit-scrollbar]:w-1.5 max-md:[&::-webkit-scrollbar-track]:rounded-full max-md:[&::-webkit-scrollbar-thumb]:rounded-full max-md:[&::-webkit-scrollbar-thumb]:bg-[rgba(8,14,30,0.15)]">
                     {children}
                 </div>
             </DialogContent>

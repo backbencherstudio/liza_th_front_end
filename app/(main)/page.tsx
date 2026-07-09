@@ -10,18 +10,13 @@ import ReadYourData from '@/components/landing/ReadYourData'
 export default function page() {
   return (
     <div>
+
+      <HeroSection />
       <WorksWithTools />
       <AboutUs />
       <Features />
       <HowItWork />
       <ReadYourData />
-
-
-      <HeroSection />
-      <HeroSection />
-      <HeroSection />
-
-      <HeroSection />
 
     </div>
   )

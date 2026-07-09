@@ -5,7 +5,7 @@ import ThreeStarIcon from "../icons/ThreeStarIcon";
 import TickIcon from "../icons/TickIcon";
 import CustomButton from "../reusable/CustomButton";
 
-export default function HeroSection() {
+export default function   HeroSection() {
     return (
         <section className="flex flex-col items-center justify-center px-4 md:pt-[86px] md:pb-20 py-6 text-center overflow-hidden ">
             <div className="max-w-[800px] mx-auto flex flex-col items-center">

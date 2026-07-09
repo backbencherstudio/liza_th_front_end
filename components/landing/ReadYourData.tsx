@@ -3,8 +3,8 @@ import CustomButton from '../reusable/CustomButton'
 
 export default function ReadYourData() {
     return (
-        <div className='max-w-[1320px] px-4 mx-auto'>
-            <div className='py-8 md:py-20' style={{
+        <div className='max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto'>
+            <div className='py-8 md:py-20 ' style={{
                 background: "url(/assets/worksWithTools/readyBg.png)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -28,11 +28,13 @@ export default function ReadYourData() {
                         >Explore Our Platform</CustomButton>
                         <CustomButton
                             variant="outline"
-                            className=" px-6 py-3 rounded-md text-[#2B50AF]"
+                            className=" px-6 py-3 rounded-md  text-[#2B50AF] "
                         >Get Started</CustomButton>
                     </div>
                 </div>
             </div>
+
+
         </div>
     )
 }

@@ -59,7 +59,7 @@ export default function HowItWork() {
                 <div className="flex flex-col items-center justify-center">
                     <div className="flex items-center gap-2.5">
                         <StarIcon />
-                        <span className="text-lg font-normal text-[#151513]">
+                        <span className="text-lg font-medium text-[#151513]">
                             How It Works
                         </span>
                     </div>
@@ -75,7 +75,7 @@ export default function HowItWork() {
                 </div>
 
                 {/* Steps */}
-                <div className="mt-14 space-y-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="mt-14 space-y-6 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
                     {steps.map((step) => {
                         const Icon = step.icon;
 

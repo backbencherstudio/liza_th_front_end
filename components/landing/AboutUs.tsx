@@ -82,7 +82,7 @@ export default function AboutUs() {
                         <div className='flex gap-2.5 pt-0 '>
                             <StarIcon />
 
-                            <span className="text-[#151513] font-normal text-lg">
+                            <span className="text-[#151513] font-medium text-lg">
                                 About Us
                             </span>
 

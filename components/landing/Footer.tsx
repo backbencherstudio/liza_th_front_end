@@ -2,12 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { ComponentType, useEffect, useState } from 'react';
 import LocationIcon from '../icons/LocationIcon';
 import MailIcon from '../icons/MailIcon';
+import InstagramIcon from '../icons/InstagramIcon';
+import LinkDinIcon from '../icons/LinkDinIcon';
 
 interface SocialLink {
-    icon: string;
+    icon: ComponentType<any>;
     url: string;
 }
 
@@ -36,21 +38,20 @@ export default function Footer() {
         location: "New Jersey, USA",
         email: "info@spiketechnology.ai",
         socialMedia: [
-            { icon: "facebook", url: "#" },
-            { icon: "twitter", url: "#" },
-            { icon: "linkedin", url: "#" },
-            { icon: "instagram", url: "#" },
+            { icon: InstagramIcon, url: "#" },
+            { icon: LinkDinIcon, url: "#" },
+
         ],
     });
 
 
     return (
         <footer className="bg-[#F9FAFF] text-gray-300">
-            <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-[140px] py-16">
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-[140px]  py-8 md:pt-20 md:pb-12.5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 w-full">
 
                     {/* Brand Section */}
-                    <div className="lg:col-span-4">
+                    <div className="lg:col-span-5">
                         <div className="flex items-center gap-3 mb-4">
                             <Image
                                 id="footer-logo"
@@ -62,15 +63,33 @@ export default function Footer() {
                             />
                         </div>
 
-                        <p className="mt-3 text-[#151513] leading-relaxed text-xl">
+                        <p className="mt-3 text-[#151513] leading-relaxed text-xl max-w-[372px]  min-w-[335px] lg:min-w-[0px]">
                             Turn raw data into actionable insights.<br />
                             AI-powered financial reporting for businesses that run on numbers.
                         </p>
+
+                        <div className="pt-5">
+                            <div className="flex gap-4">
+                                {footerData.socialMedia.map((social, index) => {
+                                    const Icon = social.icon;
+
+                                    return (
+                                        <Link
+                                            key={index}
+                                            href={social.url}
+                                            className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] border border-white"
+                                        >
+                                            <Icon className="h-5 w-5 text-white" />
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-7">Quick Links</h3>
+                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-4 md:mb-7">Quick Links</h3>
                         <ul className="space-y-3">
                             {footerData.quickLinks.map((link, index) => (
                                 <li key={index}>
@@ -84,7 +103,7 @@ export default function Footer() {
 
                     {/* Company */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-7">Company</h3>
+                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-4 md:mb-7">Company</h3>
                         <ul className="space-y-3">
                             {footerData.companyLinks.map((link, index) => (
                                 <li key={index}>
@@ -97,8 +116,8 @@ export default function Footer() {
                     </div>
 
                     {/* Contact Us */}
-                    <div className="lg:col-span-4">
-                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-7">Contact Us</h3>
+                    <div className="lg:col-span-3">
+                        <h3 className="text-[#0F172A] font-medium  text-2xl mb-4 md:mb-7">Contact Us</h3>
                         <div className="space-y-4 text-gray-400">
                             <p className="flex items-center gap-2">
                                 <span className="text-xl text-[#4A4C56]  "><LocationIcon className="h-4.5 w-4.5" /></span> <span className="text-[#4A4C56]  text-xl  ">{footerData.location}</span>
@@ -112,32 +131,17 @@ export default function Footer() {
                         </div>
 
                         {/* Social Media */}
-                        <div className="mt-8">
-                            <h4 className="text-white font-medium mb-3">Follow Us</h4>
-                            <div className="flex gap-5 text-2xl">
-                                {footerData.socialMedia.map((social, index) => (
-                                    <a
-                                        key={index}
-                                        href={social.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-400 hover:text-white transition-colors"
-                                    >
-                                        {social.icon === 'facebook' && <i className="fab fa-facebook-f"></i>}
-                                        {social.icon === 'twitter' && <i className="fab fa-twitter"></i>}
-                                        {social.icon === 'linkedin' && <i className="fab fa-linkedin-in"></i>}
-                                        {social.icon === 'instagram' && <i className="fab fa-instagram"></i>}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-gray-800 mt-16 pt-8 text-center text-sm text-gray-500">
+
+            </div>
+            <div className="bg-[#041D53]  w-full border-gray-800 py-1.5 text-center text-sm text-[#E9E9EA]">
+                <p className='flex justify-center items-center my-auto font-normal text-base'>
                     © 2026 Spike Technology. All rights reserved.
-                </div>
+                </p>
             </div>
         </footer>
     );

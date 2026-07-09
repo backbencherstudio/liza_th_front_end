@@ -17,8 +17,8 @@ export default function Features() {
                     </div>
 
                     {/* Heading */}
-                    <div className="mt-4 flex flex-col gap-6 pb-8 md:pb-14 lg:flex-row lg:items-center lg:justify-between">
-                        <h2 className="max-w-[650px] text-[32px] md:text-[40px] lg:text-[48px] font-semibold leading-tight text-[#151513] md:text-5xl">
+                    <div className="mt-4 flex flex-col gap-6 pb-8 md:pb-14 lg:flex-row lg:items-center lg:justify-between ">
+                        <h2 className="max-w-[650px] text-[32px] md:text-[36px] lg:text-[40px] xl:text-[48px] font-semibold leading-tight text-[#151513] md:text-5xl">
                             Everything You Need, Built Into One Workflow
                         </h2>
 
@@ -50,17 +50,17 @@ export default function Features() {
 
                             <div className="mt-8  md:space-x-5 space-y-3">
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>Choose from pre-built Executive, Financial, or Operational dashboards.</p>
                                 </div>
 
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>Each template maps your uploaded data to charts and metrics.</p>
                                 </div>
 
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>
                                         Customize any template by adding, removing, or reordering
                                         sections.
@@ -93,7 +93,7 @@ export default function Features() {
                                 alt=""
                                 width={1200}
                                 height={800}
-                                className="w-full h-auto"
+                                className="w-full h-auto "
                             />
                         </div>
 
@@ -112,17 +112,17 @@ export default function Features() {
 
                             <div className="mt-8 space-y-3  md:space-y-5">
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>Every dashboard comes with an AI-written executive summary.</p>
                                 </div>
 
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>Insights and raw data are always shown separately,exactly what's calculated and what's AI-interpreted.</p>
                                 </div>
 
                                 <div className="flex items-start gap-3">
-                                    <SettinCorectIcon />
+                                    <SettinCorectIcon className="shrink-0" />
                                     <p>
                                         Regenerate or refine any insight in one click when new data comes in.
                                     </p>

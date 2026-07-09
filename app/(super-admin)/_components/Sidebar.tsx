@@ -14,7 +14,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside className="w-[260px] min-h-full   lg:border-r  bg-white px-4 py-6 flex flex-col">
+        <aside className="fixed left-0 top-0 z-40 hidden h-screen w-[260px] border-r bg-white px-4 py-6 lg:flex lg:flex-col">
             {/* Logo */}
             {/* <div className="flex justify-center mb-10">
                 <Image

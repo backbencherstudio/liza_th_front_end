@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <div className="border-0 lg:border-b">
+        <div className="fixed top-0 right-0 z-30 h-[72px] w-full border-b bg-white lg:left-[260px] lg:w-[calc(100%-260px)] ">
             <div className="flex items-center justify-between py-3 px-8 gap-4 lg:gap-0">
                 <div>
                     <div className="relative ">

@@ -13,14 +13,11 @@ export default function Layout({
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="flex min-h-screen ">
+        <div className="flex min-h-screen">
             {/* Desktop Sidebar */}
-            <div className="hidden lg:block">
-                <Sidebar onClose={() => setOpen(false)} />
-            </div>
+            <Sidebar onClose={() => setOpen(false)} />
 
             {/* Mobile Sidebar */}
-            {/* Overlay */}
             {open && (
                 <div
                     onClick={() => setOpen(false)}
@@ -29,7 +26,7 @@ export default function Layout({
             )}
 
             <div
-                className={`fixed top-0 left-0 z-50 h-screen w-[280px] bg-white transition-transform duration-300 lg:hidden ${open ? "translate-x-0" : "-translate-x-full"
+                className={`fixed left-0 top-0 z-50 h-screen w-[280px] bg-white transition-transform duration-300 lg:hidden ${open ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
                 <div className="flex justify-end p-4">
@@ -40,9 +37,15 @@ export default function Layout({
 
                 <Sidebar onClose={() => setOpen(false)} />
             </div>
+
             {/* Main */}
-            <div className="flex-1">
-                {/* Mobile Top Bar */}
+            <div className="flex-1 lg:ml-[260px]">
+                {/* Desktop Header */}
+                <div className="hidden lg:block fixed top-0 right-0 left-[260px] z-30 bg-white border-b">
+                    <Header />
+                </div>
+
+                {/* Mobile Header */}
                 <div className="flex items-center justify-between border-b px-4 py-3 lg:hidden">
                     <button onClick={() => setOpen(true)}>
                         <Menu size={28} />
@@ -50,12 +53,11 @@ export default function Layout({
 
                     <Header />
                 </div>
-                <div className="hidden lg:block">
-                    <Header />
-                </div>
 
-
-                <main className="p-5 lg:p-8">{children}</main>
+                {/* Page Content */}
+                <main className="p-5 lg:mt-[72px] lg:p-8">
+                    {children}
+                </main>
             </div>
         </div>
     );

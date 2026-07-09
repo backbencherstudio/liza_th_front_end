@@ -19,12 +19,9 @@ import { FpStepEmail } from "./forgot-password/fp-step-email";
 import { FpStepOtp } from "./forgot-password/fp-step-otp";
 import { FpStepNewPassword } from "./forgot-password/fp-step-new-password";
 import CustomModal from "../reusable/CustomModal";
+import { SignInStepOtp } from "./sign-in/sign-in-step-otp";
+import { SignInSuccess } from "./sign-in/sign-in-success";
 
-const FLOW_TITLES = {
-  "sign-in": "Welcome back",
-  "sign-up": "Create account",
-  "forgot-password": "Reset password",
-};
 
 export function AuthModal() {
   const { isOpen, flow, step, close } = useAuthModalStore();
@@ -32,9 +29,8 @@ export function AuthModal() {
   const renderStep = () => {
     if (flow === "sign-in") {
       if (step === "credentials") return <SignInStep />;
-      if (step === "mfa-select") return <MfaMethodSelect />;
-      if (step === "mfa-otp") return <MfaEmailOtp />;
-      if (step === "mfa-authenticator") return <MfaAuthenticator />;
+      if (step === "otp") return <SignInStepOtp />;
+      if (step === "success") return <SignInSuccess />;
     }
 
     if (flow === "sign-up") {

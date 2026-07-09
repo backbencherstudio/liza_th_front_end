@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import CustomButton from "@/components/reusable/CustomButton";
 
-export function SignUpStepSuccess() {
+export function SignInSuccess() {
   return (
     <div>
       <div className="w-full max-w-[378px] aspect-[378/200] mx-auto">
@@ -20,11 +20,11 @@ export function SignUpStepSuccess() {
 
       <div className="text-center mt-10">
         <h2 className="auth-title mb-3">
-          Successful
+          Welcome Back!
         </h2>
 
         <p className="auth-subtitle max-w-[370px] mx-auto">
-          Congratulations! Your account has been successfully created. Let's get started!
+        Congratulations! Your verification is successful. Let's get started!
         </p>
       </div>
 

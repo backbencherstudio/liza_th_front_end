@@ -9,14 +9,6 @@ import { FormField } from "@/components/reusable/FormInput";
 import CustomButton from "@/components/reusable/CustomButton";
 import { FormSelect } from "@/components/reusable/FormSelect";
 
-
-
-const items = [
-  { label: "Light", value: "light" },
-  { label: "Dark", value: "dark" },
-  { label: "System", value: "system" },
-]
-
 // Schema mapped directly to your UI layout blueprint requirements
 const signUpSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -78,8 +70,8 @@ export function SignUpStepCredentials() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
 
       <div>
-        <h2 className="  auth-title max-w-[320px] mx-auto  ">
-          Start your 14 <span className="text-[#2563EB]">day free trial</span> today
+        <h2 className="auth-title max-w-[320px] mx-auto">
+          Start your 14 <span className="auth-link">day free trial</span> today
         </h2>
         <p className="auth-subtitle mt-3">
           Please enter details by Creating New Account
@@ -175,12 +167,13 @@ export function SignUpStepCredentials() {
       </CustomButton>
 
 
-      <p className="self-stretch text-cente text-gray-400  font-archivo text-lg text-center leading-6">By continuing, you acknowledge that you understand and agree to the
-        <span className="text-[#2563EB]"> Terms & Conditions</span> and <span className="text-[#2563EB]">Privacy-Policy.</span></p>
+      <p className="auth-footer">
+        By continuing, you acknowledge that you understand and agree to the
+        <span className="auth-link"> Terms & Conditions</span> and <span className="auth-link">Privacy-Policy.</span>
+      </p>
 
-
-      <p className="text-gray-500 text-center text-lg font-medium leading-6">
-        Already have an account? <button type="button" onClick={() => switchFlow("sign-in")} className="text-blue-500 hover:text-blue-600">Sign in</button>
+      <p className="auth-footer-note">
+        Already have an account? <button type="button" onClick={() => switchFlow("sign-in")} className="auth-link">Sign in</button>
       </p>
 
     </form>

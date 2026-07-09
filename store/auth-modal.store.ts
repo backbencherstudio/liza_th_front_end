@@ -2,14 +2,14 @@ import { create } from "zustand";
 
 type AuthFlow = 'sign-in' | 'sign-up' | 'forgot-password'
 
-type SignInStep = 'credentials' | 'mfa-select' | 'mfa-otp' | 'mfa-authenticator'
+type SignInStep = 'credentials' | 'otp' | 'success'
 type SignUpStep = 'credentials' | 'otp' | 'success'
 type ForgotStep = 'email' | 'otp' | 'new-password'
 
 type Step = SignInStep | SignUpStep | ForgotStep
 
 const FLOW_STEPS: Record<AuthFlow, readonly Step[]> = {
-  "sign-in": ["credentials", "mfa-select", "mfa-otp", "mfa-authenticator"] as const,
+  "sign-in": ["credentials", "otp", "success"] as const,
   "sign-up": ["credentials", "otp", "success"] as const,
   "forgot-password": ["email", "otp", "new-password"] as const,
 }

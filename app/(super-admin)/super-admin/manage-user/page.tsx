@@ -1,5 +1,6 @@
 import DashboardStatsIcons from '@/components/icons/SupAdminIcon';
 import StatsCard from '@/components/reusable/StatusCard';
+import UserManagementTable from '@/components/super-admin/manage-users/UserManagementTable';
 import React from 'react'
 
 export default function page() {
@@ -72,6 +73,8 @@ export default function page() {
                     ))
                 }
             </div>
+
+            <UserManagementTable/>
         </div>
     )
 }

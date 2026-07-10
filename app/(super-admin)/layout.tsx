@@ -43,12 +43,11 @@ export default function Layout({
             </div>
 
             {/* Main */}
-            <div className="flex-1 lg:ml-[260px]">
+            <div className="flex min-w-0 flex-1 flex-col lg:ml-[260px]">
                 {/* Desktop Header */}
-                <div className="hidden lg:block fixed top-0 right-0 left-[260px] z-30 bg-white border-b">
+                <div className="fixed top-0 right-0 left-[260px] z-30 hidden border-b bg-white lg:block">
                     <Header />
                 </div>
-
 
                 {/* Mobile Header */}
                 <div className="sticky top-0 z-30 border-b bg-white lg:hidden">
@@ -57,14 +56,14 @@ export default function Layout({
                             <Menu size={28} />
                         </button>
 
-                        <div className="flex-1">
+                        <div className="min-w-0 flex-1">
                             <Header />
                         </div>
                     </div>
                 </div>
 
                 {/* Page Content */}
-                <main className="p-5 lg:mt-[72px] lg:p-8">
+                <main className="min-w-0 p-5 lg:mt-[72px] lg:p-8">
                     {children}
                 </main>
             </div>

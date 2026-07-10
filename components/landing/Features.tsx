@@ -87,7 +87,7 @@ export default function Features() {
                     <div className="pt-6  flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px] lg:flex-row">
                         {/* Left */}
 
-                        <div className="">
+                        <div className="flex-1 w-full">
                             <Image
                                 src="/assets/worksWithTools/Frame 2147226709.png"
                                 alt=""
@@ -97,7 +97,7 @@ export default function Features() {
                             />
                         </div>
 
-                        <div className=" flex-1">
+                        <div className=" flex-1 w-full">
                             <h3 className=" text-2xl md: md:text-[32px] font-semibold leading-[44px] text-[#151513]">
                                 More than charts.
                                 <span className="text-[#2563EB]" > <br className="block md:hidden" />

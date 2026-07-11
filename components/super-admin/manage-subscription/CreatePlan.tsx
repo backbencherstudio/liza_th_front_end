@@ -7,6 +7,7 @@ import { Plus, X } from "lucide-react";
 import { FormField } from "@/components/reusable/FormInput";
 import { FormSelect } from "@/components/reusable/FormSelect";
 import CustomButton from "@/components/reusable/CustomButton";
+import type { EditablePlan } from "./subscription.types";
 
 const DURATION_OPTIONS = [
     { label: "Daily", value: "daily" },
@@ -23,11 +24,13 @@ interface SubscriptionFormData {
 }
 
 interface SubscriptionFormProps {
-    plan?: any;
+    plan?: EditablePlan;
+    onSuccess?: () => void;
 }
 
 export default function SubscriptionForm({
     plan,
+    onSuccess,
 }: SubscriptionFormProps) {
     const {
         register,
@@ -83,13 +86,15 @@ export default function SubscriptionForm({
         setFeatures((prev) => prev.filter((_, i) => i !== index));
     };
 
-    const onSubmit = (data: SubscriptionFormData) => {
+    const onSubmit = async (data: SubscriptionFormData) => {
         const payload = {
             ...data,
             features,
         };
 
         console.log(payload);
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        onSuccess?.();
     };
 
     return (
@@ -201,7 +206,7 @@ export default function SubscriptionForm({
                 className="w-full"
                 disabled={isSubmitting}
             >
-                {isSubmitting ? "Saving..." : "Save Plan"}
+                {isSubmitting ? "Saving..." : plan ? "Update Plan" : "Save Plan"}
             </CustomButton>
         </form>
     );

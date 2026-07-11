@@ -9,11 +9,11 @@ import { useState } from "react";
 import CustomModal from "@/components/reusable/CustomModal";
 import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
 import RecentSubscriptionsTable from "@/components/super-admin/manage-subscription/RecentSubscriptons";
+import type { EditablePlan } from "@/components/super-admin/manage-subscription/subscription.types";
 
 export default function PricingSection() {
     const [open, setOpen] = useState(false);
-    const [selectedPlan, setSelectedPlan] = useState<any>(null);
-    const [selectedId, setSelectedId] = useState<number | null>(null);
+    const [selectedPlan, setSelectedPlan] = useState<EditablePlan | null>(null);
 
 
     return (
@@ -31,23 +31,29 @@ export default function PricingSection() {
                     </div>
 
                     {/* Right */}
-                    <button className="flex items-center gap-2 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-6 py-3.5 text-sm font-medium text-white transition  cursor-pointer" onClick={() => {
+                   <CustomButton
+                   onClick={() => {
                         setSelectedPlan(null);
                         setOpen(true);
                     }}>
-                        <Plus size={18} />
-                        Create Plan
-                    </button>
+                       <span className="flex items-center gap-2"> <Plus size={18} />
+                       Create Plan</span>
+                    </CustomButton>
+                    
                     <CustomModal
                         open={open}
                         onOpenChange={setOpen}
                         title={selectedPlan ? "Edit Subscription Plan" : "Create Subscription Plan"}
-                        size="md"
+                        size="lg"
                     >
-                        <SubscriptionForm plan={selectedPlan} />
+                        <SubscriptionForm
+                            plan={selectedPlan ?? undefined}
+                            onSuccess={() => setOpen(false)}
+                        />
                     </CustomModal>
                 </div>
             </div>
+
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {
                     overviewData.map((item) => (
@@ -60,9 +66,6 @@ export default function PricingSection() {
                     ))
                 }
             </div>
-
-            
-
 
             <RecentSubscriptionsTable />
         </div>

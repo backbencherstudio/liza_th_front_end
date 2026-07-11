@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import DataTable, { Column } from "@/components/reusable/DataTable"; 
-import TableToolBar from "@/components/reusable/TableToolBar";     
-import { MoreVertical, CheckCircle2, UserX, Eye } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useState } from "react";
+import DataTable, { Column } from "@/components/reusable/DataTable";
+import TableToolBar from "@/components/reusable/TableToolBar";
+
+import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
+import CustomModal from "@/components/reusable/CustomModal";
+import UserDetails from "./UserDetails";
+import ActionIcons from "@/components/icons/ActionIcons";
 
 interface UserData {
   id: string;
@@ -30,6 +33,11 @@ export default function UserManagementTable() {
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  const [viewOpen, setViewOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [selectedUser, setSelectedUser] =
+    useState<UserData | null>(null);
+
   const columns: Column<UserData>[] = [
     { header: "Users Name", accessor: "name" },
     { header: "Email", accessor: "email" },
@@ -43,11 +51,10 @@ export default function UserManagementTable() {
         const isActive = row.status === "Active";
         return (
           <span
-            className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-medium ${
-              isActive
+            className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-medium ${isActive
                 ? "bg-[#E6F4EA] text-[#137333]"
                 : "bg-[#FCE8E6] text-[#C5221F]"
-            }`}
+              }`}
           >
             {row.status}
           </span>
@@ -56,27 +63,32 @@ export default function UserManagementTable() {
     },
     {
       header: "Actions",
-      cell: () => (
-        <Popover>
-          <PopoverTrigger
-            className="rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <MoreVertical className="h-4 w-4" />
-          </PopoverTrigger>
-          <PopoverContent align="end" className="w-40 p-1 bg-white border border-gray-200 rounded-xl shadow-lg">
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-              <CheckCircle2 className="w-4 h-4 text-gray-400" /> Active
-            </button>
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-              <UserX className="w-4 h-4 text-gray-400" /> Suspended
-            </button>
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg border-t border-gray-100 mt-1">
-              <Eye className="w-4 h-4 text-gray-400" /> View Details
-            </button>
-          </PopoverContent>
-        </Popover>
-      ),
+      cell: (row) => {
+        const rowActions: MenuAction[] = [
+
+          {
+            label: "Active",
+            icon: ActionIcons.Active,
+            onClick: () => console.log("Editing user:", row.id),
+          },
+          {
+            label: "Suspend User",
+            icon: ActionIcons.Suspend,
+            onClick: () => console.log("Suspending user:", row.id),
+          },
+
+          {
+            label: "View Details",
+            icon: ActionIcons.View,
+            onClick: () =>{
+              setViewOpen(true);
+              setSelectedUser(row);
+            },
+          },
+         
+        ];
+        return <ActionMenu actions={rowActions}  />;
+      },
     },
   ];
 
@@ -117,6 +129,38 @@ export default function UserManagementTable() {
           pageSize={10}
         />
       </div>
+
+
+
+      <CustomModal
+        open={viewOpen}
+        onOpenChange={setViewOpen}
+        showCloseButton={false}
+        size="md"
+        className=""
+      >
+        {selectedUser && (
+          <UserDetails
+            user={selectedUser}
+            onClose={() => setViewOpen(false)}
+          />
+        )}
+      </CustomModal>
+
+      {/* <CustomModal
+                open={editOpen}
+                onOpenChange={setEditOpen}
+                title="Edit Subscription Plan"
+                size="md"
+            >
+                {editablePlan && (
+                    <SubscriptionForm
+                        key={selectedSubscription?.id}
+                        plan={editablePlan}
+                        onSuccess={() => setEditOpen(false)}
+                    />
+                )}
+            </CustomModal> */}
     </div>
   );
 }

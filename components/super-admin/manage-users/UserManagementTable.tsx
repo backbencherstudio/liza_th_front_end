@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import DataTable, { Column } from "@/components/reusable/DataTable"; 
-import TableToolBar from "@/components/reusable/TableToolBar";     
-import { MoreVertical, CheckCircle2, UserX, Eye, Pencil } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useState } from "react";
+import DataTable, { Column } from "@/components/reusable/DataTable";
+import TableToolBar from "@/components/reusable/TableToolBar";
+
 import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
+import CustomModal from "@/components/reusable/CustomModal";
+import UserDetails from "./UserDetails";
+import ActionIcons from "@/components/icons/ActionIcons";
 
 interface UserData {
   id: string;
@@ -31,6 +33,11 @@ export default function UserManagementTable() {
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  const [viewOpen, setViewOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [selectedUser, setSelectedUser] =
+    useState<UserData | null>(null);
+
   const columns: Column<UserData>[] = [
     { header: "Users Name", accessor: "name" },
     { header: "Email", accessor: "email" },
@@ -44,11 +51,10 @@ export default function UserManagementTable() {
         const isActive = row.status === "Active";
         return (
           <span
-            className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-medium ${
-              isActive
+            className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-medium ${isActive
                 ? "bg-[#E6F4EA] text-[#137333]"
                 : "bg-[#FCE8E6] text-[#C5221F]"
-            }`}
+              }`}
           >
             {row.status}
           </span>
@@ -59,19 +65,29 @@ export default function UserManagementTable() {
       header: "Actions",
       cell: (row) => {
         const rowActions: MenuAction[] = [
-      
+
           {
-            label: "View Details",
-            icon: Eye,
-            onClick: () => console.log("Viewing details:", row.id),
-          },
-          {
-            label: "Edit User",
-            icon: Pencil,
+            label: "Active",
+            icon: ActionIcons.Active,
             onClick: () => console.log("Editing user:", row.id),
           },
+          {
+            label: "Suspend User",
+            icon: ActionIcons.Suspend,
+            onClick: () => console.log("Suspending user:", row.id),
+          },
+
+          {
+            label: "View Details",
+            icon: ActionIcons.View,
+            onClick: () =>{
+              setViewOpen(true);
+              setSelectedUser(row);
+            },
+          },
+         
         ];
-        return <ActionMenu actions={rowActions} title="Options" />;
+        return <ActionMenu actions={rowActions}  />;
       },
     },
   ];
@@ -113,6 +129,38 @@ export default function UserManagementTable() {
           pageSize={10}
         />
       </div>
+
+
+
+      <CustomModal
+        open={viewOpen}
+        onOpenChange={setViewOpen}
+        showCloseButton={false}
+        size="md"
+        className=""
+      >
+        {selectedUser && (
+          <UserDetails
+            user={selectedUser}
+            onClose={() => setViewOpen(false)}
+          />
+        )}
+      </CustomModal>
+
+      {/* <CustomModal
+                open={editOpen}
+                onOpenChange={setEditOpen}
+                title="Edit Subscription Plan"
+                size="md"
+            >
+                {editablePlan && (
+                    <SubscriptionForm
+                        key={selectedSubscription?.id}
+                        plan={editablePlan}
+                        onSuccess={() => setEditOpen(false)}
+                    />
+                )}
+            </CustomModal> */}
     </div>
   );
 }

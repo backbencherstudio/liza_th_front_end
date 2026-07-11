@@ -46,7 +46,7 @@ export default function CustomModal(props: CustomModalProps) {
         sm: "sm:max-w-[580px]",
         md: "sm:max-w-[680px]",
         mmd: "sm:max-w-[684px]",
-        lg: "sm:max-w-[1000px]",
+        lg: "sm:max-w-[858px]",
         xsm: "sm:max-w-[500px]"
     };
 
@@ -73,7 +73,7 @@ export default function CustomModal(props: CustomModalProps) {
             >
                 {/* Header Section */}
                 {title && (
-                    <div className="flex justify-between items-center mb-6">
+                    <div className="flex justify-between items-center ">
                         <h3 className="text-2xl font-medium tracking-[-0.36px]">{title}</h3>
                     </div>
                 )}

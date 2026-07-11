@@ -32,7 +32,6 @@ export default function PricingSection() {
 
                     {/* Right */}
                    <CustomButton
-
                    onClick={() => {
                         setSelectedPlan(null);
                         setOpen(true);
@@ -40,11 +39,12 @@ export default function PricingSection() {
                        <span className="flex items-center gap-2"> <Plus size={18} />
                        Create Plan</span>
                     </CustomButton>
+                    
                     <CustomModal
                         open={open}
                         onOpenChange={setOpen}
                         title={selectedPlan ? "Edit Subscription Plan" : "Create Subscription Plan"}
-                        size="md"
+                        size="lg"
                     >
                         <SubscriptionForm
                             plan={selectedPlan ?? undefined}

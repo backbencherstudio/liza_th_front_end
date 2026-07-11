@@ -71,11 +71,11 @@ export default function DiscountTable() {
             label: "Delete",
             icon: Trash2,
             onClick: () => console.log("Deleting record:", row.id),
-            showTopDivider: true, // Matches your specific design line split
+          
           },
         ];
     
-        return <ActionMenu actions={rowActions} title="Options" />;
+        return <ActionMenu actions={rowActions}  />;
       },
 
         

@@ -82,7 +82,7 @@ export default function RecentSubscriptionsTable() {
         },
         {
             header: "Actions",
-            cell: (row) => <ActionMenu actions={getRowActions(row)} title="Options" />,
+            cell: (row) => <ActionMenu actions={getRowActions(row)}  />,
         },
     ];
 
@@ -131,7 +131,7 @@ export default function RecentSubscriptionsTable() {
                 open={viewOpen}
                 onOpenChange={setViewOpen}
                 showCloseButton={false}
-                size="md"
+                size="lg"
             >
                 {selectedSubscription && (
                     <PlanDetails
@@ -145,7 +145,7 @@ export default function RecentSubscriptionsTable() {
                 open={editOpen}
                 onOpenChange={setEditOpen}
                 title="Edit Subscription Plan"
-                size="md"
+                size="lg"
             >
                 {editablePlan && (
                     <SubscriptionForm

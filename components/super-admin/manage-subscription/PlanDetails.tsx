@@ -18,7 +18,7 @@ export default function PlanDetails({ subscription, onClose }: PlanDetailsProps)
     <div className="relative flex w-full flex-col items-start gap-6 bg-white">
       <div className="flex w-full items-center justify-between">
         <h3 className="font-[Archivo] text-2xl font-medium leading-8 text-[#070707]">
-          Subscription Details
+          Transaction Details
         </h3>
         {onClose && (
           <button
@@ -34,7 +34,6 @@ export default function PlanDetails({ subscription, onClose }: PlanDetailsProps)
       <div className="grid w-full grid-cols-1 gap-x-12 gap-y-5 rounded-xl bg-[#F9FAFB] px-6 py-6 sm:grid-cols-2 sm:px-8">
         <DetailRow label="Transaction ID" value={details.transactionId} />
         <DetailRow label="User Name" value={details.userName} />
-        <DetailRow label="Role" value={details.role} />
         <DetailRow label="Plan" value={details.plan} />
         <DetailRow label="Transaction Type" value={details.transactionType} />
         <DetailRow label="Status" value={details.status} />
@@ -55,7 +54,7 @@ export default function PlanDetails({ subscription, onClose }: PlanDetailsProps)
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col items-start justify-start gap-1">
-      <p className="font-[Archivo] text-sm font-normal leading-5 text-[#9CA3AF]">
+      <p className="font-[Archivo] text-lg font-normal leading-5 text-[#9CA3AF]">
         {label}
       </p>
       <p className="font-[Archivo] text-base font-semibold leading-6 text-[#070707]">

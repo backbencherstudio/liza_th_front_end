@@ -62,4 +62,5 @@ export const sidebarData = [
         href: "/super-admin/role",
         icon: ManageRoleIcon,
     },
+
 ];

@@ -12,7 +12,7 @@ interface SidebarProps {
 
 export default function Sidebar({ onClose }: SidebarProps) {
     const pathname = usePathname();
-
+    const isSettingActive = pathname.startsWith("/super-admin/settings");
     return (
         <aside
             className={`
@@ -71,11 +71,31 @@ export default function Sidebar({ onClose }: SidebarProps) {
             <div className="mt-auto space-y-1 pt-6 ">
                 <Link
                     onClick={onClose}
-                    href="/dashboard/settings"
-                    className="flex items-center gap-3 px-6 py-[14px] text-[15px] font-medium text-[#374151] hover:bg-gray-100 rounded-[22px] transition-all"
+                    href="/super-admin/settings/edit-profile"
+                    className={`group relative flex items-center gap-3 px-3 py-[11px] text-[16px] font-normal rounded-lg transition-all leading-[22px]
+    ${isSettingActive
+                            ? "bg-[#E9EFFD] text-[#1E40AF] font-medium"
+                            : "text-[#374151] hover:bg-gray-100"
+                        }`}
                 >
-                    <Settings size={20} className="text-[#646464]" />
-                    <span>Setting</span>
+                    {isSettingActive && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[6px] bg-[#1E40AF] rounded-r-xl" />
+                    )}
+
+                    <Settings
+                        size={20}
+                        className={isSettingActive ? "text-[#1E40AF]" : "text-[#646464]"}
+                    />
+
+                    <span
+                        className={
+                            isSettingActive
+                                ? "text-[#1E40AF] font-medium"
+                                : "text-[#374151]"
+                        }
+                    >
+                        Setting
+                    </span>
                 </Link>
 
                 <button className="flex w-full items-center gap-3 px-6 py-[14px] text-[15px] font-medium text-[#374151] hover:bg-gray-100 rounded-[22px] transition-all">

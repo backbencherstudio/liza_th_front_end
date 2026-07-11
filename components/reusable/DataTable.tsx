@@ -84,7 +84,7 @@ export default function DataTable<T>({
 
     return (
         <div className="w-full min-w-0">
-            <div className="rounded-[4px] border-b border-[#EDEDED]">
+            <div className="rounded-[4px] border-b border-[#EDEDED] ">
                 <Table className="min-w-[960px] ">
                     <TableHeader className="rounded-xl">
                         <TableRow className="border-b border-[#EDEDED] bg-[#F0F4F9] hover:bg-[#F9F9FB] rounded-xl">
@@ -122,7 +122,7 @@ export default function DataTable<T>({
             </div>
 
             {totalPages > 0 && (
-                <div className="flex flex-col gap-3 bg-white px-2 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+                <div className="flex flex-col gap-3 bg-white px-2 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 mt-4">
                     <p className="text-sm font-archivo text-[#5C6F84]">
                         Showing {paginatedData.length} entries
                     </p>

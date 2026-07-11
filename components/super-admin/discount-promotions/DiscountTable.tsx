@@ -104,7 +104,7 @@ export default function DiscountTable() {
         </select>
       </TableToolBar>
 
-      <div className="mt-6">
+      <div className="mt-8">
         <DataTable
           columns={columns}
           data={filteredData}

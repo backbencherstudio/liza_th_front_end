@@ -8,6 +8,7 @@ import CustomButton from "@/components/reusable/CustomButton";
 import { useState } from "react";
 import CustomModal from "@/components/reusable/CustomModal";
 import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
+import RecentSubscriptionsTable from "@/components/super-admin/manage-subscription/RecentSubscriptons";
 
 export default function PricingSection() {
     const [open, setOpen] = useState(false);
@@ -59,90 +60,11 @@ export default function PricingSection() {
                     ))
                 }
             </div>
-            <p className="py-6 md:py-8 text-[#151513] text-2xl md:text-[32px] font-semibold leading-[46px]">Active Plan</p>
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                {pricingPlans.map((plan) => (
-                    <div
-                        key={plan.id}
-                        onClick={() => setSelectedId(plan.id)}
-                        className={`
-    cursor-pointer
-    flex h-full flex-col
-    rounded-[20px]
-    border-2
-    bg-[linear-gradient(180deg,rgba(14,105,249,0.10)_0%,rgba(0,147,255,0.00)_38.44%)]
-    px-4 py-5
-    backdrop-blur-[20px]
-    transition-colors duration-300
-    ${selectedId === plan.id
-                                ? "border-[#2563EB]"
-                                : "border-[#EDEDED] hover:border-[#2563EB]"
-                            }
-  `}
-                    >
-                        {/* Header */}
-                        <div>
-                            <div className="mb-2 flex items-center gap-2">
-                                <PricingIcon />
-
-                                <h3 className="bg-gradient-to-r from-[#0A206D] to-[#3B69D0] bg-clip-text text-[26px] leading-[34px] font-medium text-transparent">
-                                    {plan.title}
-                                </h3>
-                            </div>
-
-                            {/* <p className="mb-4 min-h-[44px] text-base leading-[22px] text-[#3D3D3C]">
-                                {plan.description}
-                            </p> */}
-
-                            {plan.planType && (
-                                <p className=" text-[#3D3D3C] text-base font-normal leading-[22px] mb-6">
-                                    {plan.planType}
-                                </p>
-                            )}
-
-                            <div className="min-h-[70px]">
-                                <h2 className=" text-3xl md:text-4xl lg:text-[36px] font-semibold leading-[46px] text-[#151513]">
-                                    {plan.price}  <span className="text-base font-normal leading-[22px] text-[#151513]">{plan.plan}</span>
-                                </h2>
+            
 
 
-                            </div>
-                        </div>
-
-                        <div className="my-5 h-px bg-[#EDEDED]" />
-
-                        {/* Features */}
-                        <div className="flex-1">
-                            <h4 className="mb-4 text-lg font-medium text-[#3D3D3C]">
-                                Key Features :
-                            </h4>
-
-                            <div className="space-y-4">
-                                {plan.features.map((feature, index) => (
-                                    <div key={index} className="flex items-start gap-2.5">
-                                        <FeatureIcon className="mt-1 shrink-0" />
-
-                                        <p className="text-sm leading-[22px] text-[#3D3D3C]">
-                                            {feature}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Button */}
-                        <CustomButton variant="outline" className="mt-6 h-14 w-full  bg-white text-base font-semibold text-[#151513] " onClick={(e) => {
-                            e.stopPropagation();
-
-                            setSelectedPlan(plan);
-                            setOpen(true);
-                        }}>
-                            Edit
-                        </CustomButton>
-                    </div>
-                ))}
-            </div>
+            <RecentSubscriptionsTable />
         </div>
     );
 }

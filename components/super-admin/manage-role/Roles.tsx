@@ -73,7 +73,7 @@ export default function Roles() {
                     </p>
 
                     <div className="flex items-center gap-2 justify-center my-auto">
-                        <button onClick={() => setIsEditModalOpen(true)} className="flex items-center justify-center gap-[10px] rounded-lg border px-[10px] py-2 text-sm font-medium  text-[#6A7282]">
+                        <button onClick={openEditModal} className="flex items-center justify-center gap-[10px] rounded-lg border px-[10px] py-2 text-sm font-medium  text-[#6A7282]">
                             <SuperAdminSetting.ManageRoleEdit />
                         </button>
                         <button className="flex items-center justify-center gap-[10px] rounded-lg border px-[10px] py-2 text-sm font-medium ">
@@ -101,6 +101,8 @@ export default function Roles() {
             <EditRoleModal
                 open={isEditModalOpen}
                 onOpenChange={setIsEditModalOpen}
+                mode={modalMode}
+                initialData={editingData}
                 onSave={handleSaveRole}
             />
         </div>

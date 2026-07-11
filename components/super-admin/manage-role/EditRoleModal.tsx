@@ -23,44 +23,56 @@ const PERMISSIONS = [
 interface EditRoleModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    mode: "add" | "edit";
     initialData?: {
         roleName: string;
         permissions: string[];
     };
-    onSave: (data: { roleName: string; permissions: string[] }) => void;
+    onSave: (data: {
+        roleName: string;
+        permissions: string[];
+    }) => void;
 }
-
 export default function EditRoleModal({
     open,
     onOpenChange,
+    mode,
     initialData,
     onSave,
 }: EditRoleModalProps) {
-    const [roleName, setRoleName] = useState(initialData?.roleName || "Super Admin");
+    const [roleName, setRoleName] = useState(
+        initialData?.roleName || ""
+    );
+
     const [selectedPermissions, setSelectedPermissions] = useState<string[]>(
-        initialData?.permissions || ["manageUsers", "manageSubscriptions", "manageDiscounts", "manageAI", "manageBilling", "exportData", "deleteRecords"]
+        initialData?.permissions || []
     );
 
     const togglePermission = (id: string) => {
         setSelectedPermissions((prev) =>
-            prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
+            prev.includes(id)
+                ? prev.filter((p) => p !== id)
+                : [...prev, id]
         );
     };
 
     const handleSave = () => {
-        onSave({ roleName, permissions: selectedPermissions });
-
+        onSave({
+            roleName,
+            permissions: selectedPermissions,
+        });
     };
+
 
     return (
         <CustomModal
             open={open}
             onOpenChange={onOpenChange}
-            title="Edit Role"
+            title={mode === "edit" ? "Edit Role" : "Create New Role"}
             size="md"
         >
 
-            <div className="space-y-8">
+            <div className="space-y-4">
                 {/* Role Name */}
                 <FormField
                     label="Role Name"
@@ -71,12 +83,12 @@ export default function EditRoleModal({
 
                 {/* Permissions */}
                 <div>
-                    <h4 className="text-[#151513] font-medium text-lg mb-4">Permissions</h4>
+                    <h4 className="text-[14px] sm:text-[15px] xl:text-base text-[#364153] font-normal sm:leading-5 xl:leading-[22px] mb-3">Permissions</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {PERMISSIONS.map((perm) => (
                             <label
                                 key={perm.id}
-                                className="flex items-center gap-3 bg-white border border-gray-100 hover:border-gray-200 rounded-xl p-4 cursor-pointer transition"
+                                className="flex items-center gap-3 bg-white border border-gray-100 hover:border-gray-200 rounded-xl p-4 cursor-pointer transition text-[13px] sm:text-sm xl:text-sm text-[rgba(10,10,10,0.5)] font-normal sm:leading-[18px] xl:leading-5"
                             >
                                 <Checkbox
                                     checked={selectedPermissions.includes(perm.id)}
@@ -100,13 +112,13 @@ export default function EditRoleModal({
                 <div className="flex gap-4 pt-4">
                     <button
                         onClick={() => onOpenChange(false)}
-                        className="flex-1 border border-gray-300 text-gray-700 font-medium py-3.5 rounded-2xl hover:bg-gray-50 transition"
+                        className="flex-1 border border-[#2563EB] text-[#2563EB] font-medium py-3.5 rounded-xl hover:bg-gray-50 transition"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleSave}
-                        className="flex-1 bg-gradient-to-r from-[#182144] to-[#0F172A] text-white font-medium py-3.5 rounded-2xl hover:opacity-90 transition"
+                        className="flex-1 rounded-[8px] bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3.5 px-6 text-white cursor-pointer font-semibold text-[14px] sm:text-[15px] xl:text-base hover:bg-accent    "
                     >
                         Save
                     </button>

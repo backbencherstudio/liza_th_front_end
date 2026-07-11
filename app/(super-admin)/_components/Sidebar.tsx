@@ -21,15 +21,17 @@ export default function Sidebar({ onClose }: SidebarProps) {
   `}
         >
             {/* Logo */}
-            <div className="flex justify-center py-6">
-                <Image
-                    src="/images/spike-logo.png"
-                    alt="Spike Technology"
-                    width={140}
-                    height={45}
-                    className="object-contain  "
-                />
-            </div>
+            <Link href="/super-admin">
+                <div className="flex justify-center py-6">
+                    <Image
+                        src="/images/spike-logo.png"
+                        alt="Spike Technology"
+                        width={140}
+                        height={45}
+                        className="object-contain  "
+                    />
+                </div>
+            </Link>
 
             {/* Menu Items */}
             <div className="space-y-1 flex-1">
@@ -72,7 +74,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                 <Link
                     onClick={onClose}
                     href="/super-admin/settings/edit-profile"
-                    className={`group relative flex items-center gap-3 px-3 py-[11px] text-[16px] font-normal rounded-lg transition-all leading-[22px]
+                    className={`cursor-pointer group relative flex items-center gap-3 px-3 py-[11px] text-[16px] font-normal rounded-lg transition-all leading-[22px]
     ${isSettingActive
                             ? "bg-[#E9EFFD] text-[#1E40AF] font-medium"
                             : "text-[#374151] hover:bg-gray-100"
@@ -98,7 +100,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                     </span>
                 </Link>
 
-                <button className="flex w-full items-center gap-3 px-6 py-[14px] text-[15px] font-medium text-[#374151] hover:bg-gray-100 rounded-[22px] transition-all">
+                <button className="cursor-pointer flex w-full items-center gap-3 px-3 py-[11px] text-[16px] font-normal rounded-lg transition-all leading-[22px] text-[#374151] hover:bg-gray-100">
                     <LogoutIcon size={20} />
                     <span>Log out</span>
                 </button>

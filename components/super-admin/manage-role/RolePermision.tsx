@@ -3,9 +3,10 @@ import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Roles from './Roles';
 import { useRouter, useSearchParams } from 'next/navigation';
-import SecurityMFA from './SecurityMFA';
+import SecurityMFA from './security/SecurityMFA';
 import Billing from './Billing';
 import FileUploadSettings from './fileUploadRule/FileUploadRule';
+import { MFASetupFlow } from './security/MFAsetupFlow';
 
 export default function RolePermision() {
     const router = useRouter();
@@ -56,6 +57,8 @@ export default function RolePermision() {
 
                     <TabsContent value="permissions">
                         <SecurityMFA />
+
+
                     </TabsContent>
 
                     <TabsContent value="security">

@@ -41,7 +41,7 @@ export const sidebarData = [
     {
         id: 5,
         title: "Discounts & Promotions",
-        href: "/super-admin/promotions",
+        href: "/super-admin/discount-promotions",
         icon: Tag,
     },
     {

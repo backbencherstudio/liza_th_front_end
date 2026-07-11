@@ -92,13 +92,17 @@ export default function UserManagementTable() {
         searchPlaceholder="Search by name or email..."
         onSearchChange={setSearch}
       >
-        <select className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-600 focus:outline-none">
+        <select className="sf-select">
           <option>All Role</option>
         </select>
-        <select className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-600 focus:outline-none">
+        <select className="sf-select">
           <option>All Subscriptions</option>
+          <option>Pro Plan (Monthly)</option>
+          <option>Premium (Monthly)</option>
+          <option>Pro Plan (Yearly)</option>
+          <option>Premium (Yearly)</option>
         </select>
-        <select className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-600 focus:outline-none">
+        <select className="sf-select">
           <option>All Status</option>
         </select>
       </TableToolBar>

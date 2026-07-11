@@ -85,13 +85,13 @@ export default function DataTable<T>({
     return (
         <div className="w-full min-w-0">
             <div className="rounded-[4px] border-b border-[#EDEDED]">
-                <Table className="min-w-[960px]">
-                    <TableHeader>
-                        <TableRow className="border-b border-[#EDEDED] bg-[#F9F9FB] hover:bg-[#F9F9FB]">
+                <Table className="min-w-[960px] ">
+                    <TableHeader className="rounded-xl">
+                        <TableRow className="border-b border-[#EDEDED] bg-[#F0F4F9] hover:bg-[#F9F9FB] rounded-xl">
                             {columns.map((col, i) => (
                                 <TableHead
                                     key={i}
-                                    className="px-4 py-3 text-left font-archivo text-base font-normal leading-5 text-[#070707]"
+                                    className="px-4 py-3 text-left font-archivo text-base font-normal leading-5 text-[#070707] "
                                 >
                                     {col.header}
                                 </TableHead>

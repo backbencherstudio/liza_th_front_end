@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import DataTable, { Column } from "@/components/reusable/DataTable"; 
 import TableToolBar from "@/components/reusable/TableToolBar";     
-import { MoreVertical, CheckCircle2, UserX, Eye } from "lucide-react";
+import { MoreVertical, CheckCircle2, UserX, Eye, Pencil } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
 
 interface UserData {
   id: string;
@@ -56,27 +57,22 @@ export default function UserManagementTable() {
     },
     {
       header: "Actions",
-      cell: () => (
-        <Popover>
-          <PopoverTrigger
-            className="rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <MoreVertical className="h-4 w-4" />
-          </PopoverTrigger>
-          <PopoverContent align="end" className="w-40 p-1 bg-white border border-gray-200 rounded-xl shadow-lg">
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-              <CheckCircle2 className="w-4 h-4 text-gray-400" /> Active
-            </button>
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
-              <UserX className="w-4 h-4 text-gray-400" /> Suspended
-            </button>
-            <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg border-t border-gray-100 mt-1">
-              <Eye className="w-4 h-4 text-gray-400" /> View Details
-            </button>
-          </PopoverContent>
-        </Popover>
-      ),
+      cell: (row) => {
+        const rowActions: MenuAction[] = [
+      
+          {
+            label: "View Details",
+            icon: Eye,
+            onClick: () => console.log("Viewing details:", row.id),
+          },
+          {
+            label: "Edit User",
+            icon: Pencil,
+            onClick: () => console.log("Editing user:", row.id),
+          },
+        ];
+        return <ActionMenu actions={rowActions} title="Options" />;
+      },
     },
   ];
 

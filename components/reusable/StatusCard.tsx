@@ -16,7 +16,7 @@ export default function StatsCard({
 
 }: StatsCardProps) {
     return (
-        <div className="flex justify-between rounded-lg border border-[#E5E7EB] p-5">
+        <div className="flex justify-between rounded-xl border border-[#E5E7EB] p-5">
             <div>
                 <p className="pb-1.5 text-base font-normal leading-[22px] text-[#4A4C56]">
                     {title}

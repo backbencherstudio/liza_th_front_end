@@ -23,6 +23,7 @@ const PERMISSIONS = [
 interface EditRoleModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    mode: "add" | "edit";
     initialData?: {
         roleName: string;
         permissions: string[];
@@ -30,10 +31,10 @@ interface EditRoleModalProps {
     mode?: "add" | "edit";
     onSave: (data: { roleName: string; permissions: string[] }) => void;
 }
-
 export default function EditRoleModal({
     open,
     onOpenChange,
+    mode,
     initialData,
     mode = "edit",
     onSave,
@@ -56,13 +57,16 @@ export default function EditRoleModal({
 
     const togglePermission = (id: string) => {
         setSelectedPermissions((prev) =>
-            prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
+            prev.includes(id)
+                ? prev.filter((p) => p !== id)
+                : [...prev, id]
         );
     };
 
     const handleSave = () => {
         onSave({ roleName, permissions: selectedPermissions });
     };
+
 
     return (
         <CustomModal
@@ -80,7 +84,7 @@ export default function EditRoleModal({
                 />
 
                 <div>
-                    <h4 className="text-[#151513] font-medium text-lg mb-4">Permissions</h4>
+                    <h4 className="text-[14px] sm:text-[15px] xl:text-base text-[#364153] font-normal sm:leading-5 xl:leading-[22px] mb-3">Permissions</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {PERMISSIONS.map((perm) => (
                             <label
@@ -110,13 +114,13 @@ export default function EditRoleModal({
                 <div className="flex gap-4 pt-4">
                     <button
                         onClick={() => onOpenChange(false)}
-                        className="flex-1 border border-gray-300 text-gray-700 font-medium py-3.5 rounded-2xl hover:bg-gray-50 transition"
+                        className="flex-1 border border-[#2563EB] text-[#2563EB] font-medium py-3.5 rounded-xl hover:bg-gray-50 transition"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleSave}
-                        className="flex-1 bg-gradient-to-r from-[#182144] to-[#0F172A] text-white font-medium py-3.5 rounded-2xl hover:opacity-90 transition"
+                        className="flex-1 rounded-[8px] bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3.5 px-6 text-white cursor-pointer font-semibold text-[14px] sm:text-[15px] xl:text-base hover:bg-accent    "
                     >
                         {mode === "add" ? "Create Role" : "Save Changes"}
                     </button>

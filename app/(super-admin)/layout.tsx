@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Sidebar from "./_components/Sidebar";
 import Header from "./_components/Header";
+import { AuthModal } from "@/components/auth/auth-modal";
 
 export default function Layout({
     children,
@@ -67,6 +68,8 @@ export default function Layout({
                     {children}
                 </main>
             </div>
+            
+            <AuthModal />
         </div>
     );
 }

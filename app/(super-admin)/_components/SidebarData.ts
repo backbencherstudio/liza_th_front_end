@@ -59,7 +59,7 @@ export const sidebarData = [
     {
         id: 8,
         title: "Manage Role",
-        href: "/super-admin/role",
+        href: "/super-admin/manage-role",
         icon: ManageRoleIcon,
     },
 

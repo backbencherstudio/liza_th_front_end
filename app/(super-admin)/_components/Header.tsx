@@ -35,8 +35,9 @@ export default function Header() {
 
                 {/* Right */}
                 <div className="flex items-center gap-3 md:gap-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F3F3F4]">
+                    <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#F3F3F4]">
                         <NotificationIcon />
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs">3</span>
                     </div>
 
                     <div className="flex items-center gap-2">

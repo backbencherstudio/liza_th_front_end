@@ -47,7 +47,7 @@ export const sidebarData = [
     {
         id: 6,
         title: "Content Management",
-        href: "/super-admin/content",
+        href: "/super-admin/content-management",
         icon: ContentIcon,
     },
     {

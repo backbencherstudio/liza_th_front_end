@@ -4,25 +4,31 @@ import type { DashboardNavConfig } from "./types";
 
 export const userNavigation: DashboardNavConfig = {
   role: "user",
-  dashboardHref: "/app/dashboard",
-  settingsHref: "/app/settings",
+  dashboardHref: "/user-dashboard/dashboard",
+  settingsHref: "/user-dashboard/settings",
   items: [
     {
       id: "dashboard",
-      title: "Dashboard",
-      href: "/app/dashboard",
+      title: "Generate Insight",
+      href: "/user-dashboard/generate-insight",
       icon: LayoutDashboard,
     },
     {
-      id: "reports",
-      title: "Reports",
-      href: "/app/reports",
+      id: "Dashboard",
+      title: "Dashboard",
+      href: "/user-dashboard/dashboard",
       icon: BarChart3,
     },
     {
       id: "settings",
-      title: "Settings",
-      href: "/app/settings",
+      title: "Saved Insights",
+      href: "/user-dashboard/save-insight",
+      icon: Settings,
+    },
+    {
+      id: "Manage Subscription",
+      title: "Manage Subscription",
+      href: "/user-dashboard/manage-subscription",
       icon: Settings,
     },
   ],

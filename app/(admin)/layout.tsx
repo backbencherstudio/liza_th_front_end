@@ -1,7 +1,7 @@
 "use client";
 
 import DashboardShell from "@/components/layouts/DashboardShell";
-import { superAdminNavigation } from "@/config/navigation";
+import { adminNavigation } from "@/config/navigation";
 
 export default function Layout({
   children,
@@ -9,7 +9,7 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <DashboardShell navigation={superAdminNavigation}>
+    <DashboardShell navigation={adminNavigation}>
       {children}
     </DashboardShell>
   );

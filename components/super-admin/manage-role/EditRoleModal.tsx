@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import CustomModal from "@/components/reusable/CustomModal";
 import { FormField } from "@/components/reusable/FormInput";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
 
 const PERMISSIONS = [
     { id: "viewDashboard", label: "View Dashboard" },
@@ -27,7 +27,6 @@ interface EditRoleModalProps {
         roleName: string;
         permissions: string[];
     };
-    mode?: "add" | "edit";
     onSave: (data: { roleName: string; permissions: string[] }) => void;
 }
 
@@ -35,24 +34,12 @@ export default function EditRoleModal({
     open,
     onOpenChange,
     initialData,
-    mode = "edit",
     onSave,
 }: EditRoleModalProps) {
-    const [roleName, setRoleName] = useState("");
-    const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
-
-    // Reset form when modal opens
-    useEffect(() => {
-        if (open) {
-            if (mode === "edit" && initialData) {
-                setRoleName(initialData.roleName);
-                setSelectedPermissions(initialData.permissions);
-            } else {
-                setRoleName("");
-                setSelectedPermissions(["manageUsers", "manageSubscriptions"]); // default for add
-            }
-        }
-    }, [open, mode, initialData]);
+    const [roleName, setRoleName] = useState(initialData?.roleName || "Super Admin");
+    const [selectedPermissions, setSelectedPermissions] = useState<string[]>(
+        initialData?.permissions || ["manageUsers", "manageSubscriptions", "manageDiscounts", "manageAI", "manageBilling", "exportData", "deleteRecords"]
+    );
 
     const togglePermission = (id: string) => {
         setSelectedPermissions((prev) =>
@@ -62,16 +49,19 @@ export default function EditRoleModal({
 
     const handleSave = () => {
         onSave({ roleName, permissions: selectedPermissions });
+
     };
 
     return (
         <CustomModal
             open={open}
             onOpenChange={onOpenChange}
-            title={mode === "add" ? "Add New Role" : "Edit Role"}
+            title="Edit Role"
             size="md"
         >
+
             <div className="space-y-8">
+                {/* Role Name */}
                 <FormField
                     label="Role Name"
                     value={roleName}
@@ -79,27 +69,26 @@ export default function EditRoleModal({
                     placeholder="Enter role name"
                 />
 
+                {/* Permissions */}
                 <div>
                     <h4 className="text-[#151513] font-medium text-lg mb-4">Permissions</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {PERMISSIONS.map((perm) => (
                             <label
                                 key={perm.id}
-                                className="flex items-center gap-3 bg-white border border-gray-100 hover:border-gray-200 rounded-xl p-4 cursor-pointer transition-all"
+                                className="flex items-center gap-3 bg-white border border-gray-100 hover:border-gray-200 rounded-xl p-4 cursor-pointer transition"
                             >
                                 <Checkbox
                                     checked={selectedPermissions.includes(perm.id)}
                                     onCheckedChange={() => togglePermission(perm.id)}
                                     className="
-                                        h-6 w-6 
-                                        border-2 border-[#D0D5DD] 
-                                        bg-white 
-                                        rounded-lg
-                                        data-[state=checked]:bg-white 
-                                        data-[state=checked]:border-[#2563EB]
-                                        data-[state=checked]:text-[#2563EB]
-                                        focus:ring-0 focus:ring-offset-0
-                                    "
+        border-2 border-[#D0D5DD] 
+        bg-white 
+        data-[state=checked]:border-[#2563EB] 
+        data-[state=checked]:bg-white 
+        data-[state=checked]:text-[#2563EB]
+        focus:ring-0 focus:ring-offset-0
+    "
                                 />
                                 <span className="text-[#4A5565] font-medium">{perm.label}</span>
                             </label>
@@ -107,6 +96,7 @@ export default function EditRoleModal({
                     </div>
                 </div>
 
+                {/* Buttons */}
                 <div className="flex gap-4 pt-4">
                     <button
                         onClick={() => onOpenChange(false)}
@@ -118,7 +108,7 @@ export default function EditRoleModal({
                         onClick={handleSave}
                         className="flex-1 bg-gradient-to-r from-[#182144] to-[#0F172A] text-white font-medium py-3.5 rounded-2xl hover:opacity-90 transition"
                     >
-                        {mode === "add" ? "Create Role" : "Save Changes"}
+                        Save
                     </button>
                 </div>
             </div>

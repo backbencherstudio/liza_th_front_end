@@ -44,12 +44,6 @@ export function AuthModal() {
       if (step === "otp") return <FpStepOtp />;
       if (step === "new-password") return <FpStepNewPassword />;
     }
-
-    if (flow === "mfa-setup") {
-      if (step === "method-select") return <MfaMethodSelect />;
-      if (step === "email-otp") return <MfaEmailOtp />;
-      if (step === "authenticator") return <MfaAuthenticator />;
-    }
   };
 
   return (
@@ -60,7 +54,7 @@ export function AuthModal() {
       onOpenChange={(open: boolean) => !open && close()}>
 
       {renderStep()}
-      
+
     </CustomModal>
 
 

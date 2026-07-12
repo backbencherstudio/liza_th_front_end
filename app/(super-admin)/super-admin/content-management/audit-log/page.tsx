@@ -1,7 +1,7 @@
-
+import AuditLogTable from '@/components/super-admin/content-management/AuditLogTable'
 
 export default function page() {
   return (
-    <div>audit-log page</div>
+    <AuditLogTable />
   )
 }

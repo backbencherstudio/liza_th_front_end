@@ -1,7 +1,5 @@
-import React from 'react'
+import { redirect } from 'next/navigation'
 
-export default function page() {
-  return (
-    <div>website-content page</div>
-  )
+export default function Page() {
+    redirect('/super-admin/content-management/website-content/homepage/hero')
 }

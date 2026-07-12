@@ -1,10 +1,11 @@
-import RolePermision from '@/components/super-admin/manage-role/RolePermision'
-import React from 'react'
+import RolePermision from "@/components/super-admin/manage-role/RolePermision";
+import { Suspense } from "react";
 
-export default function page() {
-    return (
-        <div>
-            <RolePermision />
-        </div>
-    )
+export default function ManageRolePage() {
+  return (
+    <Suspense fallback={null}>
+      <RolePermision />
+    </Suspense>
+  );
 }
+

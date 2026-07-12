@@ -6,12 +6,10 @@ import DataTable, { Column } from "@/components/reusable/DataTable";
 import TableToolBar from "@/components/reusable/TableToolBar";
 import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
 import CustomModal from "@/components/reusable/CustomModal";
-import PlanDetails from "./PlanDetails";
-import SubscriptionForm from "./CreatePlan";
-import {
-    mapSubscriptionToEditablePlan,
-    RecentSubscription,
-} from "./subscription.types";
+import { mapSubscriptionToEditablePlan, RecentSubscription } from "@/components/super-admin/manage-subscription/subscription.types";
+import PlanDetails from "@/components/super-admin/manage-subscription/PlanDetails";
+import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
+
 
 const mockSubscriptions: RecentSubscription[] = [
     { id: "1", name: "John Doe", role: "Admin", plan: "Pro Plan (Monthly)", amount: "$299/mo", joinDate: "1/15/2026", endDate: "1/25/2026", status: "Active" },
@@ -21,7 +19,7 @@ const mockSubscriptions: RecentSubscription[] = [
     { id: "5", name: "Charlie Brown", role: "User", plan: "Premium (Yearly)", amount: "$299/mo", joinDate: "4/1/2026", endDate: "1/5/2026", status: "Active" },
 ];
 
-export default function RecentSubscriptionsTable() {
+export default function ManageSubscriptionTable() {
     const [search, setSearch] = useState("");
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [viewOpen, setViewOpen] = useState(false);
@@ -34,10 +32,10 @@ export default function RecentSubscriptionsTable() {
         setViewOpen(true);
     };
 
-    const openEdit = (subscription: RecentSubscription) => {
-        setSelectedSubscription(subscription);
-        setEditOpen(true);
-    };
+    // const openEdit = (subscription: RecentSubscription) => {
+    //     setSelectedSubscription(subscription);
+    //     setEditOpen(true);
+    // };
 
     const getRowActions = (row: RecentSubscription): MenuAction[] => [
         {
@@ -45,11 +43,11 @@ export default function RecentSubscriptionsTable() {
             icon: Eye,
             onClick: () => openView(row),
         },
-        {
-            label: "Edit Plan",
-            icon: Pencil,
-            onClick: () => openEdit(row),
-        },
+        // {
+        //     label: "Edit Plan",
+        //     icon: Pencil,
+        //     onClick: () => openEdit(row),
+        // },
     ];
 
     const columns: Column<RecentSubscription>[] = [
@@ -141,7 +139,7 @@ export default function RecentSubscriptionsTable() {
                 )}
             </CustomModal>
 
-            <CustomModal
+            {/* <CustomModal
                 open={editOpen}
                 onOpenChange={setEditOpen}
                 title="Edit Subscription Plan"
@@ -154,7 +152,7 @@ export default function RecentSubscriptionsTable() {
                         onSuccess={() => setEditOpen(false)}
                     />
                 )}
-            </CustomModal>
+            </CustomModal> */}
         </>
     );
 }

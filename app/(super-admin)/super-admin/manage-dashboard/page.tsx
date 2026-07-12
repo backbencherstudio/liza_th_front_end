@@ -149,7 +149,7 @@ export default function page() {
                                     : "border-2 border-transparent bg-[#F2F5FB] "
                                 }`}
                         >
-                            <Image src={item.img} alt="" width={328} height={216} className='w-full ' />
+                            <Image src={item.img} alt="" width={328} height={216} className='w-full h-[216px] object-center' />
                             <div className='py-5'>
                                 <p className='text-xl font-medium leading-[22px] text-[#151513] pb-2'>{item.title}</p>
                                 <p className='text-base font-normal leading-[26px] text-[#3D3D3C]'>{item.description}</p>

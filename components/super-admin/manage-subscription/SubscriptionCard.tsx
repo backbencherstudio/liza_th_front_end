@@ -149,7 +149,7 @@ function PricingCard({ plan }: PricingCardProps) {
 }
 
 // Main Component - Just Cards (No Toggle)
-export default function SubscriptionCard() {
+export default function SuperAdminSubscriptionCard() {
     return (
         <div className="w-full py-6 md:py-12  bg-white">
             <div className="">

@@ -23,7 +23,7 @@ const data = [
 
 export default function UserGrowthChart() {
   return (
-    <div className="w-full max-w-[640px] bg-white p-6 rounded-[20px] border border-solid border-[#E9E9EA] shadow-[0_4px_12px_0_rgba(0,0,0,0.02)]">
+    <div className="flex  w-full flex-col items-start gap-8 shrink-0 self-stretch border [background:var(--W,#FFF)] p-6 rounded-2xl border-solid border-[#EDEDED]">
       
       {/* HEADER CONTROLS SECTION */}
       <div className="flex items-start justify-between w-full mb-6">

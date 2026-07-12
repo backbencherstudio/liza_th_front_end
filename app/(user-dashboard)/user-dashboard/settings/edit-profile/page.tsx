@@ -65,7 +65,7 @@ export default function Page() {
                             B. Cooper
                         </p>
                         <p className="text-[#4A4C56] text-sm font-normal leading-[22.4px] tracking-[0.07px]">
-                            Admin
+                            user
                         </p>
                     </div>
                 </div>
@@ -97,6 +97,19 @@ export default function Page() {
                         type="email"
                         defaultValue="B.Cooper@example.com"
                         placeholder="Enter email"
+                    />
+
+                    <FormField
+                        label="Industry"
+                        defaultValue="(207) 555-0119"
+                        placeholder="General"
+                    />
+
+                    <FormField
+                        label="Role"
+                        type="email"
+                        defaultValue="B.Cooper@example.com"
+                        placeholder="Accountant"
                     />
 
                     <FormField
@@ -151,6 +164,17 @@ export default function Page() {
                         ]}
                         onValueChange={(value) => console.log(value)}
                     />
+
+
+                    <div className="md:col-span-2">
+                        <label htmlFor="" className="text-[#151513]  text-[18px] font-normal leading-[26px] mb-2 block">Bio / description</label>
+                        <textarea
+
+                            className="w-full min-h-[100px] rounded-lg border border-[#E6E6E6] bg-white p-4 text-[#070707] text-sm font-normal leading-[22.4px] tracking-[0.07px] outline-none focus:border-black"
+                            placeholder="Description"
+
+                        />
+                    </div>
                 </div>
 
                 <div className="mt-8 flex justify-end">

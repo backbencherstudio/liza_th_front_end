@@ -29,19 +29,19 @@ export default function RolePermision() {
                         <div className="rounded-[10px] bg-[#F5F5F5] p-  ">
                             <div className="rounded-[10px] bg-[#F5F5F5] p-3">
                                 <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full gap-3 bg-transparent">
-                                    <TabsTrigger className={triggerClass} value="roles">
+                                    <TabsTrigger className={`${triggerClass} h-9`} value="roles">
                                         Roles & Permissions
                                     </TabsTrigger>
 
-                                    <TabsTrigger className={triggerClass} value="permissions">
+                                    <TabsTrigger className={`${triggerClass} h-9`} value="permissions">
                                         Security & MFA
                                     </TabsTrigger>
 
-                                    <TabsTrigger className={triggerClass} value="security">
+                                    <TabsTrigger className={`${triggerClass} h-9`} value="security">
                                         Stripe Billing
                                     </TabsTrigger>
 
-                                    <TabsTrigger className={triggerClass} value="stripe">
+                                    <TabsTrigger className={`${triggerClass} h-9`} value="stripe">
                                         File Upload Rules
                                     </TabsTrigger>
 

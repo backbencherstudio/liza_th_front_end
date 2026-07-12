@@ -1,10 +1,12 @@
 "use client"
 import SuperAdminSetting from '@/components/icons/SettingsIcon'
 import { FormField } from '@/components/reusable/FormInput'
+import DeleteAccountModal from '@/components/user-dashboard/DeletAccoutModal';
 import { Button } from '@base-ui/react';
 import React, { useState } from 'react'
 
 export default function page() {
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [showPassword, setShowPassword] = useState({
         old: false,
         new: false,
@@ -24,13 +26,13 @@ export default function page() {
                             <FormField
                                 label="Old Email Address"
                                 type="email"
-                                placeholder="Enter old email address"
+                                defaultValue="B. Cooper@example.com"
                             />
 
                             <FormField
                                 label="New Email Address"
                                 type="email"
-                                placeholder="Enter new email address"
+                                defaultValue="B. Cooper@example.com"
                             />
                         </div>
 
@@ -96,11 +98,26 @@ export default function page() {
                             </div>
                         </div>
 
-                        <div className="mt-8 flex justify-end">
-                            <Button className="rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3  px-6 cursor-pointer text-white text-lg font-medium leading-[180%]">
-                                Save Change
-                            </Button>
+
+                    </div>
+                    <div className="mt-8 flex justify-between">
+                        <div
+                            onClick={() => setDeleteModalOpen(true)}
+                            className="flex items-center gap-2 cursor-pointer"
+                        >
+                            <SuperAdminSetting.ManageRoleDeletIcon />
+                            <p className="text-[#EB3D4D] font-archivo text-[16px] font-normal leading-[22px] underline">
+                                Delete Account
+                            </p>
                         </div>
+
+                        <DeleteAccountModal
+                            open={deleteModalOpen}
+                            onOpenChange={setDeleteModalOpen}
+                        />
+                        <Button className="rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3  px-6 cursor-pointer text-white text-lg font-medium leading-[180%]">
+                            Save Change
+                        </Button>
                     </div>
                 </div>
             </div>

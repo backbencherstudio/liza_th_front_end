@@ -9,17 +9,22 @@ import SuperAdminSetting from "@/components/icons/SettingsIcon";
 const links = [
     {
         label: "Edit Profile",
-        href: "/super-admin/settings/edit-profile",
+        href: "/user-dashboard/settings/edit-profile",
         Icon: SuperAdminSetting.EditProfile,
     },
     {
         label: "Change email & password",
-        href: "/super-admin/settings/change-pass-email",
+        href: "/user-dashboard/settings/change-pass-email",
         Icon: SuperAdminSetting.ChangePass,
     },
     {
+        label: "Security Settings",
+        href: "/user-dashboard/settings/security-settings",
+        Icon: SuperAdminSetting.Notification,
+    },
+    {
         label: "Account Notifications",
-        href: "/super-admin/settings/account-notification",
+        href: "/user-dashboard/settings/account-notification",
         Icon: SuperAdminSetting.Notification,
     },
 ];

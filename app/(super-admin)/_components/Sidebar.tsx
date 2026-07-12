@@ -27,7 +27,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                     alt="Spike Technology"
                     width={140}
                     height={45}
-                    className="object-contain  "
+                    className="object-contain"
                 />
             </div>
 

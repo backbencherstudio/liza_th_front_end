@@ -1,19 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Eye, Pencil } from "lucide-react";
+import { Eye, Pencil, Trash } from "lucide-react";
 import DataTable, { Column } from "@/components/reusable/DataTable";
 import TableToolBar from "@/components/reusable/TableToolBar";
 import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
 import CustomModal from "@/components/reusable/CustomModal";
-import PlanDetails from "./PlanDetails";
-import SubscriptionForm from "./CreatePlan";
-import {
-    mapSubscriptionToEditablePlan,
-    RecentSubscription,
-} from "./subscription.types";
+import { mapSubscriptionToEditablePlan, RecentDiscount } from "@/components/admin/manageDiscountRefarel/Discounts.types";
+import PlanDetails from "@/components/super-admin/manage-subscription/PlanDetails";
+import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
 
-const mockSubscriptions: RecentSubscription[] = [
+
+const mockDiscounts: RecentDiscount[] = [
     { id: "1", name: "John Doe", role: "Admin", plan: "Pro Plan (Monthly)", amount: "$299/mo", joinDate: "1/15/2026", endDate: "1/25/2026", status: "Active" },
     { id: "2", name: "Jane Smith", role: "User", plan: "Premium (Monthly)", amount: "$299/mo", joinDate: "2/20/2026", endDate: "2/20/2026", status: "Active" },
     { id: "3", name: "Bob Johnson", role: "Moderator", plan: "Pro Plan (Yearly)", amount: "$299/mo", joinDate: "3/10/2026", endDate: "3/10/2026", status: "Active" },
@@ -21,25 +19,29 @@ const mockSubscriptions: RecentSubscription[] = [
     { id: "5", name: "Charlie Brown", role: "User", plan: "Premium (Yearly)", amount: "$299/mo", joinDate: "4/1/2026", endDate: "1/5/2026", status: "Active" },
 ];
 
-export default function RecentSubscriptionsTable() {
+export default function DiscountTable() {
     const [search, setSearch] = useState("");
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [viewOpen, setViewOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
-    const [selectedSubscription, setSelectedSubscription] =
-        useState<RecentSubscription | null>(null);
+    const [selectedDiscount, setSelectedDiscount] =
+        useState<RecentDiscount | null>(null);
 
-    const openView = (subscription: RecentSubscription) => {
-        setSelectedSubscription(subscription);
+    const openView = (discount: RecentDiscount) => {
+        setSelectedDiscount(discount);
         setViewOpen(true);
     };
 
-    const openEdit = (subscription: RecentSubscription) => {
-        setSelectedSubscription(subscription);
+    const openEdit = (discount: RecentDiscount) => {
+        setSelectedDiscount(discount);
+        setEditOpen(true);
+    };
+    const openDelete = (discount: RecentDiscount) => {
+        setSelectedDiscount(discount);
         setEditOpen(true);
     };
 
-    const getRowActions = (row: RecentSubscription): MenuAction[] => [
+    const getRowActions = (row: RecentDiscount): MenuAction[] => [
         {
             label: "View Details",
             icon: Eye,
@@ -50,9 +52,14 @@ export default function RecentSubscriptionsTable() {
             icon: Pencil,
             onClick: () => openEdit(row),
         },
+        {
+            label: "Delete",
+            icon: Trash,
+            onClick: () => openEdit(row),
+        },
     ];
 
-    const columns: Column<RecentSubscription>[] = [
+    const columns: Column<RecentDiscount>[] = [
         { header: "Users Name", accessor: "name" },
         { header: "Role", accessor: "role" },
         { header: "Plan", accessor: "plan" },
@@ -83,18 +90,20 @@ export default function RecentSubscriptionsTable() {
         {
             header: "Actions",
             cell: (row) => <ActionMenu actions={getRowActions(row)} />,
+
         },
+
     ];
 
-    const filteredData = mockSubscriptions.filter(
+    const filteredData = mockDiscounts.filter(
         (user) =>
             user.name.toLowerCase().includes(search.toLowerCase()) ||
             user.role.toLowerCase().includes(search.toLowerCase()) ||
             user.plan.toLowerCase().includes(search.toLowerCase())
     );
 
-    const editablePlan = selectedSubscription
-        ? mapSubscriptionToEditablePlan(selectedSubscription)
+    const editablePlan = selectedDiscount
+        ? mapSubscriptionToEditablePlan(selectedDiscount)
         : undefined;
 
     return (
@@ -104,9 +113,7 @@ export default function RecentSubscriptionsTable() {
                     searchPlaceholder="Search by name or email..."
                     onSearchChange={setSearch}
                 >
-                    <select className="sf-select">
-                        <option>All Role</option>
-                    </select>
+
                     <select className="sf-select">
                         <option>All Subscriptions</option>
                     </select>
@@ -133,15 +140,15 @@ export default function RecentSubscriptionsTable() {
                 showCloseButton={false}
                 size="lg"
             >
-                {selectedSubscription && (
+                {selectedDiscount && (
                     <PlanDetails
-                        subscription={selectedSubscription}
+                        subscription={selectedDiscount}
                         onClose={() => setViewOpen(false)}
                     />
                 )}
             </CustomModal>
 
-            <CustomModal
+            {/* <CustomModal
                 open={editOpen}
                 onOpenChange={setEditOpen}
                 title="Edit Subscription Plan"
@@ -154,7 +161,7 @@ export default function RecentSubscriptionsTable() {
                         onSuccess={() => setEditOpen(false)}
                     />
                 )}
-            </CustomModal>
+            </CustomModal> */}
         </>
     );
 }

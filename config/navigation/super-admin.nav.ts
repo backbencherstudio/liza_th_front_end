@@ -50,7 +50,7 @@ export const superAdminNavigation: DashboardNavConfig = {
     {
       id: "revenue",
       title: "Revenue Analytics",
-      href: "/super-admin/revenue",
+      href: "/super-admin/revenue-analytics",
       icon: ChartCoulumnIcon,
     },
     {

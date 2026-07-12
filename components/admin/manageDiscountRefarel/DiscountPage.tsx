@@ -2,6 +2,7 @@ import DashboardStatsIcons from '@/components/icons/SupAdminIcon';
 import StatsCard from '@/components/reusable/StatusCard';
 import React from 'react'
 import DiscountTable from './DiscountTable';
+import CustomerServiceIcon from '@/components/icons/CustomerService';
 
 export default function DiscountPage() {
     const accountStats = [
@@ -10,21 +11,21 @@ export default function DiscountPage() {
             title: "Active Accounts",
             value: "183",
             description: "+4 this month",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.ActiveAcount
         },
         {
             id: 2,
             title: "Total Usage",
             value: "183",
             description: "+12.5%",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.Arrow
         },
         {
             id: 3,
             title: "Expiring Soon",
             value: "183",
             description: "Within 7 days",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.Expering
         },
     ];
     return (

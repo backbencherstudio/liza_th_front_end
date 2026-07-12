@@ -1,8 +1,11 @@
+"use client"
 import DashboardStatsIcons from '@/components/icons/SupAdminIcon';
 import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
 import StatsCard from '@/components/reusable/StatusCard';
 import React from 'react'
 import ManageSubscriptionTable from './ManageSubscriptionTable';
+import CustomerServiceIcon from '@/components/icons/CustomerService';
+import SubscriptionCard from './SubscriptionCard';
 
 export default function ManageSubscriptionPage() {
     const dashboardStats = [
@@ -11,29 +14,23 @@ export default function ManageSubscriptionPage() {
             title: "Total Plans",
             value: "5",
             change: "+24 this month",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.TotalPlans
         },
         {
             id: 2,
             title: "Active Plans",
             value: "3",
             change: "+14.2%",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.ActivePlans
         },
         {
             id: 3,
             title: "Total Subscribers",
             value: "4,658",
             change: "+12% vs last",
-            icon: DashboardStatsIcons.TotalUser
+            icon: CustomerServiceIcon.TotalSubsCriber
         },
-        {
-            id: 4,
-            title: "Revenue",
-            value: "$68.3K",
-            change: "+14.2%",
-            icon: DashboardStatsIcons.TotalUser
-        },
+
     ];
     return (
         <div>
@@ -44,7 +41,7 @@ export default function ManageSubscriptionPage() {
             </div>
 
             <div>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mt-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
                     {
                         dashboardStats.map((item) => (
                             <StatsCard
@@ -57,10 +54,15 @@ export default function ManageSubscriptionPage() {
                     }
                 </div>
             </div>
+            <div>
+                <SubscriptionCard />
+            </div>
 
             <div>
                 <ManageSubscriptionTable />
             </div>
+
+
         </div>
     )
 }

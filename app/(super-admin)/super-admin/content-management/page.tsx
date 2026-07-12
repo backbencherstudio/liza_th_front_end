@@ -1,13 +1,7 @@
-import React from 'react'
-import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
-import ContentTabs from '@/components/super-admin/content-management/content-tabs'
+import { redirect } from "next/navigation"
 
 export default function page() {
-  return (
-    <div>
-        <DashboardPageTitle title="Content Management" description="Update website content, and track all user changes" />
-        <ContentTabs />
-       
-    </div>
-  )
+  redirect('/super-admin/content-management/website-content')
+  
 }
+         

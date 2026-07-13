@@ -56,7 +56,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                         >
                             {/* Left Blue Accent */}
                             {isActive && (
-                                <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[6px] bg-[#1E40AF] rounded-r-xl" />
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[6px] bg-[#1E40AF] rounded-l-xl" />
                             )}
 
                             <Icon

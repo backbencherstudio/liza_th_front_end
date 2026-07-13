@@ -11,7 +11,7 @@ export interface RecentDiscount {
     status: "Active" | "Expired" | "Suspended";
 }
 
-export interface EditablePlan {
+export interface EditableDiscount {
     title: string;
     duration: string;
     planType: string;
@@ -19,9 +19,9 @@ export interface EditablePlan {
     features: string[];
 }
 
-export function mapSubscriptionToEditablePlan(
+export function mapDiscountToEditablePlan(
     subscription: RecentDiscount
-): EditablePlan {
+): EditableDiscount {
     const matched = pricingPlans.find((plan) =>
         subscription.plan.includes(plan.title)
     );
@@ -54,7 +54,7 @@ export function mapSubscriptionToEditablePlan(
     };
 }
 
-export function getSubscriptionDetails(subscription: RecentDiscount) {
+export function getDiscountDetails(subscription: RecentDiscount) {
     return {
         transactionId: `TXN-${subscription.id.padStart(3, "0")}`,
         userName: subscription.name,

@@ -42,7 +42,7 @@ export default function Navbar() {
                     {NAV_LINKS.map((item) => (
                         <Link
                             key={item}
-                            href={`/${item.toLowerCase()}`}
+                            href={item === "Pricing" ? "/pricing" : `/#${item.toLowerCase()}`}
                             className="text-[#3D3D3C] font-[Archivo] text-lg font-medium leading-6 hover:text-[#0A206D] transition-colors"
                         >
                             {item}
@@ -53,9 +53,14 @@ export default function Navbar() {
                 {/* Desktop auth buttons — hidden on mobile */}
                 <div className="hidden lg:flex gap-5 items-center">
                     {/* Bell */}
-                    <button className="flex w-10 h-10 justify-center items-center [background:#F3F3F4] rounded-full cursor-pointer hover:bg-[#e8e8ea] transition-colors">
-                        <Bell size={18} className="text-[#3D3D3C]" />
-                    </button>
+                    <div className="relative">
+                        <button className="flex w-10 h-10 justify-center items-center [background:#F3F3F4] rounded-full cursor-pointer hover:bg-[#e8e8ea] transition-colors">
+                            <Bell size={18} className="text-[#3D3D3C]" />
+                        </button>
+                        <span className="absolute -right-2 -top-2 rounded-full bg-red-500 px-2 py-1 text-xs text-white">
+                            2
+                        </span>
+                    </div>
 
                     {/* Log In */}
                     <button

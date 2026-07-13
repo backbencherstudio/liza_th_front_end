@@ -10,7 +10,7 @@ export default function SettingLayout({ children }: { children: ReactNode }) {
       <div className="text-[#070707] text-2xl font-medium leading-8">
         Account settings
       </div>
-      <section className="flex flex-col lg:flex-row gap-8 ">
+      <section className="flex flex-col xl:flex-row gap-8 ">
 
         {/* Sidebar - becomes tabs on mobile */}
 

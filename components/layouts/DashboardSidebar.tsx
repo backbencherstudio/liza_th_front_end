@@ -28,9 +28,8 @@ export default function DashboardSidebar({
 
   return (
     <aside
-      className={`relative flex h-full w-full flex-col bg-white px-4 py-4 ${
-        onClose ? "" : "border-r border-[#EAECF0]"
-      } ${navigation.showSidebarAccent ? "border-l-[3px] border-l-[#1E40AF]" : ""}`}
+      className={`relative flex h-full w-full flex-col bg-white px-4 py-4 ${onClose ? "" : "border-r border-[#EAECF0]"
+        } ${navigation.showSidebarAccent ? "" : ""}`}
     >
       <div className="flex justify-center py-6">
         <Image
@@ -52,11 +51,10 @@ export default function DashboardSidebar({
               href={item.href}
               key={item.href}
               onClick={onClose}
-              className={`group relative flex items-center gap-3 rounded-xl px-3 py-3 text-[16px] font-normal leading-[22px] transition-all ${
-                isActive
+              className={`group relative flex items-center gap-3 rounded-xl px-3 py-3 text-[16px] font-normal leading-[22px] transition-all ${isActive
                   ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
                   : "text-[#6B7280] hover:bg-gray-50"
-              }`}
+                }`}
             >
               {isActive && (
                 <div className="absolute left-0 top-1/2 h-9 w-[5px] -translate-y-1/2 rounded-r-full bg-[#1E40AF]" />
@@ -79,11 +77,10 @@ export default function DashboardSidebar({
           <Link
             href={navigation.settingsHref}
             onClick={onClose}
-            className={`group relative flex items-center gap-3 rounded-lg px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${
-              isSettingsActive
+            className={`group relative flex items-center gap-3 rounded-lg px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${isSettingsActive
                 ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
                 : "text-[#374151] hover:bg-gray-100"
-            }`}
+              }`}
           >
             {isSettingsActive && (
               <div className="absolute left-0 top-1/2 h-8 w-[6px] -translate-y-1/2 rounded-r-xl bg-[#1E40AF]" />

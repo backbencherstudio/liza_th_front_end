@@ -82,7 +82,7 @@ export default function SettingsSidebar() {
     }
 
     return (
-        <nav className="flex min-h-[calc(100vh-220px)] h-full  flex-col gap-2 rounded-l-xl">
+        <nav className="flex  flex-col gap-2 rounded-l-xl">
             <div className="flex flex-col gap-6 border border-[#E6E6E6] bg-[#FFFFFF] py-6 px-4   rounded-xl">
                 {links.map(({ label, href, Icon }) => {
                     const isActive = pathname === href;

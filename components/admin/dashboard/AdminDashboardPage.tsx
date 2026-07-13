@@ -3,6 +3,8 @@ import { ArrowDownToLine } from "lucide-react";
 import StatusCard from "../../reusable/StatusCard";
 import DashboardStatsIcons from "../../icons/SupAdminIcon";
 import RecentCustomTable from "./DasboardRecentCustomTable";
+import SubscriptionStatus from "./SubscriptionStatus";
+import MonthlySubscriptionChart from "./MonthlySubscription";
 
 interface AdminStatus {
     id: number;
@@ -73,6 +75,14 @@ export default function AdminDashboardPage() {
                         />
                     ))
                 }
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-4 mt-6 pb-4">
+                <div>
+                    <MonthlySubscriptionChart />
+                </div>
+                <div>
+                    <SubscriptionStatus />
+                </div>
             </div>
 
             <div>

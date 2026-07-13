@@ -68,7 +68,7 @@ function PricingCard({ plan }: PricingCardProps) {
         <div className="flex flex-col items-start gap-4 flex-1 w-full max-w-full border 
                     [background:linear-gradient(180deg,rgba(14,105,249,0.10)_0%,rgba(0,147,255,0.00)_38.44%)] 
                     backdrop-blur-[20px] px-4 py-5 rounded-[20px] border-solid border-[#EDEDED]
-                    transition-all  hover:border-[#0A206D]/30">
+                    transition-all hover:shadow-xl hover:border-[#0A206D]/30">
 
             {/* Header */}
             <div className="flex flex-col items-start w-full">
@@ -149,7 +149,7 @@ function PricingCard({ plan }: PricingCardProps) {
 }
 
 // Main Component - Just Cards (No Toggle)
-export default function SubscriptionCard() {
+export default function SuperAdminSubscriptionCard() {
     return (
         <div className="w-full py-6 md:py-12  bg-white">
             <div className="">

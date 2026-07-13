@@ -7,6 +7,7 @@ import LocationIcon from '../icons/LocationIcon';
 import MailIcon from '../icons/MailIcon';
 import InstagramIcon from '../icons/InstagramIcon';
 import LinkDinIcon from '../icons/LinkDinIcon';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface SocialLink {
     icon: ComponentType<any>;
@@ -23,17 +24,32 @@ interface FooterData {
 }
 
 export default function Footer() {
+
+
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const handleLogoClick = () => {
+        if (pathname === "/") {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        } else {
+            router.push("/");
+        }
+    };
     const [footerData, setFooterData] = useState<FooterData>({
         logoUrl: "/images/spike-logo.png",
         quickLinks: [
             { name: "Home", url: "/" },
-            { name: "About Us", url: "/about" },
-            { name: "Features", url: "/features" },
+            { name: "About Us", url: "/#about" },
+            { name: "Features", url: "/#features" },
             { name: "Pricing", url: "/pricing" },
         ],
         companyLinks: [
-            { name: "Terms of Service", url: "/terms" },
-            { name: "Privacy Policy", url: "/privacy" },
+            { name: "Terms of Service", url: "#" },
+            { name: "Privacy Policy", url: "#" },
         ],
         location: "New Jersey, USA",
         email: "info@spiketechnology.ai",
@@ -46,20 +62,22 @@ export default function Footer() {
 
 
     return (
-        <footer className="bg-[#F9FAFF] text-gray-300">
+        <footer className="bg-[#F9FAFF] text-gray-300 mt-10 md:mt-20 ">
             <div className="max-w-[1600px] mx-auto px-5 sm:px-10 lg:px-[140px]  py-8 md:pt-20 md:pb-12.5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 w-full">
 
                     {/* Brand Section */}
                     <div className="lg:col-span-5">
-                        <div className="flex items-center gap-3 mb-4">
+                        <div
+                            onClick={handleLogoClick}
+                            className="flex items-center gap-3 mb-4 cursor-pointer"
+                        >
                             <Image
-                                id="footer-logo"
                                 src={footerData.logoUrl}
                                 alt="Spike Technology"
                                 width={180}
                                 height={50}
-                                className="h-11 w-auto"
+                                className="h-[87px] w-[87px]"
                             />
                         </div>
 

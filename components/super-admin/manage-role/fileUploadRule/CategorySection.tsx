@@ -67,7 +67,7 @@ export default function CategorySection({ title, data, setData }: any) {
                 </div>
 
                 {/* File Size */}
-                <div className="flex h-12 w-full items-center justify-between rounded-xl border border-[#D0D5DD] px-4 lg:w-[190px]">
+                <div className="flex h-17 w-full items-center justify-between rounded-xl border border-[#D0D5DD] px-4 lg:w-[190px]">
                     <span className="text-sm text-[#151513]">
                         File Size
                     </span>
@@ -114,6 +114,6 @@ export default function CategorySection({ title, data, setData }: any) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

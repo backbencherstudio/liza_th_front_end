@@ -5,7 +5,7 @@ import SettinCorectIcon from "../icons/SettingCorectIcon";
 
 export default function Features() {
     return (
-        <div className=" bg-[linear-gradient(180deg,rgba(14,105,249,0.05)_0%,rgba(0,147,255,0)_100%)]">
+        <div className=" bg-[linear-gradient(180deg,rgba(14,105,249,0.05)_0%,rgba(0,147,255,0)_100%)]" id="features">
             <section className="py-8 md:py-15 lg:py-25">
                 <div className="w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto justify-center ">
                     {/* Top */}

@@ -51,9 +51,9 @@ export default function DashboardSidebar({
               href={item.href}
               key={item.href}
               onClick={onClose}
-              className={`group relative flex items-center gap-3 rounded-[10px] px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${isActive
-                  ? "bg-[#E9EFFD] font-medium text-[#1E40AF] border-l-4 border-l-[#1E40AF]"
-                  : "text-[#6B7280] hover:bg-gray-50"
+              className={`group relative flex items-center gap-3 rounded-xl px-3 py-3 text-[16px] font-normal leading-[22px] transition-all ${isActive
+                ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
+                : "text-[#6B7280] hover:bg-gray-50"
                 }`}
             >
               {/* {isActive && (

@@ -10,6 +10,8 @@ import CustomModal from "@/components/reusable/CustomModal";
 import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
 import RecentSubscriptionsTable from "@/components/super-admin/manage-subscription/RecentSubscriptons";
 import type { EditablePlan } from "@/components/super-admin/manage-subscription/subscription.types";
+import SubscriptionCard from "@/components/super-admin/manage-subscription/SubscriptionCard";
+import SuperAdminSubscriptionCard from "@/components/super-admin/manage-subscription/SubscriptionCard";
 
 export default function PricingSection() {
     const [open, setOpen] = useState(false);
@@ -31,15 +33,15 @@ export default function PricingSection() {
                     </div>
 
                     {/* Right */}
-                   <CustomButton
-                   onClick={() => {
-                        setSelectedPlan(null);
-                        setOpen(true);
-                    }}>
-                       <span className="flex items-center gap-2"> <Plus size={18} />
-                       Create Plan</span>
+                    <CustomButton
+                        onClick={() => {
+                            setSelectedPlan(null);
+                            setOpen(true);
+                        }}>
+                        <span className="flex items-center gap-2"> <Plus size={18} />
+                            Create Plan</span>
                     </CustomButton>
-                    
+
                     <CustomModal
                         open={open}
                         onOpenChange={setOpen}
@@ -65,6 +67,10 @@ export default function PricingSection() {
                         />
                     ))
                 }
+            </div>
+
+            <div>
+                <SuperAdminSubscriptionCard />
             </div>
 
             <RecentSubscriptionsTable />

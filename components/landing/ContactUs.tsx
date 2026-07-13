@@ -7,7 +7,7 @@ import LocationIcon from '../icons/LocationIcon'
 
 export default function ContactUs() {
     return (
-        <div className='py-8 md:py-15 lg:py-20 max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto'>
+        <div className='py-8 md:py-15 lg:py-20 max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto' id='contact us'>
             <div className='w-full  justify-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-13.5 px-0 md:px-0  lg:px-12 '>
                 <div    >
                     <div className='flex items-center gap-2'>

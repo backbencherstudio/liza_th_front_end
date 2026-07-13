@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import DataTable, { Column } from "@/components/reusable/DataTable"; 
-import TableToolBar from "@/components/reusable/TableToolBar";    
-import { MoreVertical, CheckCircle2, Pencil, Trash2, X } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import DataTable, { Column } from "@/components/reusable/DataTable";
+import TableToolBar from "@/components/reusable/TableToolBar";
+import { Pencil, Trash2, CheckCircle2 } from "lucide-react";
 import ActionMenu, { MenuAction } from "@/components/reusable/ActionMenu";
+import CustomModal from "@/components/reusable/CustomModal";
+import CreateDiscountForm from "./CreateDiscountForm";
+import { mapDiscountToEditablePlan } from "./Discount.types";
 
 interface DiscountData {
   id: string;
@@ -28,6 +30,23 @@ const mockDiscounts: DiscountData[] = [
 export default function DiscountTable() {
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedDiscount, setSelectedDiscount] = useState<DiscountData | null>(null);
+  const [editOpen, setEditOpen] = useState(false);
+
+  const openEdit = (discount: DiscountData) => {
+    setSelectedDiscount(discount);
+    setEditOpen(true);
+  };
+
+  const handleDelete = (id: string) => {
+    console.log("Deleting discount:", id);
+    // Add delete logic here
+  };
+
+  const handleActivate = (id: string) => {
+    console.log("Activating discount:", id);
+    // Add activate logic here
+  };
 
   const columns: Column<DiscountData>[] = [
     { header: "Discount", accessor: "name" },
@@ -42,11 +61,10 @@ export default function DiscountTable() {
         const isActive = row.status === "Active";
         return (
           <span
-            className={`inline-flex items-center px-2.5 py-1 rounded border text-xs font-medium ${
-              isActive
-                ? "bg-[#EBF7EE] text-[#1E854A] border-[#D1EAD6]"
-                : "bg-[#F3F4F6] text-[#5E626E] border-[#DDE1E5]"
-            }`}
+            className={`inline-flex items-center px-2.5 py-1 rounded border text-xs font-medium ${isActive
+              ? "bg-[#EBF7EE] text-[#1E854A] border-[#D1EAD6]"
+              : "bg-[#F3F4F6] text-[#5E626E] border-[#DDE1E5]"
+              }`}
           >
             {row.status}
           </span>
@@ -60,50 +78,23 @@ export default function DiscountTable() {
           {
             label: "Active",
             icon: CheckCircle2,
-            onClick: () => console.log("Activating record:", row.id),
+            onClick: () => handleActivate(row.id),
           },
           {
             label: "Edit",
             icon: Pencil,
-            onClick: () => console.log("Editing record:", row.id),
+            onClick: () => openEdit(row),
           },
           {
             label: "Delete",
             icon: Trash2,
-            onClick: () => console.log("Deleting record:", row.id),
-          
+            onClick: () => handleDelete(row.id),
+
           },
         ];
-    
-        return <ActionMenu actions={rowActions}  />;
+
+        return <ActionMenu actions={rowActions} />;
       },
-
-        
-
-        // <Popover>
-        //   <PopoverTrigger
-        //     className="rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100"
-        //     onClick={(e) => e.stopPropagation()}
-        //   >
-        //     <MoreVertical className="h-4 w-4" />
-        //   </PopoverTrigger>
-        //   <PopoverContent align="end" className="w-44 p-1 bg-white border border-gray-200 rounded-xl shadow-lg relative">
-        //     <div className="flex items-center justify-between px-3 py-1.5 border-b border-gray-100 mb-1">
-        //       <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Options</span>
-        //       <X className="w-3.5 h-3.5 text-gray-400 cursor-pointer hover:text-gray-600" />
-        //     </div>
-        //     <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-[#070707] hover:bg-gray-50 rounded-lg">
-        //       <CheckCircle2 className="w-4 h-4 text-[#4A4C56]" /> Active
-        //     </button>
-        //     <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-[#070707] hover:bg-gray-50 rounded-lg">
-        //       <Pencil className="w-4 h-4 text-[#4A4C56]" /> Edit
-        //     </button>
-        //     <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-[#070707] hover:bg-gray-50 rounded-lg border-t border-gray-100 mt-1">
-        //       <Trash2 className="w-4 h-4 text-[#4A4C56]" /> Delete
-        //     </button>
-        //   </PopoverContent>
-        // </Popover>
-      
     },
   ];
 
@@ -113,14 +104,18 @@ export default function DiscountTable() {
       item.code.toLowerCase().includes(search.toLowerCase())
   );
 
+  const editablePlan = selectedDiscount
+    ? mapDiscountToEditablePlan(selectedDiscount)
+    : undefined;
+
   return (
     <div className="mt-6 rounded-2xl border border-[#EDEDED] p-4 sm:p-6 bg-white">
       <TableToolBar
-        searchPlaceholder="Search by name or email..."
+        searchPlaceholder="Search by discount name or code..."
         onSearchChange={setSearch}
       >
         <select className="sf-select">
-          <option>All Subscriptions</option>
+          <option>All Discounts</option>
         </select>
         <select className="sf-select">
           <option>All Status</option>
@@ -139,6 +134,26 @@ export default function DiscountTable() {
           pageSize={10}
         />
       </div>
+
+      {/* Edit Discount Modal */}
+      <CustomModal
+        open={editOpen}
+        onOpenChange={setEditOpen}
+        title="Edit Discount"
+        size="lg"
+      >
+        {editablePlan && (
+          <CreateDiscountForm
+            key={selectedDiscount?.id}
+            plan={editablePlan}
+            onSuccess={() => {
+              setEditOpen(false);
+              setSelectedDiscount(null);
+              // You can refresh data here if needed
+            }}
+          />
+        )}
+      </CustomModal>
     </div>
   );
 }

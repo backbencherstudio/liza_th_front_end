@@ -41,7 +41,7 @@ export default function OverviewStats() {
     ];
     return (
         <div className="">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between ">
                 {/* Left */}
                 <div>
                     <h1 className="pb-2 text-2xl font-semibold leading-tight text-[#151513] sm:pb-3 sm:text-[32px] sm:leading-[46px]">
@@ -53,7 +53,7 @@ export default function OverviewStats() {
                 </div>
 
                 {/* Right */}
-                <div className="flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+                <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
                     <select className="w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#151513] outline-none sm:w-auto">
                         <option>Last 7 days</option>
                         <option>Last 30 days</option>

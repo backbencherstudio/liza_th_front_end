@@ -7,6 +7,7 @@ import type { DashboardNavConfig, DashboardUser } from "@/config/navigation/type
 
 import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
+import MessagePage from "@/app/(user-dashboard)/user-dashboard/message/page";
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -39,6 +40,8 @@ export default function DashboardShell({
 }: DashboardShellProps) {
   const [open, setOpen] = useState(false);
   const headerUser = user ?? defaultUsers[navigation.role];
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const isUserDashboard = navigation.role === "user";
 
   return (
     <div className="min-h-screen w-full bg-white">
@@ -57,9 +60,8 @@ export default function DashboardShell({
 
       {/* Mobile drawer */}
       <div
-        className={`fixed left-0 top-0 z-50 flex h-screen w-[280px] flex-col bg-white transition-transform duration-300 lg:hidden ${
-          open ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed left-0 top-0 z-50 flex h-screen w-[280px] flex-col bg-white transition-transform duration-300 lg:hidden ${open ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex shrink-0 justify-end p-4">
           <button type="button" onClick={() => setOpen(false)}>
@@ -91,6 +93,27 @@ export default function DashboardShell({
         </div>
 
         <main className="min-h-0 w-full flex-1 p-5 lg:mt-[72px] lg:p-8">
+          {isUserDashboard && (
+            <>
+              {/* Chat Popup */}
+              {isMessageOpen && (
+                <div className="fixed bottom-24 right-6 z-50 w-[496px] max-w-[calc(100vw-24px)] animate-in slide-in-from-bottom-4 duration-300">
+                  <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
+                    <MessagePage onClose={() => setIsMessageOpen(false)} />
+                  </div>
+                </div>
+              )}
+
+              {/* Floating Button */}
+              <button
+                onClick={() => setIsMessageOpen((prev) => !prev)}
+                className="fixed bottom-8 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-2xl hover:scale-105 transition-all"
+              >
+                💬
+              </button>
+            </>
+          )}
+
           {children}
         </main>
       </div>

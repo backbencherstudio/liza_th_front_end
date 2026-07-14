@@ -1,5 +1,7 @@
 "use client";
 
+import DashboardStatsIcons from "@/components/icons/SupAdminIcon";
+import UserDashboardIcons from "@/components/icons/UserDashboardIcons";
 import { TrendingDown, DollarSign, Clock } from "lucide-react";
 
 const burnRateData = {
@@ -7,17 +9,17 @@ const burnRateData = {
     description: "The amount of cash your business spends each month to operate. It shows how quickly you are using cash.",
     points: [
         {
-            icon: "dollar",
+            icon: UserDashboardIcons.RunwayIcon,
             title: "RUNWAY KPI",
             description: "Estimated months you can operate before cash runs out based on current burn rate trends."
         },
         {
-            icon: "clock",
+            icon: UserDashboardIcons.BrunIcon,
             title: "BURN RATE",
             description: "The amount of cash your business spends each month to operate. It shows how quickly you are using cash."
         },
         {
-            icon: "trend",
+            icon: UserDashboardIcons.CashFlowIcon,
             title: "Cash Flow Forecast:",
             description: " Estimates future cash balances under different business conditions using projected cash received and cash spent."
         }
@@ -28,7 +30,7 @@ export default function TopSpendKpiCard() {
 
 
     return (
-        <div className="">
+        <div className="py-4">
             <div className="flex items-start gap-4">
 
 
@@ -44,6 +46,9 @@ export default function TopSpendKpiCard() {
                                         {point.icon === "clock" && <Clock className="w-5 h-5 text-amber-600" />}
                                         {point.icon === "trend" && <TrendingDown className="w-5 h-5 text-red-600" />}
                                     </div> */}
+                                    <div>
+                                        {point.icon && <point.icon />}
+                                    </div>
                                     <p className="font-inter text-[10.575px] font-bold leading-[14.1px] tracking-[0.529px] text-[#00386C]">{point.title}</p>
                                 </div>
                                 <p className="font-archivo text-[12px] font-normal leading-[16px] text-[#424750]">{point.description}</p>

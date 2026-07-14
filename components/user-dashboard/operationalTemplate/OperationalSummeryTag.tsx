@@ -1,6 +1,6 @@
 "use client";
 
-export default function SummeryTag() {
+export default function OperationalSummeryTag() {
     return (
         <div className="w-full rounded-[16px] border-l-[4px] border-t-[1px] border-r-[1px] border-b-[1px] border-solid border-[#0A206D] bg-[#E9EFFD]/50 p-6 md:p-8 font-sans shadow-sm">
             <h2 className="mb-6 bg-gradient-to-br from-[#0A206D] to-[#3B69D0] bg-clip-text text-xl font-bold tracking-tight text-transparent">

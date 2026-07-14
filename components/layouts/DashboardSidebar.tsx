@@ -31,12 +31,11 @@ export default function DashboardSidebar({
       className={`relative flex h-full w-full flex-col bg-white px-4 py-4 ${onClose ? "" : "border-r border-[#EAECF0]"
         } ${navigation.showSidebarAccent ? "border-l-[3px] border-l-[#1E40AF]" : ""}`}
     >
-      <div className="flex justify-center py-6">
+      <div className="relative flex h-[80px] w-[122px] items-center justify-center mx-auto">
         <Image
           src="/images/spike-logo.png"
           alt="Spike Technology"
-          width={140}
-          height={45}
+          fill
           className="object-contain"
         />
       </div>
@@ -51,8 +50,8 @@ export default function DashboardSidebar({
               href={item.href}
               key={item.href}
               onClick={onClose}
-              className={`group relative flex items-center gap-3 rounded-xl px-3 py-3 text-[16px] font-normal leading-[22px] transition-all ${isActive
-                ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
+              className={`group relative flex items-center gap-3 rounded-[10px] px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${isActive
+                ? "bg-[#E9EFFD] font-medium text-[#1E40AF] border-l-4 border-l-[#1E40AF]"
                 : "text-[#6B7280] hover:bg-gray-50"
                 }`}
             >
@@ -78,8 +77,8 @@ export default function DashboardSidebar({
             href={navigation.settingsHref}
             onClick={onClose}
             className={`group relative flex items-center gap-3 rounded-lg px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${isSettingsActive
-                ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
-                : "text-[#374151] hover:bg-gray-100"
+              ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
+              : "text-[#374151] hover:bg-gray-100"
               }`}
           >
             {isSettingsActive && (

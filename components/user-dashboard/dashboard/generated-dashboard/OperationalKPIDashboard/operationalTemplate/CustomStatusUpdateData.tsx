@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Edit2 } from "lucide-react";
+import { Edit2, SquarePen } from "lucide-react";
 import CustomModal from "@/components/reusable/CustomModal";
 import UpdateModal from "./UpdateModal";
 
@@ -21,14 +21,14 @@ const initialData: StatusItem[] = [
         description: "Bulk membership loads continued; regional updates emphasized momentum, target dashboards, revised workbook, and customer-owned applications.",
         status: "On Track",
         percentage: 60,
-        color: "#22C55E",
+        color: "#8CDAAA",
     },
     {
         id: "2",
         category: "Supplier / Services",
         description: "Sidra launched; RemeticHealth agreement completed; Amgen target start referenced as 8/1/26; ARDx opportunity progressing.",
         status: "On Track",
-        color: "#3B82F6",
+        color: "#8C9EFD",
     },
     {
         id: "3",
@@ -36,21 +36,21 @@ const initialData: StatusItem[] = [
         description: "May entries and OPEX reclass completed; service invoicing process cluttered",
         status: "On Track",
         percentage: 60,
-        color: "#F59E0B",
+        color: "#FFBE70",
     },
     {
         id: "4",
         category: "Technology / Reporting",
         description: "Website target go-live, SFDC, EDW/Snowflake, standalone email, El vendor setup. Starting P122",
         status: "On Track",
-        color: "#3B82F6",
+        color: "#75B6F3",
     },
     {
         id: "5",
         category: "Compliance / Governance",
         description: "Sharebacks Sunshine, attestations, SOP review. COI, application integrity, and LOC mechanics remain active controls.",
         status: "Watch",
-        color: "#EF4444",
+        color: "#FF9187",
     },
 ];
 
@@ -98,16 +98,17 @@ export default function CustomStatusUpdate() {
                 <button
                     onClick={openEditModal}
                     disabled={!selectedId}
-                    className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition ${selectedId
-                        ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    className={`flex items-center gap-2 text-sm font-medium border border-[#142E80] bg-white px-4 py-2 rounded-lg transition ${selectedId
+                        ? " text-[#142E80] border border-[#142E80]"
                         : "bg-gray-200 text-gray-400 cursor-not-allowed"
                         }`}
                 >
                     Edit Data
-                    <Edit2 size={16} />
+                    <SquarePen className="text-[]" />
                 </button>
             </div>
 
+            {/* Status Items */}
             {/* Status Items */}
             <div className="space-y-3">
                 {data.map((item) => (
@@ -115,23 +116,40 @@ export default function CustomStatusUpdate() {
                         key={item.id}
                         onClick={() => setSelectedId(item.id)}
                         style={{ borderLeftColor: item.color }}
-                        className={`flex gap-4 rounded-xl border border-gray-100 border-l-[8px] bg-white p-5 cursor-pointer transition-all ${selectedId === item.id ? "ring-1 ring-gray-300" : ""
+                        className={`flex rounded-xl border border-gray-100 border-l-[6px] bg-white p-5 cursor-pointer transition-all hover:shadow-sm ${selectedId === item.id ? "ring-2 ring-blue-200 bg-blue-50" : ""
                             }`}
                     >
+                        <div className="flex-1 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                            {/* Left */}
+                            <div className="flex-1 flex flex-col lg:flex-row gap-3 lg:gap-6">
+                                <h3 className="min-w-[220px] text-[15px] font-semibold text-gray-900">
+                                    {item.category}
+                                </h3>
 
-                        <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900">{item.category}</h3>
-                            <p className="text-sm text-gray-600 mt-2 leading-relaxed">{item.description}</p>
-                        </div>
-                        <div className="flex flex-col items-end gap-2">
-                            <div className={`px-4 py-1.5 text-xs font-semibold rounded-full ${item.status === "On Track" ? "bg-emerald-100 text-emerald-700" :
-                                item.status === "Watch" ? "bg-amber-100 text-amber-700" : "bg-purple-100 text-purple-700"
-                                }`}>
-                                {item.status}
+                                <p className="flex-1 text-sm leading-relaxed text-gray-600">
+                                    {item.description}
+                                </p>
                             </div>
-                            {item.percentage && (
-                                <div className="text-sm font-semibold text-gray-700">{item.percentage}%</div>
-                            )}
+
+                            {/* Right */}
+                            <div className="flex shrink-0 items-center gap-4 w-full lg:w-[200px]">
+                                <div
+                                    className={` px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap ${item.status === "On Track"
+                                        ? "bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] text-white"
+                                        : item.status === "Watch"
+                                            ? "bg-[#2563EB] text-white"
+                                            : "bg-purple-100 text-purple-700"
+                                        }`}
+                                >
+                                    {item.status}
+                                </div>
+
+                                {item.percentage && (
+                                    <div className="min-w-[50px] text-right text-sm font-semibold text-gray-700">
+                                        {item.percentage}%
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))}

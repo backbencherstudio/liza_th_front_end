@@ -1,6 +1,6 @@
-import CustomStatusUpdate from '@/components/user-dashboard/operationalTemplate/CustomStatusUpdateData'
-import OperationalSatusCard from '@/components/user-dashboard/operationalTemplate/OperationalSatusCard'
-import OperationalSummeryTag from '@/components/user-dashboard/operationalTemplate/OperationalSummeryTag'
+import CustomStatusUpdate from '@/components/user-dashboard/dashboard/generated-dashboard/OperationalKPIDashboard/operationalTemplate/CustomStatusUpdateData'
+import OperationalSatusCard from '@/components/user-dashboard/dashboard/generated-dashboard/OperationalKPIDashboard/operationalTemplate/OperationalSatusCard'
+import OperationalSummeryTag from '@/components/user-dashboard/dashboard/generated-dashboard/OperationalKPIDashboard/operationalTemplate/OperationalSummeryTag'
 import React from 'react'
 
 export default function page() {

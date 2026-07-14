@@ -36,18 +36,13 @@ export default function ExpenseCategory() {
     return (
         <div className="w-full rounded-[20px] border border-solid border-[#E9E9EA] bg-white p-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] md:p-5 h-full">
 
-            <div className="mb-6 flex w-full flex-col gap-1 md:mb-8">
-                <h3 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">
-                    Subscription Distribution
-                </h3>
-                <span className="text-sm font-[Archivo] text-[#71717A]">
-                    Current plan breakdown
-                </span>
-            </div>
+            <h3 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Financial Health</h3>
+            <h4 className="font-[Archivo] text-[#1C1C1E] text-[14px] sm:text-[14px]  leading-[24px] sm:leading-[14px] mb-8">Current plan breakdown</h4>
 
-            <div className="w-full flex flex-col xl:flex-row items-center gap-6 md:gap-12">
+            <div className="flex flex-col xl:flex-row items-start gap-8">
 
-                <div className="relative flex mx-auto h-[220px] w-full max-w-[420px] items-center justify-center sm:col-span-5 sm:mx-0 sm:h-[220px] sm:w-[220px]">
+                {/* Chart */}
+                <div className="relative flex h-[220px] w-[220px] shrink-0 items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
                             <Pie
@@ -65,45 +60,49 @@ export default function ExpenseCategory() {
                                 label={renderCustomizedLabel}
                             >
                                 {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
+                                    <Cell
+                                        key={`cell-${index}`}
+                                        fill={entry.color}
+                                        stroke="none"
+                                    />
                                 ))}
                             </Pie>
                         </PieChart>
                     </ResponsiveContainer>
 
-                    <div className="absolute text-center flex flex-col pointer-events-none">
-                        <span className="text-2xl font-medium font-[Archivo] text-[#1A1A1A] tracking-tight">
+                    <div className="absolute pointer-events-none flex flex-col text-center">
+                        <span className="font-[Archivo] text-2xl font-medium tracking-tight text-[#1A1A1A]">
                             $84,750
                         </span>
-                        <span className="text-xs font-medium font-[Archivo] text-[#71717A] mt-0.5">
+                        <span className="mt-0.5 font-[Archivo] text-xs font-medium text-[#71717A]">
                             Total Subscription
                         </span>
                     </div>
                 </div>
 
-                <div className="flex w-full flex-col max-w-[300px] divide-y divide-solid divide-[#F4F4F5] sm:col-span-6">
+                {/* Legend */}
+                <div className="w-full 2xl:w-fit min-w-[180px] divide-y divide-[#F4F4F5]">
                     {data.map((item) => (
                         <div
                             key={item.name}
-                            className="flex w-full flex-wrap items-center justify-between gap-2 py-2.5 font-[Archivo] first:pt-0 last:pb-0 sm:flex-nowrap sm:gap-0"
+                            className="flex items-center justify-between gap-8 py-3"
                         >
-                            <div className="flex items-center gap-2.5 min-w-[120px]">
+                            <div className="flex items-center gap-2.5 whitespace-nowrap">
                                 <span
-                                    className="w-3 h-3 rounded-full shrink-0"
+                                    className="h-3 w-3 shrink-0 rounded-full"
                                     style={{ backgroundColor: item.color }}
                                 />
-                                <span className="text-base font-medium text-[#252631] capitalize">
+                                <span className="font-[Archivo] text-base font-medium capitalize text-[#252631]">
                                     {item.name}
                                 </span>
                             </div>
 
-                            <span className="text-base font-medium text-[#71717A] text-right">
+                            <span className="font-[Archivo] text-base font-medium text-[#71717A]">
                                 {item.value}%
                             </span>
                         </div>
                     ))}
                 </div>
-
             </div>
         </div>
     );

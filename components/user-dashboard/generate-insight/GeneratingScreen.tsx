@@ -3,7 +3,11 @@
 import Ai2Icon from "@/components/icons/Ai2Icon";
 import React, { useEffect, useState } from "react";
 
-export default function GeneratingScreen() {
+interface GeneratingScreenProps {
+    onComplete?: () => void;
+}
+
+export default function GeneratingScreen({ onComplete }: GeneratingScreenProps) {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -11,6 +15,7 @@ export default function GeneratingScreen() {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(timer);
+                    onComplete?.();
                     return 100;
                 }
                 return prev + 2;
@@ -18,7 +23,7 @@ export default function GeneratingScreen() {
         }, 100);
 
         return () => clearInterval(timer);
-    }, []);
+    }, [onComplete]);
 
     return (
         <section className="min-h-[80vh] flex items-center justify-center">

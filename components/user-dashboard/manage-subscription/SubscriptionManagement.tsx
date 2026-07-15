@@ -8,7 +8,7 @@ import PricingSection from './pricing/SubscriptionSection';
 import BillingHistory from './BillingHistory';
 import CurrentPlan from './CurrentPlan';
 export default function SubscriptionManagement() {
-    const [currentPlan, setCurrentPlan] = useState(true);
+    const [currentPlan, setCurrentPlan] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams();
     const triggerClass =

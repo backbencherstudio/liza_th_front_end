@@ -1,55 +1,30 @@
-"use client"
-import React from 'react'
-
-import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
-import TableToolBar from '@/components/reusable/TableToolBar'
-import ExpenseCategory from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/ExecuitiveSub'
-import KpiCards from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiStatus'
-import MonthlySpendChart from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/MonthlySpend'
-import SummeryTag from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/SummeryTag'
-import TopSpendKpiCard from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/TopSpendKpiCard'
-import { ArrowDownToLine, Download, SquarePen } from 'lucide-react'
 import UserDashboardIcons from '@/components/icons/UserDashboardIcons'
-import TopSpendTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/TopSpendTable'
-import KpiTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiTable'
-import CashFlowCharts from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/CashFlowCharts'
+import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
 import { FormSelect } from '@/components/reusable/FormSelect'
+import { ArrowDownToLine, SquarePen } from 'lucide-react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-type FormValues = {
-    location: string;
-    month: string;
-};
+export default function TopHeader() {
 
-const options = [
-    { label: "Dhaka", value: "dhaka" },
-    { label: "Chattogram", value: "chattogram" },
-    { label: "Khulna", value: "khulna" },
-];
+    const options = [
+        { label: "Location 1", value: "location1" },
+        { label: "Location 2", value: "location2" },
+        { label: "Location 3", value: "location3" },
+    ];
 
-const months = [
-    { label: " 1 month", value: "1month" },
-    { label: " 6 month", value: "6month" },
-    { label: " 1 year", value: "1year" },
-];
+    const months = [
+        { label: "January", value: "january" },
+        { label: "February", value: "february" },
+        { label: "March", value: "march" },
+    ];
 
-
-export default function page() {
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<FormValues>({
+    const { control, formState: { errors } } = useForm({
         defaultValues: {
             location: "",
             month: "",
         },
     });
-
-    const onSubmit = (data: FormValues) => {
-        console.log(data);
-    };
-
 
     return (
         <div>
@@ -116,47 +91,6 @@ export default function page() {
                     <div className="flex h-[47px] shrink-0 items-center gap-2 rounded-xl bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-white">
                         <button className="sf-btn whitespace-nowrap">Export</button>
                         <ArrowDownToLine className="h-4 w-4" />
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div className='py-8 '>
-                <div className='py-7.5 px-5 bg-[#F8FAFB] rounded-xl'>
-                    <div className='py-3'>
-                        <KpiCards />
-                    </div>
-
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-5'>
-                        <div className='h-full'>
-                            <MonthlySpendChart />
-                        </div>
-                        <div>
-                            <div className='h-full' >
-                                <ExpenseCategory />
-                            </div>
-
-                        </div>
-                    </div>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-3'>
-
-                        <div className='h-full'>
-                            <CashFlowCharts />
-                        </div>
-                        <div className='h-full'>
-                            <KpiTable />
-                        </div>
-                    </div>
-
-                    <div className='h-full'>
-                        <TopSpendTable />
-                    </div>
-                    <div className=''>
-                        <TopSpendKpiCard />
-                    </div>
-                    <div>
-                        <SummeryTag />
                     </div>
                 </div>
             </div>

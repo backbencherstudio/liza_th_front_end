@@ -13,18 +13,18 @@ import {
 } from "recharts";
 
 const data = [
-    { name: "Jan", spend: 110, total: 130, profit: 320 },
-    { name: "Feb", spend: 45, total: 60, profit: 120 },
-    { name: "Mar", spend: 115, total: 130, profit: 340 },
-    { name: "Apr", spend: 45, total: 65, profit: 130 },
-    { name: "May", spend: 135, total: 155, profit: 410 },
-    { name: "Jun", spend: 260, total: 280, profit: 720 },
-    { name: "Jul", spend: 200, total: 220, profit: 580 },
-    { name: "Aug", spend: 230, total: 255, profit: 640 },
-    { name: "Sep", spend: 280, total: 320, profit: 890 },
-    { name: "Oct", spend: 180, total: 210, profit: 510 },
-    { name: "Nov", spend: 110, total: 125, profit: 310 },
-    { name: "Dec", spend: 160, total: 175, profit: 460 },
+    { name: "Jan", spend: 110, profit: 320 },
+    { name: "Feb", spend: 45, profit: 120 },
+    { name: "Mar", spend: 115, profit: 340 },
+    { name: "Apr", spend: 45, profit: 130 },
+    { name: "May", spend: 135, profit: 410 },
+    { name: "Jun", spend: 260, profit: 720 },
+    { name: "Jul", spend: 200, profit: 580 },
+    { name: "Aug", spend: 230, profit: 640 },
+    { name: "Sep", spend: 280, profit: 890 },
+    { name: "Oct", spend: 180, profit: 510 },
+    { name: "Nov", spend: 110, profit: 310 },
+    { name: "Dec", spend: 160, profit: 460 },
 ];
 
 const CustomTooltip = ({ active, payload }: any) => {
@@ -34,7 +34,7 @@ const CustomTooltip = ({ active, payload }: any) => {
             <div className="relative bg-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-slate-50 flex flex-col items-start min-w-[160px]">
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white" />
                 <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#60a5fa]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6]" />
                     <span className="text-gray-500 font-medium text-sm">Profit</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900 mt-1">
@@ -66,8 +66,8 @@ export default function MonthlySpendChart() {
     };
 
     return (
-        <div className="w-full max-w-3xl bg-white p-8 rounded-3xl shadow-sm border border-gray-100 font-sans">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Monthly Spend</h2>
+        <div className="w-full max-w-3xl h-full bg-white p-8 rounded-3xl border border-gray-100 font-sans shadow-sm">
+            <h2 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Monthly Spend</h2>
 
             <svg width="0" height="0" className="absolute">
                 <defs>
@@ -111,7 +111,6 @@ export default function MonthlySpendChart() {
                     <BarChart
                         data={data}
                         margin={{ top: 20, right: 10, left: -20, bottom: 0 }}
-                        barGap={-18}
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                     >
@@ -141,13 +140,10 @@ export default function MonthlySpendChart() {
                             defaultIndex={5}
                         />
                         <Bar
-                            dataKey="total"
-                            fill="#f1f5f9"
-                            radius={[10, 10, 10, 10]}
-                            maxBarSize={18}
-                            isAnimationActive={false}
-                        />
-                        <Bar dataKey="spend" radius={[10, 10, 10, 10]} maxBarSize={18}>
+                            dataKey="spend"
+                            radius={[5, 5, 5, 5]}
+                            barSize={18}
+                        >
                             {data.map((entry, index) => (
                                 <Cell
                                     key={`cell-${index}`}

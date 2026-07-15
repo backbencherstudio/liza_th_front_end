@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
+
+  //   images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: "https",
+  //       hostname: "example.com",
+  //     },
+  //   ],
+  // },
 };
 
 export default nextConfig;

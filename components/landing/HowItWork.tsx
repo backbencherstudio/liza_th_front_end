@@ -1,12 +1,20 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import StarIcon from "../icons/StarIcon";
 import LongArrowIcon from "../icons/LongArrowIcon";
 import UploadIcon from "../icons/UploadIcon";
 import AiIcon from "../icons/AiIcon";
 import FindTrands from "../icons/FindTrandsIcon";
-import { Icon } from "lucide-react";
 import TirIcon from "../icons/TirIcon";
 import DatabaseIcon from "../icons/DatabaseIcon";
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0 },
+};
 
 const steps = [
     {
@@ -56,32 +64,59 @@ export default function HowItWork() {
         <section className="pb-8 md:py-15 lg:py-20">
             <div className="w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px]   justify-center mx-auto">
                 {/* Header */}
-                <div className="flex flex-col items-center justify-center">
-                    <div className="flex items-center gap-2.5">
+                <motion.div
+                    className="flex flex-col items-center justify-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.45 }}
+                    transition={{ delayChildren: 0.15, staggerChildren: 0.1 }}
+                >
+                    <motion.div
+                        className="flex items-center gap-2.5"
+                        variants={fadeUp}
+                        transition={{ duration: 0.55, ease }}
+                    >
                         <StarIcon />
                         <span className="text-lg font-medium text-[#151513]">
                             How It Works
                         </span>
-                    </div>
+                    </motion.div>
 
-                    <h2 className="py-4 text-[32px] text-center md:text-start md:text-4xl  font-semibold text-[#151513] lg:text-[48px]">
+                    <motion.h2
+                        className="py-4 text-[32px] text-center md:text-start md:text-4xl  font-semibold text-[#151513] lg:text-[48px]"
+                        variants={fadeUp}
+                        transition={{ duration: 0.65, ease }}
+                    >
                         From raw data to executive insights in minutes
-                    </h2>
+                    </motion.h2>
 
-                    <p className="text-base text-center md:text-start md:text-[20px] font-normal text-[#3D3D3C]">
-                        No setup headaches, no manual number-crunching — just five simple
+                    <motion.p
+                        className="text-base text-center md:text-start md:text-[20px] font-normal text-[#3D3D3C]"
+                        variants={fadeUp}
+                        transition={{ duration: 0.65, ease }}
+                    >
+                        No setup headaches, no manual number-crunching - just five simple
                         steps.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
 
                 {/* Steps */}
-                <div className="mt-14 space-y-6 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
+                <motion.div
+                    className="mt-14 space-y-6 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ delayChildren: 0.2, staggerChildren: 0.1 }}
+                >
                     {steps.map((step) => {
                         const Icon = step.icon;
 
                         return (
-                            <div
+                            <motion.div
                                 key={step.id}
+                                variants={fadeUp}
+                                transition={{ duration: 0.6, ease }}
+                                whileHover={{ y: -5, transition: { duration: 0.25 } }}
                                 className="items-start gap-6 rounded-2xl "
                             >
                                 {/* Left Icon */}
@@ -109,10 +144,10 @@ export default function HowItWork() {
                                 <div className="flex justify-center items-center  md:hidden origin-center mt-9">
                                     <LongArrowIcon className="block rotate-90" />
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

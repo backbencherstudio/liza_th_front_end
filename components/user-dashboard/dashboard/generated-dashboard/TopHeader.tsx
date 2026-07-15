@@ -5,7 +5,16 @@ import { ArrowDownToLine, SquarePen } from 'lucide-react'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-export default function TopHeader() {
+interface TopHeaderProps {
+    title: string;
+    subtitle: string;
+    handleOpen: () => void;
+    editTypes: { label: string, value: string }[];
+    editType: string|null;
+    setEditType: (editType: string|null) => void;
+}
+
+export default function TopHeader({ title, subtitle, handleOpen, editTypes, editType, setEditType }: TopHeaderProps) {
 
     const options = [
         { label: "Location 1", value: "location1" },
@@ -19,11 +28,15 @@ export default function TopHeader() {
         { label: "March", value: "march" },
     ];
 
+
+   
     const { control, formState: { errors } } = useForm({
         defaultValues: {
             location: "",
             month: "",
+            editType: editType,
         },
+        mode: "onChange",
     });
 
     return (
@@ -32,8 +45,8 @@ export default function TopHeader() {
                 {/* Left */}
                 <div className="flex-1">
                     <DashboardPageTitle
-                        title="Executive Summary"
-                        description="Company performance, cash flow and strategic intelligence"
+                        title={title}
+                        description={subtitle}
                     />
                 </div>
 
@@ -51,6 +64,7 @@ export default function TopHeader() {
                                     value={field.value}
                                     onValueChange={field.onChange}
                                     error={errors.location}
+                                    isActive={true}
                                 />
                             )}
                         />
@@ -68,15 +82,31 @@ export default function TopHeader() {
                                     value={field.value}
                                     onValueChange={field.onChange}
                                     error={errors.month}
+                                    isActive={true}
                                 />
                             )}
                         />
                     </div>
 
-                    <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
+                    <div className="min-w-[180px]">
+                                <FormSelect
+                                    label=""
+                                    placeholder="Edit Type"
+                                    options={editTypes}
+                                    value={editType ?? undefined}
+                                    onValueChange={(value) => {
+                                        setEditType(value);
+                                        handleOpen();
+                                    }}
+                                    error={errors.editType}
+                                    isActive={true}
+                                />
+                    </div>
+
+                    {/* <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
                         <button className="sf-btn whitespace-nowrap">Edit Data</button>
                         <SquarePen className="h-4 w-4 text-[#575855]" />
-                    </div>
+                    </div> */}
 
                     <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
                         <button className="sf-btn whitespace-nowrap">Save</button>

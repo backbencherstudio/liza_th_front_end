@@ -7,7 +7,7 @@ import OperationalKPIDashboard from "./OperationalKPIDashboard/OperationalKPIDas
 export default function GeneratedDashboardView({ dashboard }: { dashboard: GeneratedDashboard }) {
   switch (dashboard.type) {
     case "EXEC": return <ExecutiveSummaryDashboard dashboard={dashboard} />;
-    case "FIN":  return <FinancialPerformanceDashboard dashboard={dashboard} />;
-    case "OPS":  return <OperationalKPIDashboard dashboard={dashboard} />;
+    case "FIN": return <FinancialPerformanceDashboard dashboard={dashboard} />;
+    case "OPS": return <OperationalKPIDashboard dashboard={dashboard} />;
   }
 }

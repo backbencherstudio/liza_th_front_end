@@ -50,7 +50,9 @@ export default function SummeryTag() {
                         the core value-drivers for revenue generation.
                     </p>
                 </div>
-            </div>
+
+
+         </div>
         </div>
     );
 }

@@ -22,7 +22,7 @@ export default function DashboardHeader({ user }: DashboardHeaderProps) {
           />
         </div>
 
-        <div className="relative flex-1 md:flex-none">
+        <div className="relative flex-1 md:flex-none hidden md:block">
           <Search
             className="absolute left-4 top-1/2 -translate-y-1/2"
             size={20}
@@ -30,12 +30,18 @@ export default function DashboardHeader({ user }: DashboardHeaderProps) {
           <input
             type="text"
             placeholder="Search anything..."
-            className="w-full rounded-lg border border-gray-200 py-3 pl-11 pr-4 text-sm transition-all placeholder:text-gray-400 focus:bg-white focus:outline-none md:w-[280px] lg:w-lg lg:rounded-lg"
+            className="w-full rounded-lg border  border-gray-200 py-3 pl-11 pr-4 text-sm transition-all placeholder:text-gray-400 focus:bg-white focus:outline-none md:w-[280px] lg:w-lg lg:rounded-lg"
           />
         </div>
       </div>
 
       <div className="flex items-center gap-3 md:gap-6">
+        <div className="md:hidden bg-[#F3F3F4] p-2.5 rounded-full">
+          <Search
+            className=" "
+            size={20}
+          />
+        </div>
         <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#F3F3F4]">
           <NotificationIcon />
           <span className="absolute -right-2 -top-2 rounded-full bg-red-500 px-2 py-1 text-xs text-white">

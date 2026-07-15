@@ -15,7 +15,9 @@ export default function page() {
 
       <HeroSection />
       <OverView />
-      <WorksWithTools />
+      <div className='mt-20'>
+        <WorksWithTools />
+      </div>
       <AboutUs />
       <Features />
       <HowItWork />

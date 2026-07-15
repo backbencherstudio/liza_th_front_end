@@ -63,7 +63,7 @@ export default function DashboardShell({
         className={`fixed left-0 top-0 z-50 flex h-screen w-[280px] flex-col bg-white transition-transform duration-300 lg:hidden ${open ? "translate-x-0" : "-translate-x-full"
           }`}
       >
-        <div className="flex shrink-0 justify-end p-4">
+        <div className="flex shrink-0 justify-end p-4 ">
           <button type="button" onClick={() => setOpen(false)}>
             <X size={24} />
           </button>

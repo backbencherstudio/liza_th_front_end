@@ -47,13 +47,13 @@ const RenderCustomDot = (props: any) => {
 
 export default function SubscriptionChart() {
     return (
-        <div className="w-full max-w-4xl p-6 bg-white rounded-2xl border border-gray-100 shadow-sm font-sans">
+        <div className="w-full h-full max-w-4xl p-6 bg-white rounded-2xl border border-gray-100 shadow-sm font-sans">
 
             <h2 className="text-2xl font-bold text-gray-800 mb-6 px-2">
                 Monthly Subscription Activity
             </h2>
 
-            <div className="w-full h-[400px]">
+            <div className="w-full h-[300px] ">
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart
                         data={data}

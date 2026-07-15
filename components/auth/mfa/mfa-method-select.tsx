@@ -1,5 +1,7 @@
-"use client";
+import React from 'react'
 
-export function MfaMethodSelect() {
-  return <div>mfa-method-select</div>;
+export default function MfaMethodSelect() {
+  return (
+    <div>MfaMethodSelect</div>
+  )
 }

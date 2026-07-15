@@ -1,12 +1,14 @@
 "use client"
 import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
-import React from 'react'
+import React, { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter, useSearchParams } from 'next/navigation';
 import ProPlan from './ProPlan';
 import PricingSection from './pricing/SubscriptionSection';
 import BillingHistory from './BillingHistory';
+import CurrentPlan from './CurrentPlan';
 export default function SubscriptionManagement() {
+    const [currentPlan, setCurrentPlan] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams();
     const triggerClass =
@@ -48,7 +50,7 @@ export default function SubscriptionManagement() {
                     </div>
 
                     <TabsContent value="roles">
-                        <ProPlan />
+                        {currentPlan ? <CurrentPlan /> : <ProPlan />}
                         <PricingSection />
                     </TabsContent>
 

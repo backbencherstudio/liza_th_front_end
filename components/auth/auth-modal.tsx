@@ -10,7 +10,6 @@ import { SignUpStepSuccess } from "./sign-up/sign-up-step-success";
 
 // sign-in
 import { SignInStep } from "./sign-in/sign-in-step";
-import { MfaMethodSelect } from "./mfa/mfa-method-select";
 import { MfaEmailOtp } from "./mfa/mfa-email-otp";
 import { MfaAuthenticator } from "./mfa/mfa-authenticator";
 

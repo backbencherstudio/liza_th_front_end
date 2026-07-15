@@ -14,8 +14,10 @@ export default function page() {
     <div>
 
       <HeroSection />
-      <OverView />
-      <WorksWithTools />
+      <OverView />     
+      <div className='mt-12 md:mt-24 '>
+        <WorksWithTools />
+      </div>
       <AboutUs />
       <Features />
       <HowItWork />

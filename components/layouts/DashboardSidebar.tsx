@@ -19,12 +19,22 @@ export default function DashboardSidebar({
 }: DashboardSidebarProps) {
   const pathname = usePathname();
   const showFooter = navigation.showSidebarFooter ?? true;
-  const settingsBasePath = navigation.settingsHref.replace(/\/[^/]+$/, "");
-  const isSettingsActive = pathname.startsWith(settingsBasePath);
+  // const settingsBasePath = navigation.settingsHref.replace(/\/[^/]+$/, "");
+  const isSettingsActive =
+    pathname === navigation.settingsHref ||
+    pathname.startsWith(`${navigation.settingsHref}/`);
 
-  const isNavItemActive = (href: string) =>
-    pathname === href ||
-    (href !== navigation.dashboardHref && pathname.startsWith(href));
+  // const isNavItemActive = (href: string) =>
+  //   pathname === href ||
+  //   (href !== navigation.dashboardHref && pathname.startsWith(href));
+
+  const isNavItemActive = (href: string) => {
+    if (href === navigation.dashboardHref) {
+      return pathname === href;
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <aside
@@ -77,12 +87,12 @@ export default function DashboardSidebar({
             href={navigation.settingsHref}
             onClick={onClose}
             className={`group relative flex items-center gap-3 rounded-lg px-3 py-[11px] text-[16px] font-normal leading-[22px] transition-all ${isSettingsActive
-              ? "bg-[#E9EFFD] font-medium text-[#1E40AF]"
+              ? "bg-[#E9EFFD] font-medium text-[#1E40AF] border-l-4 border-l-[#1E40AF]"
               : "text-[#374151] hover:bg-gray-100"
               }`}
           >
             {isSettingsActive && (
-              <div className="absolute left-0 top-1/2 h-8 w-[6px] -translate-y-1/2 rounded-r-xl bg-[#1E40AF]" />
+              <div className="absolute left-0 top-1/2 h-8 w-[6px] -translate-y-1/2 " />
             )}
 
             <Settings
@@ -91,7 +101,7 @@ export default function DashboardSidebar({
             />
             <span
               className={
-                isSettingsActive ? "font-medium text-[#1E40AF]" : "text-[#374151]"
+                isSettingsActive ? "font-medium text-[#1E40AF] " : "text-[#374151]"
               }
             >
               Setting
@@ -100,7 +110,7 @@ export default function DashboardSidebar({
 
           <button
             type="button"
-            className="flex w-full items-center gap-3 rounded-[22px] px-6 py-[14px] text-[15px] font-medium text-[#374151] transition-all hover:bg-gray-100"
+            className="flex w-full items-center gap-3 rounded-[10px] px-3 py-[14px] text-[15px] font-medium text-[#374151] transition-all hover:bg-gray-100"
           >
             <LogoutIcon size={20} />
             <span>Log out</span>

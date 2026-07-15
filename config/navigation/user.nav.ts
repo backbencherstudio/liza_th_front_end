@@ -1,6 +1,7 @@
-import { BarChart3, LayoutDashboard, Settings } from "lucide-react";
+import { BarChart3, LayoutDashboard, Plus, Save, Settings } from "lucide-react";
 
 import type { DashboardNavConfig } from "./types";
+import UserDashboardIcons from "@/components/icons/UserDashboardIcons";
 
 export const userNavigation: DashboardNavConfig = {
   role: "user",
@@ -11,25 +12,25 @@ export const userNavigation: DashboardNavConfig = {
       id: "dashboard",
       title: "Generate Insight",
       href: "/user-dashboard/generate-insight",
-      icon: LayoutDashboard,
+      icon: Plus,
     },
     {
       id: "Dashboard",
       title: "Dashboard",
       href: "/user-dashboard/dashboard",
-      icon: BarChart3,
+      icon: UserDashboardIcons.DashboardIcon,
     },
     {
       id: "settings",
       title: "Saved Insights",
       href: "/user-dashboard/save-insight",
-      icon: Settings,
+      icon: Save,
     },
     {
       id: "Manage Subscription",
       title: "Manage Subscription",
       href: "/user-dashboard/manage-subscription",
-      icon: Settings,
+      icon: UserDashboardIcons.ManageSubsIcon,
     },
   ],
 };

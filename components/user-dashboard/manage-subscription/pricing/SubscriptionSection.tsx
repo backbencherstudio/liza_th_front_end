@@ -20,13 +20,6 @@ export default function PricingSection() {
         ))}
       </section>
 
-      <div className="flex w-full justify-between py-2 px-6 bg-[#F9FAFF] mt-4 text-[#4A4C56] text-sm font-normal leading-5">
-        <p className="text-[#3D3D3C] font-['Archivo'] text-sm font-normal leading-[22px]">© 2026 Spike Technology. All rights reserved.</p>
-        <div className="flex gap-4">
-          <p className="text-[#3D3D3C] font-['Archivo'] text-sm font-normal leading-[22px]">Terms & Conditions</p>
-          <p className="text-[#3D3D3C] font-['Archivo'] text-sm font-normal leading-[22px]">Privacy Policy</p>
-        </div>
-      </div>
     </div>
   );
 }

@@ -7,22 +7,33 @@ import { X, Plus } from 'lucide-react';
 interface FieldModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (fieldData: Omit<Field, 'id' | 'subfields'>) => void;
+  onSave: (fieldData: Omit<Field, 'id'>) => void;
+  /** Lock field type (e.g. Single Select for dashboard, Multi Select for goals) */
+  forcedType?: FieldType;
+  title?: string;
 }
 
 const FIELD_TYPES: FieldType[] = [
-  'Text Label', 'Text Input', 'Single Select', 
+  'Text Label', 'Text Input', 'Single Select',
   'Multi Select', 'Select/Dropdown', 'Number Input', 'Hybrid', 'Upload file'
 ];
 
-export default function FieldModal({ isOpen, onClose, onSave }: FieldModalProps) {
+export default function FieldModal({
+  isOpen,
+  onClose,
+  onSave,
+  forcedType,
+  title = 'Add Field',
+}: FieldModalProps) {
   const [label, setLabel] = useState('');
-  const [fieldType, setFieldType] = useState<FieldType>('Text Input');
+  const [fieldType, setFieldType] = useState<FieldType>(forcedType ?? 'Text Input');
   const [options, setOptions] = useState<string[]>([]);
   const [currentOption, setCurrentOption] = useState('');
   const [isRequired, setIsRequired] = useState(false);
 
   if (!isOpen) return null;
+
+  const effectiveType = forcedType ?? fieldType;
 
   const handleAddOption = () => {
     if (currentOption.trim() && !options.includes(currentOption.trim())) {
@@ -39,11 +50,12 @@ export default function FieldModal({ isOpen, onClose, onSave }: FieldModalProps)
     if (!label.trim()) return alert('Label is required');
     onSave({
       label,
-      type: fieldType,
+      type: effectiveType,
       isRequired,
-      options: ['Single Select', 'Multi Select', 'Select/Dropdown'].includes(fieldType) ? options : undefined
+      options: ['Single Select', 'Multi Select', 'Select/Dropdown'].includes(effectiveType)
+        ? options
+        : undefined,
     });
-    // Reset form state
     setLabel('');
     setOptions([]);
     onClose();
@@ -53,14 +65,14 @@ export default function FieldModal({ isOpen, onClose, onSave }: FieldModalProps)
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 border border-slate-100">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-slate-800">Add Field</h3>
+          <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X size={18} /></button>
         </div>
 
         <div className="space-y-4">
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1">Label</label>
-            <input 
+            <input
               type="text" value={label} onChange={(e) => setLabel(e.target.value)}
               placeholder="Enter field label" className="w-full border border-slate-200 rounded-lg p-2 text-sm focus:outline-blue-500"
             />
@@ -68,15 +80,24 @@ export default function FieldModal({ isOpen, onClose, onSave }: FieldModalProps)
 
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1">Field Type</label>
-            <select 
-              value={fieldType} onChange={(e) => setFieldType(e.target.value as FieldType)}
-              className="w-full border border-slate-200 rounded-lg p-2 text-sm focus:outline-blue-500"
-            >
-              {FIELD_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-            </select>
+            {forcedType ? (
+              <input
+                type="text"
+                value={forcedType}
+                readOnly
+                className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 text-slate-600"
+              />
+            ) : (
+              <select
+                value={fieldType} onChange={(e) => setFieldType(e.target.value as FieldType)}
+                className="w-full border border-slate-200 rounded-lg p-2 text-sm focus:outline-blue-500"
+              >
+                {FIELD_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+              </select>
+            )}
           </div>
 
-          {['Single Select', 'Multi Select', 'Select/Dropdown'].includes(fieldType) && (
+          {['Single Select', 'Multi Select', 'Select/Dropdown'].includes(effectiveType) && (
             <div>
               <label className="block text-xs font-medium text-slate-500 mb-1">Add Dropdown Options</label>
               <div className="flex gap-2 mb-2">

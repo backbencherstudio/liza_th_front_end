@@ -1,21 +1,17 @@
 "use client"
 import { GeneratedDashboard } from '@/types/dashboard'
 
-import React from 'react'
 
-import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
-import TableToolBar from '@/components/reusable/TableToolBar'
 import ExpenseCategory from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/ExecuitiveSub'
 import KpiCards from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiStatus'
 import MonthlySpendChart from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/MonthlySpend'
 import SummeryTag from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/SummeryTag'
 import TopSpendKpiCard from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/TopSpendKpiCard'
-import { ArrowDownToLine, Download, SquarePen } from 'lucide-react'
-import UserDashboardIcons from '@/components/icons/UserDashboardIcons'
+
 import TopSpendTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/TopSpendTable'
-import KpiTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiTable'
+
 import CashFlowCharts from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/CashFlowCharts'
-import { FormSelect } from '@/components/reusable/FormSelect'
+
 import { Controller, useForm } from 'react-hook-form'
 import ExecuitiveSummeryKpiTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiTable'
 import TopHeader from '../TopHeader'
@@ -36,6 +32,15 @@ const months = [
   { label: " 1 month", value: "1month" },
   { label: " 6 month", value: "6month" },
   { label: " 1 year", value: "1year" },
+];
+
+
+
+const editTypes = [
+  { label: "Total Revenue", value: "totalRevenue" },
+  { label: "Spend", value: "netProfit" },
+  { label: "Gross Margin", value: "grossMargin" },
+  { label: "Burn Rate", value: "burnRate" },
 ];
 
 export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: GeneratedDashboard }) {
@@ -59,7 +64,7 @@ export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: Ge
       <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
 
       <div>
-        <TopHeader />
+        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} />
 
 
 

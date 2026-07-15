@@ -26,6 +26,7 @@ interface FormSelectProps {
   error?: FieldError;
   disabled?: boolean;
   className?: string;
+  isActive?: boolean;
 }
 
 export function FormSelect({
@@ -37,6 +38,7 @@ export function FormSelect({
   error,
   disabled,
   className,
+  isActive = false,
 }: FormSelectProps) {
   return (
     <div className={className}>
@@ -65,12 +67,14 @@ export function FormSelect({
             "disabled:opacity-50 disabled:cursor-not-allowed",
             error && "border-red-500 focus:border-red-500",
             "[&>svg:not(.select-trigger-chevron)]:hidden",
-            "[&[data-popup-open]_.select-trigger-chevron]:rotate-180"
+            "[&[data-popup-open]_.select-trigger-chevron]:rotate-180",
+            isActive && "border-[#E9E9E9]"
+
           )}
         >
           <SelectValue
             placeholder={
-              <span className="text-[rgba(8,14,30,0.35)]">{placeholder}</span>
+              <span className={cn("text-[rgba(8,14,30,0.35)]", isActive && "text-[#3D3D3C]")}>{placeholder}</span>
             }
           />
           {/* custom chevron */}

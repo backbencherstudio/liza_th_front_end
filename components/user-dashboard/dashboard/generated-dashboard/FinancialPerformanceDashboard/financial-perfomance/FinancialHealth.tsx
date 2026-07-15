@@ -10,7 +10,7 @@ const data = [
 
 export default function FinancialHealth() {
     return (
-        <div className="w-full  rounded-[24px] border border-solid border-[#E9E9EA] bg-white p-6 shadow-[0_4px_20px_0_rgba(0,0,0,0.02)] h-full flex flex-col justify-between max-h-[490px]">
+        <div className="w-full  rounded-[24px] border border-solid border-[#E9E9EA] bg-white p-6 shadow-[0_4px_20px_0_rgba(0,0,0,0.02)] h-full flex flex-col justify-between md:max-h-[490px]">
             <div>
                 {/* HEADER TITLE SECTION */}
                 <div className="mb-4 flex w-full flex-col gap-1">

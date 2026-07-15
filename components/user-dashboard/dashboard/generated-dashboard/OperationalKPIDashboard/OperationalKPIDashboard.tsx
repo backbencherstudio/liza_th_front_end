@@ -3,7 +3,7 @@ import React from 'react'
 import OperationalSatusCard from './operationalTemplate/OperationalSatusCard'
 import OperationalSummeryTag from './operationalTemplate/OperationalSummeryTag'
 import CustomStatusUpdate from './operationalTemplate/CustomStatusUpdateData'
-import { monthlyData } from '../FinancialPerformanceDashboard/data'
+import { monthlyData } from '../FinancialPerformanceDashboard/financial-perfomance/data'
 import OperationalCatergoryTable from './operationalTemplate/OperationalCatergoryTable'
 import OperationMonthyTrendChart from './operationalTemplate/MonthlyTrednDepartment'
 import VendorMonthyTrendChart from './operationalTemplate/MonthlyTrendVendor'
@@ -11,52 +11,65 @@ import { monthlyDataVendor } from './operationalTemplate/TableDataVendor'
 import VendorCatergoryTable from './operationalTemplate/VendorTable'
 import TopHeader from '../TopHeader'
 
+const editTypes = [
+  { label: "No. of Departments", value: "numberOfDepartments" },
+  { label: "Avg Spend/Dept.", value: "avgSpendPerDepartment" },
+  { label: "No. of Vendors", value: "numberOfVendors" },
+  { label: "Avg Spend/Vendor", value: "avgSpendPerVendor" },
+];
+
 export default function OperationalKPIDashboard({ dashboard }: { dashboard: GeneratedDashboard }) {
   return (
-    <div>
+    <div className=''>
       <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
-      <TopHeader />
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
-        <div className="w-full  rounded-3xl bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
-          <h2 className="mb-6 mt-1 text-xl font-bold text-slate-900">
-            Monthly Trend by Category
-          </h2>
+      <TopHeader title={"Operational KPIs"} subtitle={"Track key performance indicators for your operations"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} />
 
-          <div className=''>
-            <OperationMonthyTrendChart data={monthlyData} />
-            <div className="mt-5">
-              <OperationalCatergoryTable data={monthlyData} />
-            </div>
-          </div>
-
-
-        </div>
-
-        <div className="w-full  rounded-3xl bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
-          <h2 className="mb-6 mt-1 text-xl font-bold text-slate-900">
-            Monthly Trend by Vendor
-          </h2>
-
-          <div className=''>
-            <VendorMonthyTrendChart data={monthlyDataVendor} />
-            <div className="mt-5">
-              <VendorCatergoryTable data={monthlyDataVendor} />
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-
-      <div className='bg-[#F8FAFB] rounded-xl'>
-        <div className='py-7.5 px-4.5'>
+      <div className='bg-[#F8FAFB] rounded-xl p-4.5 mt-6'>
+        <div className='mt-4'>
           <OperationalSatusCard />
-          <div className='py-5'>
-            <OperationalSummeryTag />
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
+          <div className="w-full  bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
+            <h2 className="mb-6 mt-1 text-xl font-bold text-slate-900">
+              Monthly Trend by Category
+            </h2>
+
+            <div className=''>
+              <OperationMonthyTrendChart data={monthlyData} />
+              <div className="mt-5">
+                <OperationalCatergoryTable data={monthlyData} />
+              </div>
+            </div>
+
+
           </div>
 
-          <div>
-            <CustomStatusUpdate />
+          <div className="w-full bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
+            <h2 className="mb-6 mt-1 text-xl font-bold text-slate-900">
+              Monthly Trend by Vendor
+            </h2>
+
+            <div className=''>
+              <VendorMonthyTrendChart data={monthlyDataVendor} />
+              <div className="mt-5">
+                <VendorCatergoryTable data={monthlyDataVendor} />
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div className=''>
+          <div className='py-7.5 px-4.5'>
+            <div className='py-5'>
+              <OperationalSummeryTag />
+            </div>
+
+            <div>
+              <CustomStatusUpdate />
+            </div>
           </div>
         </div>
       </div>

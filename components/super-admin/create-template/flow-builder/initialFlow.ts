@@ -1,4 +1,28 @@
 import { Field, Flow, Section } from '@/types/formBuilder';
+import { DashboardType } from '@/types/dashboard';
+
+/** Maps the user-facing DashboardType code to the full dashboard name used in DEFAULT_MAPPING_FIELDS */
+export const DASHBOARD_TYPE_TO_NAME: Record<DashboardType, string> = {
+  EXEC: 'Executive Summary Dashboard',
+  FIN:  'Financial Performance Dashboard',
+  OPS:  'Operational KPI Dashboard',
+};
+
+/** Heading shown in Step 2 for each dashboard type */
+export const MAPPING_STEP_TITLE: Record<DashboardType, string> = {
+  EXEC: 'Map Headers for Executive Summary',
+  FIN:  'Financial Performance Map Header',
+  OPS:  'Operational KPI Map Header',
+};
+
+/** Returns the ordered field definitions for a given dashboard type */
+export function getMappingFieldsForType(
+  type: DashboardType
+): Omit<Field, 'id'>[] {
+  return DEFAULT_MAPPING_FIELDS[DASHBOARD_TYPE_TO_NAME[type]] ?? [
+    { label: 'Period', type: 'Select/Dropdown', isRequired: true },
+  ];
+}
 
 let _n = 0;
 const uid = (prefix: string) => {

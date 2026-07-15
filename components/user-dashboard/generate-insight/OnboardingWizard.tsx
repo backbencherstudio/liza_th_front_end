@@ -16,7 +16,7 @@ export default function OnboardingWizard() {
   const [step, setStep] = useState<Step>(1);
   const [fileName, setFileName] = useState<string | null>(null);
   const [dashboardType, setDashboardType] = useState<DashboardType>("EXEC");
-  const [mappings, setMappings] = useState({ period: "Date", location: "Department", expenses: "Expenses", revenue: "Revenue" });
+  const [mappings, setMappings] = useState<Record<string, string>>({});
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
 
   const currentStepNum = step === "PROCESSING" ? 3 : step;
@@ -65,13 +65,17 @@ export default function OnboardingWizard() {
             fileName={fileName}
             setFileName={setFileName}
             dashboardType={dashboardType}
-            setDashboardType={(type: string) => setDashboardType(type as DashboardType)}
+            setDashboardType={(type: string) => {
+              setDashboardType(type as DashboardType);
+              setMappings({}); // reset whenever dashboard type changes
+            }}
             onNext={() => setStep(2)}
           />
         )}
 
         {step === 2 && (
           <Step2Mapping
+            dashboardType={dashboardType}
             mappings={mappings}
             setMappings={setMappings}
             onNext={() => setStep(3)}

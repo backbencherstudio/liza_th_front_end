@@ -42,7 +42,7 @@ export default function SectionCard({
       : 'Add Field';
 
   return (
-    <div className="border border-slate-100/80 rounded-xl p-5 mb-5 bg-white/60">
+    <div className="border border-slate-100/80 rounded-xl p-5 mb-5 bg-[#F8FAFC]">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-2">
           <h4 className="text-xs font-bold text-slate-700">{`Section ${sectionNum}`}</h4>
@@ -77,7 +77,7 @@ export default function SectionCard({
         />
       </div>
 
-      <div className="bg-white border border-slate-100 p-4 rounded-xl shadow-sm">
+      <div className="">
         <div className="flex justify-between items-center mb-3">
           <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">
             {`Field Type (${section.fields.length})`}

@@ -44,8 +44,6 @@ export default function SummeryTag() {
                     </p>
                 </div>
 
-
-
             </div>
         </div>
     );

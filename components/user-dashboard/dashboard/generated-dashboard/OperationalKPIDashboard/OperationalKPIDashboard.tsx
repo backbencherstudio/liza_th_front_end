@@ -9,12 +9,13 @@ import OperationMonthyTrendChart from './operationalTemplate/MonthlyTrednDepartm
 import VendorMonthyTrendChart from './operationalTemplate/MonthlyTrendVendor'
 import { monthlyDataVendor } from './operationalTemplate/TableDataVendor'
 import VendorCatergoryTable from './operationalTemplate/VendorTable'
+import TopHeader from '../TopHeader'
 
 export default function OperationalKPIDashboard({ dashboard }: { dashboard: GeneratedDashboard }) {
   return (
     <div>
       <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
-
+      <TopHeader />
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
         <div className="w-full  rounded-3xl bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
           <h2 className="mb-6 mt-1 text-xl font-bold text-slate-900">

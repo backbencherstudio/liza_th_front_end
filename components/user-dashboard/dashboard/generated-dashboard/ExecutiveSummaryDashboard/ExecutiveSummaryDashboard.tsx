@@ -18,6 +18,7 @@ import CashFlowCharts from '@/components/user-dashboard/dashboard/generated-dash
 import { FormSelect } from '@/components/reusable/FormSelect'
 import { Controller, useForm } from 'react-hook-form'
 import ExecuitiveSummeryKpiTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiTable'
+import TopHeader from '../TopHeader'
 
 
 type FormValues = {
@@ -58,72 +59,7 @@ export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: Ge
       <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
 
       <div>
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
-          {/* Left */}
-          <div className="flex-1">
-            <DashboardPageTitle
-              title="Executive Summary"
-              description="Company performance, cash flow and strategic intelligence"
-            />
-          </div>
-
-          {/* Right */}
-          <div className="flex flex-wrap items-end justify-start gap-3 lg:justify-end">
-            <div className="min-w-[180px]">
-              <Controller
-                name="location"
-                control={control}
-                render={({ field }) => (
-                  <FormSelect
-                    label=""
-                    placeholder="Select Location"
-                    options={options}
-                    value={field.value}
-                    onValueChange={field.onChange}
-                    error={errors.location}
-                  />
-                )}
-              />
-            </div>
-
-            <div className="min-w-[180px]">
-              <Controller
-                name="month"
-                control={control}
-                render={({ field }) => (
-                  <FormSelect
-                    label=""
-                    placeholder="Select Month"
-                    options={months}
-                    value={field.value}
-                    onValueChange={field.onChange}
-                    error={errors.month}
-                  />
-                )}
-              />
-            </div>
-
-            <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
-              <button className="sf-btn whitespace-nowrap">Edit Data</button>
-              <SquarePen className="h-4 w-4 text-[#575855]" />
-            </div>
-
-            <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
-              <button className="sf-btn whitespace-nowrap">Save</button>
-              <ArrowDownToLine className="h-4 w-4 text-[#575855]" />
-            </div>
-
-            <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
-              <button className="sf-btn whitespace-nowrap">Share</button>
-              <UserDashboardIcons.ShareIcon />
-            </div>
-
-            <div className="flex h-[47px] shrink-0 items-center gap-2 rounded-xl bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-white">
-              <button className="sf-btn whitespace-nowrap">Export</button>
-              <ArrowDownToLine className="h-4 w-4" />
-            </div>
-          </div>
-        </div>
+        <TopHeader />
 
 
 

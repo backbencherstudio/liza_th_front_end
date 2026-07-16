@@ -48,8 +48,8 @@ export default function Footer() {
             { name: "Pricing", url: "/pricing" },
         ],
         companyLinks: [
-            { name: "Terms of Service", url: "#" },
-            { name: "Privacy Policy", url: "#" },
+            { name: "Terms of Service", url: "/tearms-condition" },
+            { name: "Privacy Policy", url: "/privecy-policy" },
         ],
         location: "New Jersey, USA",
         email: "info@spiketechnology.ai",

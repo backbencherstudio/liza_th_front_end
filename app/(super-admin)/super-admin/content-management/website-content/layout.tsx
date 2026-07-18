@@ -57,16 +57,15 @@ export default function WebsiteContentLayout({
   const isSectionActive = (path: string) => pathname === path;
 
   const topLinkClass = (active: boolean) =>
-    `flex w-full items-center justify-between px-4 py-3 font-[Archivo] text-sm font-medium transition-colors ${
-      active ? "bg-[#EBF3FF] text-[#2563EB]" : "bg-white text-[#070707]"
+    `flex w-full items-center justify-between px-4 py-3 font-[Archivo] text-sm font-medium transition-colors ${active ? "bg-[#EBF3FF] text-[#2563EB]" : "bg-white text-[#070707]"
     }`;
-    
+
   return (
-    <div className="mt-6 w-full max-w-7xl space-y-6">
+    <div className="mt-6 w-full  space-y-6">
       <div className="flex w-full flex-col gap-6 rounded-3xl border border-[#EDEDED] bg-white p-4 shadow-sm md:p-6">
         <div className="flex w-full flex-col items-start gap-6 lg:flex-row">
           <aside className="flex w-full shrink-0 flex-col gap-3 lg:w-64">
-            
+
             {/* Homepage Accordion Container */}
             <div className={menuCardClass}>
               <button
@@ -76,15 +75,14 @@ export default function WebsiteContentLayout({
               >
                 <span>Homepage</span>
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    isHomepageOpen ? "rotate-180" : ""
-                  } ${isOnHomepage ? "text-[#2563EB]" : "text-[#777980]"}`}
+                  className={`h-4 w-4 transition-transform duration-200 ${isHomepageOpen ? "rotate-180" : ""
+                    } ${isOnHomepage ? "text-[#2563EB]" : "text-[#777980]"}`}
                 />
               </button>
 
               {isHomepageOpen && (
                 <div className="relative border-t border-[#EDEFE4] bg-white py-3 pl-6 pr-2 flex flex-col gap-1">
-                  
+
                   {/* LEFT VERTICAL ACCENT CONNECTOR LINE */}
                   <div className="absolute left-[22px] top-3 bottom-3 w-px bg-[#BBCFF9]" />
 
@@ -95,11 +93,10 @@ export default function WebsiteContentLayout({
                       <Link
                         key={section.path}
                         href={section.path}
-                        className={`w-full rounded-lg px-4 py-1.5 text-sm transition-colors font-[Archivo] ${
-                          active
-                            ? "bg-transparent font-medium text-[#070707]"
-                            : "text-[#8A8D99] hover:text-[#070707]"
-                        }`}
+                        className={`w-full rounded-lg px-4 py-1.5 text-sm transition-colors font-[Archivo] ${active
+                          ? "bg-transparent font-medium text-[#070707]"
+                          : "text-[#8A8D99] hover:text-[#070707]"
+                          }`}
                       >
                         {section.label}
                       </Link>
@@ -115,7 +112,7 @@ export default function WebsiteContentLayout({
                 <span className="text-left leading-tight">
                   Legal and Online Safety Page
                 </span>
-                
+
               </Link>
             </div>
 
@@ -123,7 +120,7 @@ export default function WebsiteContentLayout({
             <div className={menuCardClass}>
               <Link href={PRIVACY_PATH} className={topLinkClass(isOnPrivacy)}>
                 <span>Privacy Policy</span>
-              
+
               </Link>
             </div>
           </aside>

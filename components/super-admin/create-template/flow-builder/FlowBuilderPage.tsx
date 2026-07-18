@@ -145,7 +145,7 @@ export default function FlowBuilderPage() {
     };
 
     return (
-        <div className="mx-auto min-h-screen max-w-[1192px] bg-white p-8">
+        <div className="mx-auto min-h-screen  bg-white ">
             <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-[32px] font-semibold leading-[46px] text-[#151513]">
                     Create Template Step
@@ -157,7 +157,7 @@ export default function FlowBuilderPage() {
             </div>
 
             <div className="rounded-2xl border border-[#E6EBEF] bg-white p-6 shadow-[0_4px_12px_0_rgba(0,0,0,0.07)]">
-               
+
                 <div className="space-y-6">
                     {flow.steps.map((step) => (
                         <StepContainer

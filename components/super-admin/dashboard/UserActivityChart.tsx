@@ -23,8 +23,8 @@ const data = [
 
 export default function UserActivityChart() {
   return (
-    <div className="w-full max-w-full rounded-[20px] border border-solid border-[#E9E9EA] bg-white p-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] sm:p-6">
-      
+    <div className="w-full max-w-full h-full rounded-[20px] border border-solid border-[#E9E9EA] bg-white p-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] sm:p-6">
+
       {/* HEADER SECTION */}
       <div className="mb-4 flex w-full flex-col gap-1">
         <h3 className="font-[Archivo] text-xl font-bold tracking-tight text-[#1A1A1A] sm:text-2xl">

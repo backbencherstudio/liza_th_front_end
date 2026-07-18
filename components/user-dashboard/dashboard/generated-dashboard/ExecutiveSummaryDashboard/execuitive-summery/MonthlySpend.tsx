@@ -66,8 +66,8 @@ export default function MonthlySpendChart() {
     };
 
     return (
-        <div className="w-full max-w-3xl h-full bg-white p-8 rounded-3xl border border-gray-100 font-sans shadow-sm">
-            <h2 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Monthly Spend</h2>
+        <div className="w-full max-w-3xl h-full bg-white p-5 rounded-3xl border border-gray-100 font-sans shadow-sm">
+            <h2 className="font-[Archivo] text-[#1C1C1E] text-[18px] md:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Monthly Spend</h2>
 
             <svg width="0" height="0" className="absolute">
                 <defs>

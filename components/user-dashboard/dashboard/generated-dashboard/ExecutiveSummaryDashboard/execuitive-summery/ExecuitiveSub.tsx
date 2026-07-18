@@ -36,7 +36,7 @@ export default function ExpenseCategory() {
     return (
         <div className="w-full rounded-[20px] border border-solid border-[#E9E9EA] bg-white p-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] md:p-5 h-full">
 
-            <h3 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Financial Health</h3>
+            <h3 className="font-[Archivo] text-[#1C1C1E] text-[18px] md:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">Financial Health</h3>
             <h4 className="font-[Archivo] text-[#1C1C1E] text-[14px] sm:text-[14px]  leading-[24px] sm:leading-[14px] mb-8">Current plan breakdown</h4>
 
             <div className="flex flex-col xl:flex-row items-start gap-8">

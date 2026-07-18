@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Roles from './Roles';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -7,8 +7,45 @@ import SecurityMFA from './security/SecurityMFA';
 import Billing from './Billing';
 import FileUploadSettings from './fileUploadRule/FileUploadRule';
 import { MFASetupFlow } from './security/MFAsetupFlow';
+import EditRoleModal from './EditRoleModal';
+import DashboardPageTitle from '@/components/reusable/DashboardPageTitle';
 
 export default function RolePermision() {
+
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [modalMode, setModalMode] = useState<"add" | "edit">("edit");
+    const [editingData, setEditingData] = useState<any>(null);
+
+    const openAddModal = () => {
+        setModalMode("add");
+        setEditingData(null);
+        setIsEditModalOpen(true);
+    };
+
+    const openEditModal = () => {
+        setModalMode("edit");
+        setEditingData({
+            roleName: "Admin (Customer Service)",
+            permissions: ["manageUsers", "manageSubscriptions", "manageDiscounts", "manageAI"]
+        });
+        setIsEditModalOpen(true);
+    };
+
+    const handleSaveRole = async (data: { roleName: string; permissions: string[] }) => {
+        console.log(`${modalMode === "add" ? "Creating" : "Updating"} Role:`, data);
+
+        const res = await fetch("/api/roles", {
+            method: modalMode === "add" ? "POST" : "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+            alert(modalMode === "add" ? "Role Created Successfully!" : "Role Updated Successfully!");
+            setIsEditModalOpen(false);
+        }
+    };
+
     const router = useRouter();
     const searchParams = useSearchParams();
     const triggerClass =
@@ -16,6 +53,19 @@ export default function RolePermision() {
     const activeTab = searchParams.get("tab") ?? "roles";
     return (
         <div>
+            <div className='flex  justify-between pb-8'>
+                <div className="flex justify-between w-full"><DashboardPageTitle
+                    title="Manage Role"
+                    description="Configure platform roles, security, billing, and file upload policies"
+                />
+
+                </div>
+                <div className='w-full max-w-[200px]'>
+                    <button onClick={openAddModal} className="rounded-[8px] bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3.5 px-6 text-white cursor-pointer font-semibold text-[14px] sm:text-[15px] xl:text-base hover:bg-accent w-full">
+                        Add New Role
+                    </button>
+                </div>
+            </div>
             <div>
                 <Tabs className=" gap-6 md:gap-8"
                     value={activeTab}
@@ -71,6 +121,14 @@ export default function RolePermision() {
 
                 </Tabs>
             </div>
+
+            <EditRoleModal
+                open={isEditModalOpen}
+                onOpenChange={setIsEditModalOpen}
+                mode={modalMode}
+                initialData={editingData}
+                onSave={handleSaveRole}
+            />
         </div>
     )
 }

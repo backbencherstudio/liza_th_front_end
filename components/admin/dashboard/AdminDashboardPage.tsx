@@ -5,6 +5,7 @@ import DashboardStatsIcons from "../../icons/SupAdminIcon";
 import RecentCustomTable from "./DasboardRecentCustomTable";
 import SubscriptionStatus from "./SubscriptionStatus";
 import MonthlySubscriptionChart from "./MonthlySubscription";
+import { FormSelect } from "@/components/reusable/FormSelect";
 
 interface AdminStatus {
     id: number;
@@ -41,6 +42,13 @@ export default function AdminDashboardPage() {
             }
         ]
 
+    const timeRangeOptions = [
+        { value: "1month", label: "1 month" },
+        { value: "3months", label: "3 months" },
+        { value: "6months", label: "6 months" },
+        { value: "1year", label: "1 year" },
+    ];
+
 
     return (
         <div>
@@ -51,12 +59,12 @@ export default function AdminDashboardPage() {
                 </div>
 
                 <div className="flex  gap-4 cursor-pointer mt-3 md:mt-0">
-                    <select name="" id="" className="rounded-lg border border-[#EDEDED] px-6 py-3 cursor-pointer">
-                        <option value="">1 month</option>
-                        <option value="">3 months</option>
-                        <option value="">6 months</option>
-                        <option value="">1 year</option>
-                    </select>
+                    <FormSelect
+                        label=""
+                        options={timeRangeOptions}
+                        placeholder="1 Month"
+
+                    />
                     <button className="rounded-lg bg-[linear-gradient(144deg,_#0A206D_0%,_#3B69D0_100%)] px-6 py-3 text-white flex items-center gap-2">
                         Export <ArrowDownToLine />
                     </button>

@@ -121,13 +121,12 @@ export default function Step1Upload({
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
-                    className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 text-center transition-colors ${
-                        isDragging
-                            ? "border-blue-500 bg-blue-50"
-                            : fileName
+                    className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 text-center transition-colors ${isDragging
+                        ? "border-blue-500 bg-blue-50"
+                        : fileName
                             ? "cursor-default border-blue-400 bg-blue-50/40"
                             : "border-blue-200 hover:bg-slate-50"
-                    }`}
+                        }`}
                 >
                     {fileName ? (
                         /* Uploaded state */
@@ -227,9 +226,8 @@ function DashboardCard({
     return (
         <div
             onClick={onClick}
-            className={`relative cursor-pointer rounded-xl border-2 bg-slate-50 p-6 text-center transition-all ${
-                active ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
-            }`}
+            className={`relative cursor-pointer rounded-xl border-2 bg-slate-50 p-6 text-center transition-all ${active ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
+                }`}
         >
             {active && (
                 <div className="absolute right-3 top-3">

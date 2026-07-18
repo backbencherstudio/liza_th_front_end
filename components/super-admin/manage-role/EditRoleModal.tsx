@@ -94,13 +94,14 @@ export default function EditRoleModal({
                                     checked={selectedPermissions.includes(perm.id)}
                                     onCheckedChange={() => togglePermission(perm.id)}
                                     className="
-        border-2 border-[#D0D5DD] 
-        bg-white 
-        data-[state=checked]:border-[#2563EB] 
-        data-[state=checked]:bg-white 
-        data-[state=checked]:text-[#2563EB]
-        focus:ring-0 focus:ring-offset-0
-    "
+    border-2 border-[#D0D5DD]
+    bg-white
+    data-checked:border-[#2563EB]
+    data-checked:bg-white
+    data-checked:text-[#2563EB]
+    focus-visible:ring-0
+    focus-visible:ring-offset-0
+  "
                                 />
                                 <span className="text-[#4A5565] font-medium">{perm.label}</span>
                             </label>

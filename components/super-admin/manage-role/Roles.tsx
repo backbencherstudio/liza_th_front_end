@@ -59,11 +59,12 @@ export default function Roles() {
                 description="Define what each role can access and modify"
             />
 
-                <div className="flex items-center justify-end">
+                {/* <div className="flex items-center justify-end">
                     <button onClick={openAddModal} className="rounded-[8px] bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3.5 px-6 text-white cursor-pointer font-semibold text-[14px] sm:text-[15px] xl:text-base hover:bg-accent">
                         Add New Admin
                     </button>
-                </div></div>
+                </div> */}
+            </div>
 
             {/* Role Card */}
             <div className="w-full rounded-xl border bg-[#FFFFFF] p-4">

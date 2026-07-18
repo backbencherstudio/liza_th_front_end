@@ -1,7 +1,8 @@
 "use client";
 
-import Ai2Icon from "@/components/icons/Ai2Icon";
 import React, { useEffect, useState } from "react";
+
+import Ai2Icon from "@/components/icons/Ai2Icon";
 
 interface GeneratingScreenProps {
     onComplete?: () => void;

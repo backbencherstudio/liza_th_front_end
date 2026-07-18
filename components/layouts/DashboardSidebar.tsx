@@ -39,7 +39,7 @@ export default function DashboardSidebar({
   return (
     <aside
       className={`relative flex h-full w-full flex-col bg-white px-4 py-4 ${onClose ? "" : "border-r border-[#EAECF0]"
-        } ${navigation.showSidebarAccent ? "border-l-[3px] " : ""}`}
+        } ${navigation.showSidebarAccent ? "border-l-[3px] border-l-[#1E40AF]" : ""}`}
     >
       <div className="relative flex h-[80px] w-[122px] mb-6 -mt-15 lg:mt-0 items-center justify-center mx-auto">
         <Image

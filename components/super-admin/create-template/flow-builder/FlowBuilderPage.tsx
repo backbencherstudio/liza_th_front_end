@@ -1,126 +1,146 @@
 'use client';
 
 import { useImmer } from 'use-immer';
-import { Flow, Field } from '@/types/formBuilder';
+import { Field } from '@/types/formBuilder';
 import StepContainer from './StepContainer';
-import { Plus } from 'lucide-react';
 import CustomButton from '@/components/reusable/CustomButton';
+import {
+    createInitialFlow,
+    syncMappingSectionsFromDashboardTypes,
+} from './initialFlow';
+
+const STEP1_ID = 'step-1';
+const STEP2_ID = 'step-2';
+const STEP3_ID = 'step-3';
+const DASHBOARD_SECTION_ID = 'sec-dashboard-type';
 
 export default function FlowBuilderPage() {
-    const [flow, updateFlow] = useImmer<Flow>({
-        id: 'flow-root',
-        name: 'B',
-        steps: []
-    });
+    const [flow, updateFlow] = useImmer(createInitialFlow);
 
-    const addStep = () => {
-        updateFlow(draft => {
-            const stepNumber = draft.steps.length + 1;
-            draft.steps.push({
-                id: `step-${crypto.randomUUID()}`,
-                name: `Step ${stepNumber}`,
-                sections: []
+    const addSection = (stepId: string) => {
+        if (stepId === STEP1_ID || stepId === STEP3_ID) return;
+
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            if (!step || step.kind === 'mapping') return;
+            step.sections.push({
+                id: `sec-${crypto.randomUUID()}`,
+                title: '',
+                fields: [],
             });
         });
     };
 
-    const addSection = (stepId: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            if (step) {
-                step.sections.push({
-                    id: `sec-${crypto.randomUUID()}`,
-                    title: '', // Starts blank so user can type section heading directly
-                    fields: []
-                });
-            }
-        });
-    };
-
     const updateSectionTitle = (stepId: string, sectionId: string, title: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            const section = step?.sections.find((sec) => sec.id === sectionId);
             if (section) section.title = title;
         });
     };
 
-    const addField = (stepId: string, sectionId: string, fieldData: Omit<Field, 'id' | 'subfields'>) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            if (section) {
-                section.fields.push({
-                    ...fieldData,
-                    id: `field-${crypto.randomUUID()}`,
-                    isExpanded: true,
-                    subfields: []
-                });
+    const addField = (stepId: string, sectionId: string, fieldData: Omit<Field, 'id'>) => {
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            const section = step?.sections.find((sec) => sec.id === sectionId);
+            if (!section) return;
+            if (sectionId === 'sec-upload') return;
+
+            const isDashboardSection = sectionId === DASHBOARD_SECTION_ID;
+            const isGoalsSection = stepId === STEP3_ID;
+
+            section.fields.push({
+                ...fieldData,
+                type: isDashboardSection
+                    ? 'Single Select'
+                    : isGoalsSection
+                        ? 'Multi Select'
+                        : fieldData.type,
+                id: `field-${crypto.randomUUID()}`,
+            });
+
+            if (isDashboardSection) {
+                const step2 = draft.steps.find((s) => s.id === STEP2_ID);
+                if (step2) {
+                    step2.sections = syncMappingSectionsFromDashboardTypes(
+                        section.fields,
+                        step2.sections
+                    );
+                }
             }
-        });
-    };
-
-    const toggleFieldExpand = (stepId: string, sectionId: string, fieldId: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            const field = section?.fields.find(f => f.id === fieldId);
-            if (field) field.isExpanded = !field.isExpanded;
-        });
-    };
-
-    const addSubField = (stepId: string, sectionId: string, fieldId: string) => {
-        const label = prompt("Enter subfield display label name:");
-        if (!label) return;
-
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            const field = section?.fields.find(f => f.id === fieldId);
-            if (field) {
-                field.subfields.push({
-                    id: `sub-${crypto.randomUUID()}`,
-                    label,
-                    type: 'Select/Dropdown'
-                });
-            }
-        });
-    };
-
-    const updateGroupTitle = (stepId: string, sectionId: string, fieldId: string, title: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            const field = section?.fields.find(f => f.id === fieldId);
-            if (field) field.subFieldGroupTitle = title;
         });
     };
 
     const deleteStep = (stepId: string) => {
-        updateFlow(draft => { draft.steps = draft.steps.filter(s => s.id !== stepId); });
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            if (step?.locked) return;
+            draft.steps = draft.steps.filter((s) => s.id !== stepId);
+        });
     };
 
     const deleteSection = (stepId: string, sectionId: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            if (step) step.sections = step.sections.filter(sec => sec.id !== sectionId);
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            const section = step?.sections.find((sec) => sec.id === sectionId);
+            if (!step || section?.locked) return;
+
+            if (stepId === STEP2_ID && section?.linkedDashboardFieldId) {
+                const step1 = draft.steps.find((s) => s.id === STEP1_ID);
+                const dashSec = step1?.sections.find((s) => s.id === DASHBOARD_SECTION_ID);
+                if (dashSec) {
+                    dashSec.fields = dashSec.fields.filter(
+                        (f) => f.id !== section.linkedDashboardFieldId
+                    );
+                }
+            }
+
+            step.sections = step.sections.filter((sec) => sec.id !== sectionId);
         });
     };
 
     const deleteField = (stepId: string, sectionId: string, fieldId: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            if (section) section.fields = section.fields.filter(f => f.id !== fieldId);
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            const section = step?.sections.find((sec) => sec.id === sectionId);
+            const field = section?.fields.find((f) => f.id === fieldId);
+            if (!section || field?.locked) return;
+
+            section.fields = section.fields.filter((f) => f.id !== fieldId);
+
+            if (stepId === STEP1_ID && sectionId === DASHBOARD_SECTION_ID) {
+                const step2 = draft.steps.find((s) => s.id === STEP2_ID);
+                if (step2) {
+                    step2.sections = syncMappingSectionsFromDashboardTypes(
+                        section.fields,
+                        step2.sections
+                    );
+                }
+            }
         });
     };
 
-    const deleteSubField = (stepId: string, sectionId: string, fieldId: string, subFieldId: string) => {
-        updateFlow(draft => {
-            const step = draft.steps.find(s => s.id === stepId);
-            const section = step?.sections.find(sec => sec.id === sectionId);
-            const field = section?.fields.find(f => f.id === fieldId);
-            if (field) field.subfields = field.subfields.filter(sf => sf.id !== subFieldId);
+    const renameFieldLabel = (
+        stepId: string,
+        sectionId: string,
+        fieldId: string,
+        label: string
+    ) => {
+        updateFlow((draft) => {
+            const step = draft.steps.find((s) => s.id === stepId);
+            const section = step?.sections.find((sec) => sec.id === sectionId);
+            const field = section?.fields.find((f) => f.id === fieldId);
+            if (field) field.label = label;
+
+            if (stepId === STEP1_ID && sectionId === DASHBOARD_SECTION_ID && section) {
+                const step2 = draft.steps.find((s) => s.id === STEP2_ID);
+                if (step2) {
+                    step2.sections = syncMappingSectionsFromDashboardTypes(
+                        section.fields,
+                        step2.sections
+                    );
+                }
+            }
         });
     };
 
@@ -131,40 +151,15 @@ export default function FlowBuilderPage() {
                     Create Template Step
                 </h2>
                 <div className="flex items-center gap-2">
-                    <CustomButton variant="outline">
-                        Live Preview
-                    </CustomButton>
-                    <CustomButton variant="primary">
-                        Publish
-                    </CustomButton>
+                    {/* <CustomButton variant="outline">Live Preview</CustomButton> */}
+                    <CustomButton variant="primary">Publish</CustomButton>
                 </div>
             </div>
 
             <div className="rounded-2xl border border-[#E6EBEF] bg-white p-6 shadow-[0_4px_12px_0_rgba(0,0,0,0.07)]">
-                <div className="mb-6">
-                    <label className="mb-2 block text-lg font-medium leading-6 text-[#070707]">
-                        Flow name
-                    </label>
-                    <input
-                        type="text"
-                        value={flow.name}
-                        onChange={(e) => updateFlow(d => { d.name = e.target.value; })}
-                        className="w-full rounded border border-[rgba(8,14,30,0.05)] bg-[rgba(8,14,30,0.02)] p-4 backdrop-blur-[2px]"
-                    />
-                </div>
-
-                <button
-                    onClick={addStep}
-                    className="mb-6 flex h-12 w-full items-center justify-center gap-2 rounded border border-[#2563EB] px-6 py-4"
-                >
-                    <span className="flex items-center gap-2 text-base font-semibold text-[#2563EB]">
-                        <Plus size={20} />
-                        Add Step
-                    </span>
-                </button>
-
+               
                 <div className="space-y-6">
-                    {flow.steps.map(step => (
+                    {flow.steps.map((step) => (
                         <StepContainer
                             key={step.id}
                             step={step}
@@ -172,12 +167,9 @@ export default function FlowBuilderPage() {
                             onUpdateSectionTitle={updateSectionTitle}
                             onDeleteStep={deleteStep}
                             onAddField={addField}
-                            onToggleFieldExpand={toggleFieldExpand}
-                            onAddSubField={addSubField}
-                            onUpdateGroupTitle={updateGroupTitle}
                             onDeleteSection={deleteSection}
                             onDeleteField={deleteField}
-                            onDeleteSubField={deleteSubField}
+                            onRenameField={renameFieldLabel}
                         />
                     ))}
                 </div>

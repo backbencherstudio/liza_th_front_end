@@ -5,18 +5,17 @@ import StatsCard from '@/components/reusable/StatusCard';
 import { Calendar, Menu, Plus, Search } from 'lucide-react'
 import Image from 'next/image';
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
 
 export default function page() {
+    const router = useRouter();
+
+    const handleCreateTemplate = () => {
+        router.push('/super-admin/create-template');
+    };
+
     const [selectedId, setSelectedId] = useState<number | null>(null);
     const templateOverviewData = [
-        {
-            id: 1,
-            title: "Total Templates",
-            icon: DashboardStatsIcons.ActiveInsight,
-            value: "12,453",
-            description: "+12.5% from last month",
-            trend: "up",
-        },
         {
             id: 2,
             title: "Published",
@@ -80,7 +79,7 @@ export default function page() {
                     </div>
 
                     {/* Right */}
-                    <button className="flex items-center gap-2 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-6 py-3.5 text-sm font-medium text-white transition  cursor-pointer">
+                    <button onClick={handleCreateTemplate} className="flex items-center gap-2 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-6 py-3.5 text-sm font-medium text-white transition  cursor-pointer">
                         <Plus size={18} />
                         Template Step
                     </button>

@@ -6,9 +6,9 @@ export function ExecuitiveCard({ title, value, change, tag, trend, themeColor = 
     return (
         <div
             style={{ borderColor: themeColor }}
-            className="w-full rounded-[24px] border-t-[6px] border-b-[2.5px] border-x-[1.2px] border-solid bg-white p-5 font-sans shadow-sm"
+            className="w-full rounded-[24px] border-t-[6px] border-b-[2.5px] border-x-[1.2px] border-solid bg-white p-5 font-sans shadow-sm "
         >
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 ">
                 <span className="text-[#4A4C56] font-[Archivo] text-[12px] font-bold leading-[16px]">
                     {title}
                 </span>

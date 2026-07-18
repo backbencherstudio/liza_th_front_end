@@ -47,9 +47,9 @@ const RenderCustomDot = (props: any) => {
 
 export default function SubscriptionChart() {
     return (
-        <div className="w-full h-full max-w-4xl p-6 bg-white rounded-2xl border border-gray-100 shadow-sm font-sans">
+        <div className="w-full h-full max-w-4xl p-6 bg-white rounded-2xl border border-gray-100  font-sans">
 
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 px-2">
+            <h2 className="font-[Archivo] text-[#1C1C1E] text-[18px]  md:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-6 px-2">
                 Monthly Subscription Activity
             </h2>
 

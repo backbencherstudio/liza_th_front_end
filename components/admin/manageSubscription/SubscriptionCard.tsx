@@ -155,7 +155,7 @@ export default function SubscriptionCard() {
             <div className="">
                 {/* Header */}
                 <div className=" mb-4 md:mb-8">
-                    <h2 className="text-xl md:text-2xl lg:text-4xl font-semibold text-[#151513] ">Active Plan</h2>
+                    <h2 className="text-[32px] font-semibold text-[#151513] ">Active Plan</h2>
 
                 </div>
 

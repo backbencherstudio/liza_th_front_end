@@ -28,7 +28,7 @@ const kpiData = [
         change: "1.2% Growth",
         trend: "up",
         tag: "Blended avg",
-        badgeBg: "bg-[#E8F7F0]",                        
+        badgeBg: "bg-[#E8F7F0]",
         badgeColor: "text-[#10B981]",
     },
     {

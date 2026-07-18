@@ -64,7 +64,7 @@ export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: Ge
       <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
 
       <div>
-        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} />
+        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} />
 
 
 

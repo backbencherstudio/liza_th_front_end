@@ -14,17 +14,17 @@ export default function FinancialHealth() {
             <div>
                 {/* HEADER TITLE SECTION */}
                 <div className="mb-4 flex w-full flex-col gap-1">
-                    <h3 className="font-[Archivo] text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                    <h3 className="font-[Archivo] font-medium text-[#1C1C1E] text-[18px] leading-[24px] md:text-[20px] md:leading-[26px]">
                         Financial Health
                     </h3>
-                    <span className="text-sm font-[Archivo] text-[#71717A]">
+                    <span className="font-[Archivo] font-normal text-[#3D3D3C] text-[13px] leading-[18px] sm:text-[14px] sm:leading-[20px]">
                         Current plan breakdown
                     </span>
                 </div>
 
                 {/* CORE GRAPHICS WRAPPER */}
                 <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 py-4">
-                    
+
                     {/* DONUT VISUALIZATION ENGINE (LEFT) */}
                     <div className="relative flex h-[200px] w-[200px] shrink-0 items-center justify-center">
                         <ResponsiveContainer width="100%" height="100%">

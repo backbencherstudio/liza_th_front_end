@@ -68,7 +68,7 @@ export default function PricingCard({ plan, billingPeriod }: CardProps) {
           {plan.features.map((feature, idx) => (
             <div key={idx} className="flex items-start gap-2.5">
               <div className="shrink-0 mt-0.5">
-                <FeatureIcon/>
+                <FeatureIcon />
               </div>
               <span className="flex-1 text-[#3D3D3C] font-['Archivo'] text-sm font-normal leading-[22px]">
                 {feature}

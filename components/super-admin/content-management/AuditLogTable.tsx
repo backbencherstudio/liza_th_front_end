@@ -59,8 +59,8 @@ export default function AuditLogTable() {
   };
 
   return (
-    <div className="w-full bg-white p-6 rounded-[20px] border border-solid border-[#E9E9EA] shadow-[0_4px_12px_0_rgba(0,0,0,0.03)]">
-      
+    <div className="w-full bg-white p-6 mt-6 rounded-[20px] border border-solid border-[#E9E9EA] shadow-[0_4px_12px_0_rgba(0,0,0,0.03)]">
+
       {/* HEADER BAR CONTEXT */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
@@ -71,7 +71,7 @@ export default function AuditLogTable() {
             Track all changes who changed what, when, and from what value
           </p>
         </div>
-        
+
         <button
           onClick={handleExport}
           className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium font-[Archivo] text-[#1A1A1A] bg-white border border-solid border-[#E9E9EA] rounded-xl hover:bg-[#FAFBFC] transition-colors self-start md:self-auto shadow-sm"
@@ -84,7 +84,7 @@ export default function AuditLogTable() {
       {/* LEDGER DATA GRID TABLE TABLE */}
       <div className="w-full overflow-x-auto">
         <table className="w-full border-collapse text-left min-w-[800px]">
-          
+
           {/* STYLED TABLE HEADER ROWS */}
           <thead>
             <tr className="bg-[#F4F4F5] border-b border-solid border-[#E9E9EA]">
@@ -103,7 +103,7 @@ export default function AuditLogTable() {
               return (
                 <tr key={log.id} className="group transition-colors">
                   <td colSpan={5} className="p-0">
-                    
+
                     {/* TOP SUMMARY LINE CELL WRAPPER */}
                     <div className="flex items-center w-full p-4 text-sm font-[Archivo] text-[#1A1A1A]">
                       <div className="w-[20%] pr-4 text-gray-600">{log.timestamp}</div>
@@ -118,9 +118,8 @@ export default function AuditLogTable() {
                         <button
                           type="button"
                           onClick={() => toggleRow(log.id)}
-                          className={`inline-flex items-center justify-end gap-1.5 text-sm font-medium transition-colors ${
-                            isExpanded ? "text-[#A855F7]" : "text-[#71717A] hover:text-[#1A1A1A]"
-                          }`}
+                          className={`inline-flex items-center justify-end gap-1.5 text-sm font-medium transition-colors ${isExpanded ? "text-[#A855F7]" : "text-[#71717A] hover:text-[#1A1A1A]"
+                            }`}
                         >
                           <span>{isExpanded ? "Hide" : "View diff"}</span>
                           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -132,7 +131,7 @@ export default function AuditLogTable() {
                     {isExpanded && (
                       <div className="px-4 pb-5 pt-1 bg-white">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-                          
+
                           {/* PREVIOUS VALUE VIEW PANELS */}
                           <div className="flex flex-col gap-1.5">
                             <span className="text-xs font-semibold font-[Archivo] text-[#2563EB]">

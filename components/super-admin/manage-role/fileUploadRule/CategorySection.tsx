@@ -36,13 +36,13 @@ export default function CategorySection({ title, data, setData }: any) {
                 {title}
             </h3>
 
-            <div className="flex flex-col gap-4 lg:flex-row">
+            <div className="flex flex-col gap-4 xl:flex-row">
                 {/* Extensions */}
-                <div className="flex min-h-[64px] flex-1 flex-wrap items-center gap-2 rounded-xl border border-[#D0D5DD] p-2">
+                <div className="flex min-h-[48px] flex-1 flex-wrap items-center gap-2 rounded-xl border border-[#D0D5DD] px-2 py-2 md:py-2 xl:py-1 ">
                     {data.extensions.map((ext: string) => (
                         <div
                             key={ext}
-                            className="flex items-center gap-2 rounded-full bg-[#F2F4F7] px-4 py-2 text-sm text-[#4A5565]"
+                            className="flex items-center gap-2 rounded-full bg-[#F9FAFB] px-4 py-2 text-sm text-[#4A5565]"
                         >
                             <span>{ext}</span>
 
@@ -62,12 +62,12 @@ export default function CategorySection({ title, data, setData }: any) {
                         // placeholder="Add extension"
                         onChange={(e) => setNewExt(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && addExtension()}
-                        className="min-w-[180px] flex-1 max-w-[255px] rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm outline-none focus:border-[#2563EB]"
+                        className="flex-1 min-w-[120px] lg:min-w-[100px] xl:min-w-[180px] max-w-[255px] rounded-lg border border-[#D0D5DD] px-4 py-2 text-sm outline-none focus:outline-none focus:border-blue-500"
                     />
                 </div>
 
                 {/* File Size */}
-                <div className="flex h-17 w-full items-center justify-between rounded-xl border border-[#D0D5DD] px-4 lg:w-[190px]">
+                <div className="flex h-12 w-full lg:w-[180px] xl:w-[190px] shrink-0 items-center justify-between rounded-xl border border-[#D0D5DD] px-4">
                     <span className="text-sm text-[#151513]">
                         File Size
                     </span>
@@ -84,7 +84,7 @@ export default function CategorySection({ title, data, setData }: any) {
                                     size: Number(e.target.value.replace(/\D/g, "")),
                                 }))
                             }
-                            className="w-10 bg-transparent text-right text-lg outline-none"
+                            className="w-10 bg-transparent text-right text-lg outline-none focus:outline-none focus:border-blue-500"
                         />
 
                         <span className="text-base text-[#344054]">MB</span>

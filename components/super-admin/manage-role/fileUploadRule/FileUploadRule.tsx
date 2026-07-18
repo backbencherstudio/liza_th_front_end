@@ -39,10 +39,10 @@ export default function FileUploadSettings() {
                 <div className="mt-6 md:mt-8">
                     <h2 className="text-[20px] sm:text-[22px] xl:text-2xl text-[#101828] font-medium sm:leading-7 xl:leading-8 mb-4">Global Settings</h2>
                     <div className="space-y-4">
-                        <div className="flex justify-between items-center bg-gray-50 p-5 rounded-xl border">
+                        <div className="flex justify-between items-center bg-[#FFFFFF] p-5 rounded-xl border">
                             <div>
                                 <p className="text-[14px] sm:text-[15px] xl:text-base text-[#151513] font-normal sm:leading-5 xl:leading-[22px]">Global Storage Limit per User</p>
-                                <p className="text-[11px] sm:text-xs xl:text-xs text-[#4A5565] font-normal sm:leading-[14px] xl:leading-4 mt-3">Maximum total storage per account</p>
+                                <p className="text-[12px] sm:text-xs xl:text-xs text-[#4A5565] font-normal sm:leading-[14px] xl:leading-4 mt-3">Maximum total storage per account</p>
                             </div>
                             <div className="flex items-center gap-2">
                                 <input
@@ -84,7 +84,7 @@ export default function FileUploadSettings() {
 
 function Toggle({ label, checked, onChange }: any) {
     return (
-        <div className="flex justify-between items-center bg-gray-50 p-5 rounded-xl border">
+        <div className="flex justify-between items-center p-5 rounded-xl border">
             <div>
                 <p className="text-[14px] sm:text-[15px] xl:text-base text-[#151513] font-normal sm:leading-5 xl:leading-[22px]">{label}</p>
                 <p className="text-[11px] sm:text-xs xl:text-xs text-[#4A5565] font-normal sm:leading-[14px] xl:leading-4 mt-3">

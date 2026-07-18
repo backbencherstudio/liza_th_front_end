@@ -12,11 +12,11 @@ import SubscriptionForm from "@/components/super-admin/manage-subscription/Creat
 
 
 const mockSubscriptions: RecentSubscription[] = [
-    { id: "1", name: "John Doe", role: "Admin", plan: "Pro Plan (Monthly)", amount: "$299/mo", joinDate: "1/15/2026", endDate: "1/25/2026", status: "Active" },
-    { id: "2", name: "Jane Smith", role: "User", plan: "Premium (Monthly)", amount: "$299/mo", joinDate: "2/20/2026", endDate: "2/20/2026", status: "Active" },
-    { id: "3", name: "Bob Johnson", role: "Moderator", plan: "Pro Plan (Yearly)", amount: "$299/mo", joinDate: "3/10/2026", endDate: "3/10/2026", status: "Active" },
-    { id: "4", name: "Alice Williams", role: "Admin", plan: "Pro Plan (Yearly)", amount: "$299/mo", joinDate: "1/5/2026", endDate: "1/5/2026", status: "Expired" },
-    { id: "5", name: "Charlie Brown", role: "User", plan: "Premium (Yearly)", amount: "$299/mo", joinDate: "4/1/2026", endDate: "1/5/2026", status: "Active" },
+    { id: "1", name: "John Doe", role: "Admin", plan: "Monthly", amount: "$299/mo", joinDate: "1/15/2026", endDate: "1/25/2026", status: "Active" },
+    { id: "2", name: "Jane Smith", role: "User", plan: "Monthly", amount: "$299/mo", joinDate: "2/20/2026", endDate: "2/20/2026", status: "Active" },
+    { id: "3", name: "Bob Johnson", role: "Moderator", plan: "Yearly", amount: "$299/mo", joinDate: "3/10/2026", endDate: "3/10/2026", status: "Active" },
+    { id: "4", name: "Alice Williams", role: "Admin", plan: "Yearly", amount: "$299/mo", joinDate: "1/5/2026", endDate: "1/5/2026", status: "Expired" },
+    { id: "5", name: "Charlie Brown", role: "User", plan: "Yearly", amount: "$299/mo", joinDate: "4/1/2026", endDate: "1/5/2026", status: "Active" },
 ];
 
 export default function ManageSubscriptionTable() {

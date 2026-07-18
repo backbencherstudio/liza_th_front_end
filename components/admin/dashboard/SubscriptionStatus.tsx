@@ -40,12 +40,12 @@ const renderInsideLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, value }
 export default function SubscriptionStatus() {
     return (
         <div className="w-full rounded-[20px] border border-solid border-[#E9E9EA] bg-white p-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] md:p-5 h-full">
-            <h3 className="font-archivo text-[#151513] text-[24px] font-medium leading-[32px] tracking-[-0.48px]">Subscription Status</h3>
+            <h3 className="font-archivo text-[#151513] text-lg md:text-[20px] font-medium leading-[32px] tracking-[-0.48px]">Subscription Status</h3>
             <p className="text-sm text-[#71717A] pt-1 pb-6">Current plan breakdown</p>
 
-            <div className="flex flex-col xl:flex-row xl:items-center gap-8">
+            <div className="flex flex-col xl:flex-row xl:items-center gap-8 2xl:gap-0">
                 {/* Chart */}
-                <div className="relative mx-auto flex h-[220px] w-[220px] shrink-0 items-center justify-center">
+                <div className="relative mx-auto flex h-[220px] w-[200px] shrink-0 items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
                             <Pie
@@ -85,7 +85,7 @@ export default function SubscriptionStatus() {
                 </div>
 
                 {/* Legend */}
-                <div className="w-full xl:flex-1">
+                <div className="w-full xl:flex-2">
                     <div className="divide-y divide-[#F4F4F5]">
                         {data.map((item) => (
                             <div

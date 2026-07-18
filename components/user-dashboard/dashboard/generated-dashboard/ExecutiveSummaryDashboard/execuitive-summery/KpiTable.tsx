@@ -1,24 +1,23 @@
 import React from "react";
 
 interface SpendRow {
-    description: string;
-    totalSpend: string;
+    Metric: string;
+    Actual: string;
+    Plan: string;
     variancePercent: number;
-    direction: "increase" | "decrease";
+    Status: "Good" | "Bad";
 }
 
 const data: SpendRow[] = [
-    { description: "AWS Cloud Service", totalSpend: "$267K", variancePercent: 10, direction: "increase" },
-    { description: "Salesforce", totalSpend: "$145K", variancePercent: 2, direction: "decrease" },
-    { description: "Staples", totalSpend: "8.3%", variancePercent: 1, direction: "increase" },
-    { description: "Office Solutions", totalSpend: "$12,737", variancePercent: 4, direction: "increase" },
-    { description: "Other", totalSpend: "$41,415", variancePercent: 1, direction: "decrease" },
+    { Metric: "Revenue", Actual: "$267K", Plan: "$267K", variancePercent: 10, Status: "Good" },
+    { Metric: "Spend", Actual: "$145K", Plan: "$145K", variancePercent: 2, Status: "Good" },
+    { Metric: "Gross Margin", Actual: "8.3%", Plan: "8.3%", variancePercent: 1, Status: "Good" },
 ];
 
 const ExecuitiveSummeryKpiTable: React.FC = () => {
     return (
         <div className="w-full h-full  rounded-3xl bg-white p-7  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
-            <h2 className="mb-6 mt-1 text-2xl font-bold text-slate-900">
+            <h2 className="mb-6 mt-1 text-[#1C1C1E] font-medium text-[18px] sm:text-[20px] leading-[24px] sm:leading-[26px]">
                 Spend Variance by Category
             </h2>
 
@@ -27,37 +26,57 @@ const ExecuitiveSummeryKpiTable: React.FC = () => {
                     <thead>
                         <tr className="bg-slate-50">
                             <th className="px-2.5 py-4 text-left font-medium text-slate-500 rounded-tl-xl ">
-                                Description
+                                Metric
                             </th>
                             <th className="px-2.5 py-4 text-left font-medium text-slate-500">
-                                Total Spend
+                                Actual
                             </th>
                             <th className="px-2.5 py-4 text-left font-medium text-slate-500 rounded-tr-xl">
-                                Variance prior period
+                                Plan
+                            </th>
+                            <th className="px-2.5 py-4 text-left font-medium text-slate-500 rounded-tr-xl">
+                                Variance
+                            </th>
+                            <th className="px-2.5 py-4 text-left font-medium text-slate-500 rounded-tr-xl">
+                                Status
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((row, idx) => (
                             <tr
-                                key={row.description}
+                                key={row.Metric}
                                 className={idx !== data.length - 1 ? "border-b border-slate-100" : ""}
                             >
                                 <td className="px-2.5 py-4 font-semibold 1
 text-[#424750] ">
-                                    {row.description}
+                                    {row.Metric}
                                 </td>
-                                <td className="px-2.5 py-4 text-slate-500">{row.totalSpend}</td>
+                                <td className="px-2.5 py-4 ">{row.Actual}</td>
+                                <td className="px-2.5 py-4">
+                                    {row.Plan}
+                                </td>
                                 <td className="px-2.5 py-4">
                                     <span
                                         className={
-                                            row.direction === "increase"
+                                            row.variancePercent > 0
                                                 ? "text-emerald-600"
                                                 : "text-red-600"
                                         }
                                     >
                                         {row.variancePercent}%{" "}
-                                        {row.direction === "increase" ? "Increase" : "decrease"}
+                                        {row.Status === "Good" ? "Increase" : "decrease"}
+                                    </span>
+                                </td>
+                                <td className="px-2.5 py-4">
+                                    <span
+                                        className={
+                                            row.Status === "Good"
+                                                ? "text-emerald-600"
+                                                : "text-red-600"
+                                        }
+                                    >
+                                        {row.Status}
                                     </span>
                                 </td>
                             </tr>

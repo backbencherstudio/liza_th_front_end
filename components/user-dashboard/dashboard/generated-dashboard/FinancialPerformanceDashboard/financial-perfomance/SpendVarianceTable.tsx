@@ -17,8 +17,8 @@ const data: SpendRow[] = [
 
 const SpendVarianceTable: React.FC = () => {
   return (
-    <div className="w-full  rounded-3xl bg-white p-7  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
-      <h2 className="mb-6 mt-1 text-2xl font-bold text-slate-900">
+    <div className="w-full  rounded-3xl bg-white p-7  h-full font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
+      <h2 className="mb-6 mt-1 font-[Archivo] font-medium text-[#1C1C1E] text-[18px] leading-[24px] md:text-[20px] md:leading-[26px]">
         Spend Variance by Category
       </h2>
 

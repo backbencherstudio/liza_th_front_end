@@ -31,7 +31,7 @@ export default function CategorySection({ title, data, setData }: any) {
     };
 
     return (
-        <div className="rounded-2xl border border-[#ECEFF3] bg-white p-6">
+        <div className="rounded-2xl border border-[#ECEFF3] bg-white p-3 md:p-4 lg:p-6">
             <h3 className="text-[16px] sm:text-[17px] xl:text-lg text-[#151513] font-medium sm:leading-[22px] xl:leading-6 mb-6">
                 {title}
             </h3>

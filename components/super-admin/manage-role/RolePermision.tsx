@@ -53,14 +53,14 @@ export default function RolePermision() {
     const activeTab = searchParams.get("tab") ?? "roles";
     return (
         <div>
-            <div className='flex  justify-between pb-8'>
+            <div className='flex  flex-col sm:flex-row   justify-between pb-8'>
                 <div className="flex justify-between w-full"><DashboardPageTitle
                     title="Manage Role"
                     description="Configure platform roles, security, billing, and file upload policies"
                 />
 
                 </div>
-                <div className='w-full max-w-[200px]'>
+                <div className='w-full sm:max-w-[200px] sm:mt-0 mt-5'>
                     <button onClick={openAddModal} className="rounded-[8px] bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] py-3.5 px-6 text-white cursor-pointer font-semibold text-[14px] sm:text-[15px] xl:text-base hover:bg-accent w-full">
                         Add New Role
                     </button>

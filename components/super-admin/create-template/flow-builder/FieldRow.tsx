@@ -9,6 +9,7 @@ interface FieldRowProps {
 }
 
 export default function FieldRow({ field, onDeleteField }: FieldRowProps) {
+
   return (
     <div className="flex justify-between items-center bg-white p-3 border border-slate-100 rounded-lg shadow-sm mb-2">
       <div className="flex items-center gap-3">
@@ -29,6 +30,8 @@ export default function FieldRow({ field, onDeleteField }: FieldRowProps) {
           </button>
         )}
       </div>
+
+
     </div>
   );
 }

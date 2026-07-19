@@ -161,7 +161,7 @@ export default function MessagePage({ onClose }: MessagePageProps) {
                 {onClose && (
                     <button
                         onClick={onClose}
-                        className="absolute right-4 top-4 text-white/80 hover:text-white transition-colors"
+                        className="absolute right-4 top-4 border rounded-full border-white text-white/80 hover:text-white transition-colors"
                     >
                         <Minus />
                     </button>

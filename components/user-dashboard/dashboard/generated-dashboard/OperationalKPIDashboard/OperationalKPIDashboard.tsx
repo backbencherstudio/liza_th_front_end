@@ -1,5 +1,4 @@
 import { GeneratedDashboard } from '@/types/dashboard'
-import React from 'react'
 import OperationalSatusCard from './operationalTemplate/OperationalSatusCard'
 import OperationalSummeryTag from './operationalTemplate/OperationalSummeryTag'
 import CustomStatusUpdate from './operationalTemplate/CustomStatusUpdateData'
@@ -19,10 +18,11 @@ const editTypes = [
 ];
 
 export default function OperationalKPIDashboard({ dashboard }: { dashboard: GeneratedDashboard }) {
+  const dateOnly = dashboard.title.split('–')[1]?.trim();
   return (
     <div className=''>
-      <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
-      <TopHeader title={"Operational KPIs"} subtitle={"Track key performance indicators for your operations"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} />
+      
+      <TopHeader title={"Operational KPIs"} subtitle={"Track key performance indicators for your operations"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} dateOnly={dateOnly} />
 
       <div className='bg-[#F8FAFB] rounded-xl p-4.5 mt-6'>
         <div className='mt-4'>

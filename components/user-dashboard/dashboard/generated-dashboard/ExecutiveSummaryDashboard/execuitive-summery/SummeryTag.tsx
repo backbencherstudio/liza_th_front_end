@@ -10,7 +10,7 @@ export default function SummeryTag() {
             <div className="space-y-6">
                 <div>
                     <h4 className="font-archivo text-[18px] font-semibold leading-[20px] text-[#3D3D3C] mb-2.5">
-                        Summary :
+                        Summary:
                     </h4>
                     <p className="font-archivo text-[14px] font-normal leading-[20px] text-[#424750]">
                         The proposed development of the Spike Technology SaaS platform carries a total capital expenditure of $9,500.
@@ -21,7 +21,7 @@ export default function SummeryTag() {
 
                 <div>
                     <h4 className="font-archivo text-[18px] font-semibold leading-[20px] text-[#3D3D3C] mb-2.5">
-                        Opportunity :
+                        Opportunity:
                     </h4>
                     <p className="font-archivo text-[14px] font-normal leading-[20px] text-[#424750]">
                         There is a significant cost concentration in Phase 1 ($4,000). While critical for enterprise styling, any delays
@@ -32,7 +32,7 @@ export default function SummeryTag() {
 
                 <div>
                     <h4 className="font-archivo text-[18px] font-semibold leading-[20px] text-[#3D3D3C] mb-2.5">
-                        Recommendation :
+                        Recommendation:
                     </h4>
                     <p className="font-archivo text-[14px] font-normal leading-[20px] text-[#424750]">
                         This automated summary is intended to assist with internal reviews and data synthesis. It is not an official financial audit or a substitute for professional accounting review. Always cross reference the generated insights with source financial models before reporting.

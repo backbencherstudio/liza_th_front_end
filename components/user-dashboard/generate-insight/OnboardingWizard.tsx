@@ -14,7 +14,7 @@ export type Step = 1 | 2 | 3 | "PROCESSING";
 export default function OnboardingWizard() {
   const router = useRouter();
   const [step, setStep] = useState<Step>(1);
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [fileNames, setFileNames] = useState<string[]>([]);
   const [dashboardType, setDashboardType] = useState<DashboardType>("EXEC");
   const [mappings, setMappings] = useState<Record<string, string>>({});
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
@@ -30,7 +30,7 @@ export default function OnboardingWizard() {
       id,
       title: `${DASHBOARD_LABELS[dashboardType]} – ${now.toLocaleDateString("en-GB")}`,
       type: dashboardType,
-      fileName: fileName ?? "",
+      fileNames,
       mappings,
       goals: selectedGoals,
       createdAt: now.toISOString(),
@@ -62,8 +62,8 @@ export default function OnboardingWizard() {
       <div>
         {step === 1 && (
           <Step1Upload
-            fileName={fileName}
-            setFileName={setFileName}
+            fileNames={fileNames}
+            setFileNames={setFileNames}
             dashboardType={dashboardType}
             setDashboardType={(type: string) => {
               setDashboardType(type as DashboardType);

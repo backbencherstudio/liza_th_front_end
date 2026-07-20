@@ -59,12 +59,13 @@ export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: Ge
   const onSubmit = (data: FormValues) => {
     console.log(data);
   };
+  const dateOnly = dashboard.title.split('–')[1]?.trim();
   return (
     <div>
-      <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
+      
 
       <div>
-        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} />
+        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} dateOnly={dateOnly} />
 
 
 

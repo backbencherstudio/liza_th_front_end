@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState } from "react";
 import { UploadCloud, FileText, X } from "lucide-react";
 import DashboardTypeIcon from "@/components/icons/DashboardTypeIcon";
 import CustomButton from "@/components/reusable/CustomButton";
 
 interface Step1Props {
-    fileName: string | null;
-    setFileName: (name: string | null) => void;
+    fileNames: string[];
+    setFileNames: React.Dispatch<React.SetStateAction<string[]>>;
     dashboardType: string;
     setDashboardType: (type: string) => void;
     onNext: () => void;
@@ -49,8 +49,8 @@ const DASHBOARDS: DashboardType[] = [
 ];
 
 export default function Step1Upload({
-    fileName,
-    setFileName,
+    fileNames,
+    setFileNames,
     dashboardType,
     setDashboardType,
     onNext,
@@ -59,32 +59,43 @@ export default function Step1Upload({
     const [isDragging, setIsDragging] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const validateAndSet = (file: File) => {
-        setError(null);
-        if (!ACCEPTED_MIME.includes(file.type) && !file.name.match(/\.(xlsx|xls|csv)$/i)) {
-            setError("Only Excel (.xlsx, .xls) or CSV files are accepted.");
-            return;
+    const validateAndAdd = (files: File[]) => {
+        const validNames = files
+            .filter(
+                (file) =>
+                    ACCEPTED_MIME.includes(file.type) ||
+                    /\.(xlsx|xls|csv)$/i.test(file.name)
+            )
+            .map((file) => file.name);
+        const invalidCount = files.length - validNames.length;
+
+        if (validNames.length > 0) {
+            setFileNames((current) => [
+                ...current,
+                ...validNames.filter((name) => !current.includes(name)),
+            ]);
         }
-        setFileName(file.name);
+
+        setError(
+            invalidCount > 0
+                ? `${invalidCount} file${invalidCount > 1 ? "s were" : " was"} skipped. Only Excel (.xlsx, .xls) or CSV files are accepted.`
+                : null
+        );
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) validateAndSet(file);
-        // reset so same file can be re-selected
+        const files = Array.from(e.target.files ?? []);
+        if (files.length > 0) validateAndAdd(files);
+        // Reset so the same files can be selected again after removal.
         e.target.value = "";
     };
 
-    const handleDrop = useCallback(
-        (e: React.DragEvent<HTMLDivElement>) => {
-            e.preventDefault();
-            setIsDragging(false);
-            const file = e.dataTransfer.files?.[0];
-            if (file) validateAndSet(file);
-        },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
-    );
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setIsDragging(false);
+        const files = Array.from(e.dataTransfer.files ?? []);
+        if (files.length > 0) validateAndAdd(files);
+    };
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -93,9 +104,9 @@ export default function Step1Upload({
 
     const handleDragLeave = () => setIsDragging(false);
 
-    const removeFile = (e: React.MouseEvent) => {
+    const removeFile = (e: React.MouseEvent, fileName: string) => {
         e.stopPropagation();
-        setFileName(null);
+        setFileNames((current) => current.filter((name) => name !== fileName));
         setError(null);
     };
 
@@ -111,50 +122,63 @@ export default function Step1Upload({
                 <input
                     ref={inputRef}
                     type="file"
+                    multiple
                     accept={ACCEPTED}
                     className="hidden"
                     onChange={handleFileChange}
                 />
 
                 <div
-                    onClick={() => !fileName && inputRef.current?.click()}
+                    onClick={() => inputRef.current?.click()}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 text-center transition-colors ${isDragging
                         ? "border-blue-500 bg-blue-50"
-                        : fileName
+                        : fileNames.length > 0
                             ? "cursor-default border-blue-400 bg-blue-50/40"
                             : "border-blue-200 hover:bg-slate-50"
                         }`}
                 >
-                    {fileName ? (
+                    {fileNames.length > 0 ? (
                         /* Uploaded state */
-                        <div className="flex flex-col items-center gap-3">
+                        <div className="flex w-full flex-col items-center gap-3">
                             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100">
                                 <FileText size={28} className="text-blue-600" />
                             </div>
-                            <p className="max-w-xs truncate text-lg font-semibold text-gray-800">
-                                {fileName}
+                            <p className="text-lg font-semibold text-gray-800">
+                                {fileNames.length} file{fileNames.length > 1 ? "s" : ""} ready to process
                             </p>
-                            <p className="text-sm text-gray-500">File ready to process</p>
-                            <div className="flex gap-3 mt-1">
-                                <button
-                                    type="button"
-                                    onClick={() => inputRef.current?.click()}
-                                    className="rounded-lg border border-blue-300 px-4 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
-                                >
-                                    Replace
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={removeFile}
-                                    className="flex items-center gap-1 rounded-lg border border-red-200 px-4 py-1.5 text-sm font-medium text-red-500 transition hover:bg-red-50"
-                                >
-                                    <X size={14} />
-                                    Remove
-                                </button>
+                            <div className="grid w-full max-w-2xl gap-2">
+                                {fileNames.map((fileName) => (
+                                    <div
+                                        key={fileName}
+                                        className="flex items-center justify-between gap-3 rounded-lg border border-blue-100 bg-white px-4 py-3 text-left"
+                                    >
+                                        <span className="min-w-0 truncate text-sm font-medium text-gray-700">
+                                            {fileName}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            aria-label={`Remove ${fileName}`}
+                                            onClick={(event) => removeFile(event, fileName)}
+                                            className="shrink-0 rounded-md p-1 text-red-500 transition hover:bg-red-50"
+                                        >
+                                            <X size={16} />
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
+                            <button
+                                type="button"
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    inputRef.current?.click();
+                                }}
+                                className="mt-1 rounded-lg border border-blue-300 px-4 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50"
+                            >
+                                Add more files
+                            </button>
                         </div>
                     ) : (
                         /* Empty state */
@@ -164,7 +188,7 @@ export default function Step1Upload({
                                 className={`mb-4 transition-colors ${isDragging ? "text-blue-500" : "text-blue-600"}`}
                             />
                             <p className="text-xl font-medium text-gray-700">
-                                {isDragging ? "Drop file here" : "Click to upload or drag & drop"}
+                                {isDragging ? "Drop files here" : "Click to upload or drag & drop"}
                             </p>
                             <p className="mt-2 text-base text-gray-500">
                                 Excel, CSV Files Only
@@ -200,7 +224,7 @@ export default function Step1Upload({
             <div className="flex justify-end">
                 <CustomButton
                     type="button"
-                    disabled={!fileName}
+                    disabled={fileNames.length === 0}
                     onClick={onNext}
                     className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >

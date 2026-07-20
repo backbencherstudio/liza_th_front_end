@@ -53,7 +53,7 @@ export const DEFAULT_MAPPING_FIELDS: Record<string, Omit<Field, 'id'>[]> = {
     { label: 'Location', type: 'Select/Dropdown', isRequired: false },
     { label: 'Category', type: 'Select/Dropdown', isRequired: false },
     { label: 'Gross margin', type: 'Select/Dropdown', isRequired: false },
-    { label: 'Add Budget', type: 'Hybrid', isRequired: false },
+    // { label: 'Add Budget', type: 'Hybrid', isRequired: false },
   ],
   'Financial Performance Dashboard': [
     { label: 'Period', type: 'Select/Dropdown', isRequired: true },

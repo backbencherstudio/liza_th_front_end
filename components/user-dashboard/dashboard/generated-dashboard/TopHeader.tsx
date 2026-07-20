@@ -1,7 +1,7 @@
 import UserDashboardIcons from '@/components/icons/UserDashboardIcons'
 import DashboardPageTitle from '@/components/reusable/DashboardPageTitle'
 import { FormSelect } from '@/components/reusable/FormSelect'
-import { ArrowDownToLine, SquarePen } from 'lucide-react'
+import { ArrowDownToLine } from 'lucide-react'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -10,26 +10,27 @@ interface TopHeaderProps {
     subtitle: string;
     handleOpen: () => void;
     editTypes: { label: string, value: string }[];
-    editType: string|null;
-    setEditType: (editType: string|null) => void;
+    editType: string | null;
+    setEditType: (editType: string | null) => void;
+    dateOnly?: string;
 }
 
-export default function TopHeader({ title, subtitle, handleOpen, editTypes, editType, setEditType }: TopHeaderProps) {
+export default function TopHeader({ title, subtitle, handleOpen, editTypes, editType, setEditType, dateOnly }: TopHeaderProps) {
 
     const options = [
+        { label: "All Locations", value: "all" },
         { label: "Location 1", value: "location1" },
         { label: "Location 2", value: "location2" },
         { label: "Location 3", value: "location3" },
     ];
 
     const months = [
+        { label: "All Months", value: "all" },
         { label: "January", value: "january" },
         { label: "February", value: "february" },
         { label: "March", value: "march" },
     ];
 
-
-   
     const { control, formState: { errors } } = useForm({
         defaultValues: {
             location: "",
@@ -41,8 +42,11 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
 
     return (
         <div>
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
-                {/* Left */}
+            <h2 className="text-[20px] font-medium leading-[34px] text-gray-900">Generated : {dateOnly}</h2>
+            {/* Centered vertically on desktop (lg:items-center) to line up title & filters */}
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between text-sm ">
+                
+                {/* Left: Title & Subtitle */}
                 <div className="flex-1">
                     <DashboardPageTitle
                         title={title}
@@ -50,16 +54,18 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                     />
                 </div>
 
-                {/* Right */}
-                <div className="flex flex-wrap items-end justify-start gap-3 lg:justify-end">
-                    <div className="min-w-[180px]">
+                {/* Right: Controls & Actions aligned on the same horizontal line */}
+                <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+                    
+                    {/* Location Filter */}
+                    <div className="w-36">
                         <Controller
                             name="location"
                             control={control}
                             render={({ field }) => (
                                 <FormSelect
                                     label=""
-                                    placeholder="Select Location"
+                                    placeholder="Location"
                                     options={options}
                                     value={field.value}
                                     onValueChange={field.onChange}
@@ -70,14 +76,15 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                         />
                     </div>
 
-                    <div className="min-w-[180px]">
+                    {/* Month Filter */}
+                    <div className="w-36">
                         <Controller
                             name="month"
                             control={control}
                             render={({ field }) => (
                                 <FormSelect
                                     label=""
-                                    placeholder="Select Month"
+                                    placeholder="Month"
                                     options={months}
                                     value={field.value}
                                     onValueChange={field.onChange}
@@ -88,39 +95,36 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                         />
                     </div>
 
-                    <div className="min-w-[180px]">
-                                <FormSelect
-                                    label=""
-                                    placeholder="Edit Type"
-                                    options={editTypes}
-                                    value={editType ?? undefined}
-                                    onValueChange={(value) => {
-                                        setEditType(value);
-                                        handleOpen();
-                                    }}
-                                    error={errors.editType}
-                                    isActive={true}
-                                />
+                    {/* Edit Type Filter */}
+                    <div className="w-36">
+                        <FormSelect
+                            label=""
+                            placeholder="Edit Type"
+                            options={editTypes}
+                            value={editType ?? undefined}
+                            onValueChange={(value) => {
+                                setEditType(value);
+                                handleOpen();
+                            }}
+                            error={errors.editType}
+                            isActive={true}
+                        />
                     </div>
 
-                    {/* <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
-                        <button className="sf-btn whitespace-nowrap">Edit Data</button>
-                        <SquarePen className="h-4 w-4 text-[#575855]" />
-                    </div> */}
-
-                    <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
+                    {/* Compact Action Buttons */}
+                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
                         <button className="sf-btn whitespace-nowrap">Save</button>
-                        <ArrowDownToLine className="h-4 w-4 text-[#575855]" />
+                        <ArrowDownToLine className="h-3.5 w-3.5 text-[#575855]" />
                     </div>
 
-                    <div className="flex h-[48px] shrink-0 items-center gap-2 rounded-xl border border-[#E9E9E9]  px-3.5">
+                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
                         <button className="sf-btn whitespace-nowrap">Share</button>
-                        <UserDashboardIcons.ShareIcon />
+                        <UserDashboardIcons.ShareIcon className="h-3.5 w-3.5" />
                     </div>
 
-                    <div className="flex h-[47px] shrink-0 items-center gap-2 rounded-xl bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-white">
-                        <button className="sf-btn whitespace-nowrap">Export</button>
-                        <ArrowDownToLine className="h-4 w-4" />
+                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-xs text-white">
+                        <button className="sf-btn whitespace-nowrap font-medium">Export</button>
+                        <ArrowDownToLine className="h-3.5 w-3.5" />
                     </div>
                 </div>
             </div>

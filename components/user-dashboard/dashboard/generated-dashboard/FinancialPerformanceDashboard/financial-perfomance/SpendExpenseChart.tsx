@@ -114,8 +114,8 @@ const LegendItem: React.FC<{ color: string; label: string }> = ({
 const SpendExpenseChart: React.FC = () => {
   return (
     <div className="bg-white rounded-3xl  py-5 px-7 w-full max font-['Inter',-apple-system,BlinkMacSystemFont,'Segoe_UI',sans-serif] border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
-      <h2 className="m-1 mb-6 font-[Archivo] font-medium text-[#1C1C1E] text-[18px] leading-[24px] md:text-[20px] md:leading-[26px]">
-        Monthly Spend&nbsp;&nbsp;vs&nbsp;Expense
+      <h2 className="m-1 mb-6 text-[22px] font-bold text-slate-900">
+        Monthly Spend&nbsp;vs&nbsp;Expense
       </h2>
 
       <ResponsiveContainer width="100%" height={360}>

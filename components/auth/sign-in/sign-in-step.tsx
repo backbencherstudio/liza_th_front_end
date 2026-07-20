@@ -8,6 +8,8 @@ import { useAuthModalStore } from "@/store/auth-modal.store";
 import { FormField } from "@/components/reusable/FormInput";
 import CustomButton from "@/components/reusable/CustomButton";
 import UserIcon from "@/components/icons/UserIcon";
+import { Eye, EyeOff } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -19,6 +21,7 @@ type SignInInput = z.infer<typeof signInSchema>;
 
 export function SignInStep() {
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { switchFlow, nextStep } = useAuthModalStore();
 
   const {
@@ -58,7 +61,7 @@ export function SignInStep() {
             <div className="w-[52px] h-[52px] flex justify-center items-center gap-3.5 border [background:var(--Greyscale-0,#FFF)] shadow-[0_2px_4px_0_rgba(179,212,253,0.04)] p-3.5 rounded-[96px] border-solid border-[#D1E2FD]">
 
               <UserIcon />
-              
+
             </div>
 
           </div>
@@ -83,13 +86,28 @@ export function SignInStep() {
           {...register("email")}
         />
 
-        <FormField
-          label="Password *"
-          type="password"
-          placeholder="Enter your password"
-          error={errors.password}
-          {...register("password")}
-        />
+        <div className="relative">
+          <FormField
+            label="Password *"
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter your password"
+            error={errors.password}
+            {...register("password")}
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            className="absolute right-4 top-[70%] -translate-y-1/2"
+          >
+            {showPassword ? (
+              <EyeOff className="h-4 w-4 text-muted-foreground" />
+            ) : (
+              <Eye className="h-4 w-4 text-muted-foreground" />
+            )}
+          </button>
+        </div>
 
         {/* Remember Me & Forgot Password Row */}
         <div className="flex items-center justify-between font-['Archivo'] text-sm sm:text-base">

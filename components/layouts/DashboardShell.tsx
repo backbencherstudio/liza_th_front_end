@@ -8,6 +8,7 @@ import type { DashboardNavConfig, DashboardUser } from "@/config/navigation/type
 import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
 import MessagePage from "@/app/(user-dashboard)/user-dashboard/message/page";
+import UserDashboardIcons from "../icons/UserDashboardIcons";
 
 interface DashboardShellProps {
   children: React.ReactNode;
@@ -107,9 +108,12 @@ export default function DashboardShell({
               {/* Floating Button */}
               <button
                 onClick={() => setIsMessageOpen((prev) => !prev)}
-                className="fixed bottom-8 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-2xl hover:scale-105 transition-all"
+                className="fixed bottom-8 right-6 z-50 flex items-center justify-center gap-2  bg-white text-white border hover:scale-105 transition-all p-2.5 rounded-full shadow-sm"
               >
-                💬
+                <div className="h-10 w-10 rounded-full bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] flex items-center justify-center">
+                  <UserDashboardIcons.MessageIocn />
+                </div>
+                <span className="text-[#1D1F2C] font-[Archivo] text-[18px] font-medium leading-6 ">Do you need help?</span>
               </button>
             </>
           )}

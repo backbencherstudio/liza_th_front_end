@@ -43,7 +43,7 @@ export default function Footer() {
         logoUrl: "/images/spike-logo.png",
         quickLinks: [
             { name: "Home", url: "/" },
-            { name: "About Us", url: "/#about" },
+            { name: "About Us", url: "/#about-us" },
             { name: "Features", url: "/#features" },
             { name: "Pricing", url: "/pricing" },
         ],
@@ -54,8 +54,8 @@ export default function Footer() {
         location: "New Jersey, USA",
         email: "info@spiketechnology.ai",
         socialMedia: [
-            { icon: InstagramIcon, url: "#" },
-            { icon: LinkDinIcon, url: "#" },
+            { icon: InstagramIcon, url: "https://www.instagram.com/spiketechai/" },
+            { icon: LinkDinIcon, url: "https://www.linkedin.com/company/spike-technology-ai/" },
 
         ],
     });

@@ -8,6 +8,7 @@ import { useAuthModalStore } from "@/store/auth-modal.store";
 import { FormField } from "@/components/reusable/FormInput";
 import CustomButton from "@/components/reusable/CustomButton";
 import { FormSelect } from "@/components/reusable/FormSelect";
+import { Eye, EyeOff } from "lucide-react";
 
 // Schema mapped directly to your UI layout blueprint requirements
 const signUpSchema = z.object({
@@ -34,6 +35,7 @@ const ROLE_OPTIONS = [
 export function SignUpStepCredentials() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { nextStep, switchFlow, setFlowData } = useAuthModalStore();
 
@@ -136,11 +138,25 @@ export function SignUpStepCredentials() {
 
         <FormField
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Min 8 characters"
           error={errors.password}
+          className="relative"
           {...register("password")}
+
         />
+        <button
+          className="absolute right-12 top-[70%] -translate-y-1/2"
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          aria-label={showPassword ? "Hide password" : "Show password"}
+        >
+          {showPassword ? (
+            <EyeOff className="h-4 w-4 text-muted-foreground" />
+          ) : (
+            <Eye className="h-4 w-4 text-muted-foreground" />
+          )}
+        </button>
 
 
 

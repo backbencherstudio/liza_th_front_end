@@ -61,7 +61,7 @@ const fadeRight = {
 
 export default function AboutUs() {
     return (
-        <div>
+        <div id="about-us">
             <section className="pb-8 md:py-25">
                 <div className="w-full max-w-[1600px] px-5 sm:px-10 lg:px-[140px] mx-auto justify-center flex flex-col lg:flex-row items-start gap-8 md:gap-16">
                     {/* Left - feature cards */}
@@ -116,7 +116,7 @@ export default function AboutUs() {
                             className="flex gap-2.5 pt-0"
                         >
                             <StarIcon />
-                            <span className="text-[#151513] font-medium text-lg">
+                            <span className="text-[#151513] font-medium text-lg" >
                                 About Us
                             </span>
                         </motion.div>

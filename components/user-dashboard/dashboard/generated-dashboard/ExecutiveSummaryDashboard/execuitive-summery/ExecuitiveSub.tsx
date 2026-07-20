@@ -3,7 +3,7 @@
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 const data = [
-    { name: "Labour", value: 35, color: "#8CDAAA" },
+    { name: "Labor", value: 35, color: "#8CDAAA" },
     { name: "Rent", value: 25, color: "#8C9EFD" },
     { name: "software licence", value: 30, color: "#3B69D0" },
     { name: "Utilities", value: 10, color: "#FFBE70" },

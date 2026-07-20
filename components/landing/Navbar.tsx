@@ -8,7 +8,12 @@ import { useAuthModalStore } from "@/store/auth-modal.store";
 import { cn } from "@/lib/utils";
 import CustomButton from "../reusable/CustomButton";
 
-const NAV_LINKS = ["About Us", "Features", "Pricing", "Contact Us"];
+const NAV_LINKS = [
+    { label: "About Us", href: "/#about-us" },
+    { label: "Features", href: "/#features" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Contact Us", href: "/#contact-us" },
+];
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -41,11 +46,11 @@ export default function Navbar() {
                 <div className="hidden lg:flex gap-12">
                     {NAV_LINKS.map((item) => (
                         <Link
-                            key={item}
-                            href={item === "Pricing" ? "/pricing" : `/#${item.toLowerCase()}`}
+                            key={item.label}
+                            href={item.href}
                             className="text-[#3D3D3C] font-[Archivo] text-lg font-medium leading-6 hover:text-[#0A206D] transition-colors"
                         >
-                            {item}
+                            {item.label}
                         </Link>
                     ))}
                 </div>
@@ -122,15 +127,14 @@ export default function Navbar() {
                     <div className="flex flex-col w-full divide-y divide-[#eaeaea]/60">
                         {NAV_LINKS.map((item) => (
                             <Link
-                                key={item}
-                                href={`/${item.toLowerCase()}`}
+                                key={item.label}
+                                href={item.href}
                                 onClick={() => setMenuOpen(false)}
-                                className="text-[#1A1A1A] font-[Archivo] text-lg font-medium py-4 transition-colors hover:text-[#0A206D]"
+                                className="text-[#1A1A1A] font-[Archivo] text-lg font-medium py-4 hover:text-[#0A206D]"
                             >
-                                {item === "About" ? "About Us" : item === "Contact" ? "Contact Us" : item}
+                                {item.label}
                             </Link>
                         ))}
-                        {/* Bottom line for the last link item */}
                         <div className="h-px bg-[#eaeaea]/60" />
                     </div>
 
@@ -158,7 +162,7 @@ export default function Navbar() {
                             />
                         </button> */}
 
-                        <CustomButton variant="outline" >
+                        <CustomButton variant="outline" onClick={() => open("sign-in")}>
                             Login
                         </CustomButton>
 

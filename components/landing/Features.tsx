@@ -61,7 +61,7 @@ export default function Features() {
                         <motion.p
                             variants={fadeRight}
                             transition={{ duration: 0.7, ease }}
-                            className="max-w-[500px] text-xl leading-8 text-[#3D3D3C]"
+                            className=" text-xl text-start leading-8 text-[#3D3D3C]"
                         >
                             Spike transforms complex financial reports into clear dashboards and
                             AI-powered insights your team can act on.
@@ -138,7 +138,7 @@ export default function Features() {
                         </motion.div>
 
                         <motion.div
-                            className="flex flex-1 justify-center w-full order-1 md:order-2"
+                            className="flex flex-1     justify-center w-full order-1 md:order-2"
                             variants={fadeRight}
                             transition={{ duration: 0.75, ease }}
                         >
@@ -147,7 +147,7 @@ export default function Features() {
                                 alt="Dashboard"
                                 width={650}
                                 height={500}
-                                className="h-auto w-full max-w-[650px] "
+                                className="h-auto w-full max-w-[650px]  "
                             />
                         </motion.div>
 

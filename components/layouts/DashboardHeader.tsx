@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 
 import NotificationIcon from "@/components/icons/NotificationIcon";
 import type { DashboardUser } from "@/config/navigation/types";
+import NotificationDropdown from "../landing/NotificationDropDown";
 
 interface DashboardHeaderProps {
   user: DashboardUser;
@@ -42,12 +43,13 @@ export default function DashboardHeader({ user }: DashboardHeaderProps) {
             size={20}
           />
         </div>
-        <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#F3F3F4]">
+        {/* <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#F3F3F4]">
           <NotificationIcon />
           <span className="absolute -right-2 -top-2 rounded-full bg-red-500 px-2 py-1 text-xs text-white">
             3
           </span>
-        </div>
+        </div> */}
+        <NotificationDropdown />
 
         <div className="flex items-center gap-2">
           <Image

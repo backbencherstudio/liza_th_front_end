@@ -35,7 +35,7 @@ const CustomTooltip = ({ active, payload }: any) => {
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white" />
                 <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6]" />
-                    <span className="text-gray-500 font-medium text-sm">Profit</span>
+                    <span className="text-gray-500 font-medium text-sm">Spend</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900 mt-1">
                     ${currentData.profit.toFixed(2)}

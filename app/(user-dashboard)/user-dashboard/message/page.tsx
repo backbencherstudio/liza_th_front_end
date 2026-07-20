@@ -143,7 +143,7 @@ export default function MessagePage({ onClose }: MessagePageProps) {
     };
 
     return (
-        <div className="flex  flex-col h-[400px] lg:h-[630px] bg-white rounded-2xl overflow-hidden border shadow-2xl">
+        <div className="flex  flex-col h-[400px] lg:h-[530px] bg-white rounded-2xl overflow-hidden border shadow-2xl">
             {/* Header */}
             <div className="bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] text-white p-4 flex items-center gap-3 relative">
                 <div className="w-10 h-10 bg-white rounded-full overflow-hidden flex-shrink-0">

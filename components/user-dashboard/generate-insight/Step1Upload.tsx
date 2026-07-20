@@ -135,7 +135,7 @@ export default function Step1Upload({
                     onDragLeave={handleDragLeave}
                     className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 text-center transition-colors ${isDragging
                         ? "border-blue-500 bg-blue-50"
-                        : fileNames.length > 0
+                        : fileNames.length > 0 
                             ? "cursor-default border-blue-400 bg-blue-50/40"
                             : "border-blue-200 hover:bg-slate-50"
                         }`}

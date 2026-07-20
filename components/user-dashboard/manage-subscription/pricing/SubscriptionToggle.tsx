@@ -15,8 +15,14 @@ export default function PricingToggle({ billingPeriod, setBillingPeriod }: Toggl
         <div className="relative flex w-[219px] h-12 bg-[#ECEFF3] p-1 rounded-[32px] items-center cursor-pointer">
           {/* Sliding Indicator */}
           <div
-            className={`absolute h-10 w-[104px] rounded-full [background:linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] transition-all duration-300 ease-out shadow-sm ${billingPeriod === "yearly" ? "translate-x-[102px]" : "translate-x-0"
-              }`}
+            className={`absolute h-10 w-[104px] rounded-full
+    will-change-transform
+    transition-transform duration-300 ease-in-out
+    [background:linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)]
+    ${billingPeriod === "yearly"
+                ? "translate-x-[102px]"
+                : "translate-x-0"}
+  `}
           />
 
           <button
@@ -38,9 +44,13 @@ export default function PricingToggle({ billingPeriod, setBillingPeriod }: Toggl
           </button>
         </div>
 
-        <span className="font-['Archivo'] text-base font-medium text-[#107C41] whitespace-nowrap animate-pulse">
-          Save 30% - limited time!
-        </span>
+        <div>
+          {billingPeriod == "yearly" &&
+            <span className="font-['Archivo'] text-base font-medium text-[#107C41] whitespace-nowrap ">
+              Save 30% - limited time!
+            </span>
+          }
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 "use client";
-
 import {
     ResponsiveContainer,
     AreaChart,
@@ -33,12 +32,11 @@ export default function CashFlowCharts() {
             <h3 className="font-[Archivo] text-[#1C1C1E] text-[18px] sm:text-[20px] font-medium leading-[24px] sm:leading-[26px] mb-8">
                 Cash Flow Forecast
             </h3>
-
             <div className="h-[360px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart
                         data={data}
-                        margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                        margin={{ top: 10, right: 10, left: -20, bottom: 10 }}
                     >
                         <defs>
                             <linearGradient id="colorActual" x1="0" y1="0" x2="0" y2="1">
@@ -46,25 +44,31 @@ export default function CashFlowCharts() {
                                 <stop offset="95%" stopColor="#1D4ED8" stopOpacity={0.0} />
                             </linearGradient>
                         </defs>
-
                         <CartesianGrid
                             vertical={false}
                             stroke="#E4E4E7"
                             strokeDasharray="4 4"
                         />
-
                         <XAxis
                             dataKey="name"
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: "#A1A1AA", fontSize: 14, fontFamily: "sans-serif" }}
-                            dy={15}
+                            tick={{
+                                fill: "#A1A1AA",
+                                fontSize: 14,
+                                fontFamily: "sans-serif"
+                            }}
+                            dy={8}           // ← এটাকে কমানো হয়েছে (আগে 15 ছিল)
+                            angle={0}        // চাইলে এখানে -45/-30 দিতে পারেন
                         />
-
                         <YAxis
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: "#71717A", fontSize: 14, fontFamily: "sans-serif" }}
+                            tick={{
+                                fill: "#71717A",
+                                fontSize: 14,
+                                fontFamily: "sans-serif"
+                            }}
                             domain={[0, 250]}
                             ticks={[0, 50, 100, 150, 200, 250]}
                             tickFormatter={(val) => `$${val}`}

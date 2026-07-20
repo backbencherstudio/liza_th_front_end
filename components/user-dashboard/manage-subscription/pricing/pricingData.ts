@@ -16,8 +16,8 @@ export const PRICING_DATA: PricingPlan[] = [
     title: "Premium",
     icon: "💙",
     subtext: "per seat / user",
-    monthlyPrice: 59.99,
-    yearlyPrice: 41.99, // ~30% off
+    monthlyPrice: 41.99,
+    yearlyPrice: 59.99, // ~30% off
     ctaText: "Select Plan",
     isPrimaryCta: false,
     features: [
@@ -39,8 +39,8 @@ export const PRICING_DATA: PricingPlan[] = [
     title: "Pro Plan",
     icon: "💙",
     subtext: "per seat / user",
-    monthlyPrice: 99.99,
-    yearlyPrice: 69.99, // ~30% off
+    monthlyPrice: 69.99,
+    yearlyPrice: 99.99, // ~30% off
     ctaText: "Select Plan",
     isPrimaryCta: true, // Matches blue background button layout variant from design
     features: [

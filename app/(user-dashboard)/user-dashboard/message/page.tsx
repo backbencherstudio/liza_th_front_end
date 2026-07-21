@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Send, Mic, Square, X, Minus, ArrowUpToLine, ArrowBigUp, ArrowUp } from "lucide-react";
 import Image from "next/image";
+import { Paperclip, Send, Mic, Square, X, Minus, ArrowUpToLine, ArrowBigUp, ArrowUp } from "lucide-react";
 
 interface MessagePageProps {
     onClose?: () => void;
@@ -194,7 +194,7 @@ export default function MessagePage({ onClose }: MessagePageProps) {
                             {msg.fileUrl && (
                                 <img
                                     src={msg.fileUrl}
-                                    className="max-w-[240px] rounded-2xl mb-2 shadow"
+                                    className="max-w-[240px] rounded-2xl mb-2 "
                                     alt="uploaded"
                                 />
                             )}

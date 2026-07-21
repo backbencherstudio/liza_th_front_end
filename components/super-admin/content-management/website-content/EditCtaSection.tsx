@@ -18,16 +18,16 @@ const ctaSectionSchema = z.object({
     ctaButtonText2: z.string().min(1, "CTA Button Text 2 is required"),
     ctaButtonLink1: z.string().min(1, "CTA Button Link 1 is required"),
     ctaButtonLink2: z.string().min(1, "CTA Button Link 2 is required"),
-    brandLogos: z
-        .custom<FileList>()
-        .refine((files) => files && files.length > 0, "Add at least one logo image")
-        .nullable()
-        .optional(),
+    // brandLogos: z
+    //     .custom<FileList>()
+    //     .refine((files) => files && files.length > 0, "Add at least one logo image")
+    //     .nullable()
+    //     .optional(),
 });
 
 type CtaSectionFormValues = z.infer<typeof ctaSectionSchema>;
 
-export default function EditBrandSection() {
+export default function EditCtaSection() {
     const [submitError, setSubmitError] = useState("");
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -42,7 +42,7 @@ export default function EditBrandSection() {
         defaultValues: {
             headline: "Works with the tools you already use",
             description: "No integrations required. Simply export and upload.",
-            brandLogos: null,
+            // brandLogos: null,
         },
     });
 
@@ -70,7 +70,7 @@ export default function EditBrandSection() {
 
                 {/* Component Title Header block */}
                 <h2 className="text-[#1A1A1A] font-[Archivo] text-lg font-semibold leading-6 -mb-1">
-                    Edit Brand Section
+                    Edit CTA Section
                 </h2>
 
                 {/* Input field for primary Heading value strings */}
@@ -112,7 +112,7 @@ export default function EditBrandSection() {
                 </div>
 
                 {/* Dedicated Multiple Image Assets Upload Zone */}
-                <Controller
+                {/* <Controller
                     name="brandLogos"
                     control={control}
                     render={({ field, fieldState }) => (
@@ -131,7 +131,7 @@ export default function EditBrandSection() {
                             )}
                         </div>
                     )}
-                />
+                /> */}
             </section>
 
             {/* Operational Response Message Alerts Layout Blocks */}

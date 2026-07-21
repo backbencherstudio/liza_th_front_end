@@ -1,6 +1,9 @@
 "use client";
 
 import { ChevronDown, ArrowUpRight } from "lucide-react";
+
+import TableToolBar from "@/components/reusable/TableToolBar";
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -24,14 +27,15 @@ const data = [
 export default function UserGrowthChart() {
   return (
     <div className="flex  w-full flex-col items-start gap-8 shrink-0 self-stretch border [background:var(--W,#FFF)] p-6 rounded-2xl border-solid border-[#EDEDED]">
-      
+
       {/* HEADER CONTROLS SECTION */}
       <div className="flex items-start justify-between w-full mb-6">
+        {/* Left Side - Title + Growth */}
         <div className="flex flex-col gap-1">
           <h3 className="text-xl font-bold font-[Archivo] text-[#1A1A1A] tracking-tight">
             User Growth
           </h3>
-          
+
           {/* GROWTH TREND BADGE */}
           <div className="flex items-center gap-1.5 text-sm font-[Archivo]">
             <span className="inline-flex items-center font-semibold text-[#2563EB]">
@@ -42,14 +46,20 @@ export default function UserGrowthChart() {
           </div>
         </div>
 
-        {/* COMPACT FILTER DROPDOWN */}
-        <button
-          type="button"
-          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium font-[Archivo] text-[#2563EB] bg-white border border-solid border-[#2563EB] rounded-xl hover:bg-blue-50 transition-colors shadow-sm"
-        >
-          <span>This month</span>
-          <ChevronDown size={16} />
-        </button>
+        {/* Right Side - Filter Dropdown (at the end) */}
+        <div>
+
+          <div className="relative ">
+            <select className="appearance-none w-full h-12 pl-4 pr-10 border border-[#2563EB] rounded-lg text-[#2563EB] bg-white">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+            </select>
+
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-[#2563EB]" />
+          </div>
+
+        </div>
       </div>
 
       {/* CHART CANVAS ENGINE */}

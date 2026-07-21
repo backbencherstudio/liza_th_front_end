@@ -32,7 +32,7 @@ export default function StatsCard({
             </div>
 
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E9EFFD]">
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5 text-[#2563EB]" />
             </div>
         </div>
     );

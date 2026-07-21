@@ -9,10 +9,18 @@ export interface StatusItem {
     id: string;
     category: string;
     description: string;
-    status: "On Track" | "Watch" | "Datadog";
+    status: "On Track" | "Watch" | "Complete" | "Not Started" | "On Hold";
     percentage?: number;
     color: string;
 }
+
+const STATUS_STYLES: Record<StatusItem["status"], string> = {
+    "On Track": "bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] text-white",
+    Watch: "bg-amber-100 text-amber-700",
+    Complete: "bg-emerald-100 text-emerald-700",
+    "Not Started": "bg-slate-100 text-slate-700",
+    "On Hold": "bg-rose-100 text-rose-700",
+};
 
 const initialData: StatusItem[] = [
     {
@@ -134,12 +142,7 @@ export default function CustomStatusUpdate() {
                             {/* Right */}
                             <div className="flex shrink-0 items-center gap-4 w-full lg:w-[200px]">
                                 <div
-                                    className={` px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap ${item.status === "On Track"
-                                        ? "bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] text-white"
-                                        : item.status === "Watch"
-                                            ? "bg-[#2563EB] text-white"
-                                            : "bg-purple-100 text-purple-700"
-                                        }`}
+                                    className={`px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap ${STATUS_STYLES[item.status]}`}
                                 >
                                     {item.status}
                                 </div>

@@ -14,7 +14,7 @@ interface OperationalSatusCardProps {
 const StausData: OperationalSatusCardProps[] = [
     {
         title: "Number of Departments",
-        value: "$54,400",
+        value: "5",
         change: "",
         tag: "",
         trend: "",
@@ -29,7 +29,7 @@ const StausData: OperationalSatusCardProps[] = [
 
     },
     {
-        title: "Number of Departments",
+        title: "Number of Vendors",
         value: "18",
         change: "",
         tag: "",

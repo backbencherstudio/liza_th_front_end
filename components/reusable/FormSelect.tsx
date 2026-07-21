@@ -27,6 +27,7 @@ interface FormSelectProps {
   disabled?: boolean;
   className?: string;
   isActive?: boolean;
+  
 }
 
 export function FormSelect({
@@ -39,12 +40,17 @@ export function FormSelect({
   disabled,
   className,
   isActive = false,
+ 
 }: FormSelectProps) {
   return (
     <div className={className}>
-      <label className="text-[#151513] font-[Archivo] text-[18px] font-normal leading-[26px] mb-2 block">
-        {label}
-      </label>
+      {
+        label && (
+          <label className="text-[#151513] font-[Archivo] text-[18px] font-normal leading-[26px] mb-2 block">
+            {label}
+          </label>
+        )
+      }
 
       <Select
         value={value}

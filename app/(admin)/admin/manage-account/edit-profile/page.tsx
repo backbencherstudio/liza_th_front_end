@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import React, { useRef, useState } from "react";
+import Image from "next/image";
+import { Edit } from "lucide-react";
+
+import SuperAdminSetting from "@/components/icons/SettingsIcon";
+import { FormField } from "@/components/reusable/FormInput";
 import { FormSelect } from "@/components/reusable/FormSelect";
 import { Button } from "@/components/ui/button";
-import { FormField } from "@/components/reusable/FormInput";
-import { Edit } from "lucide-react";
-import SuperAdminSetting from "@/components/icons/SettingsIcon";
-
 
 export default function Page() {
 
@@ -121,24 +121,19 @@ export default function Page() {
 
 
 
-                    <div className="md:col-span-2">
-                        <FormField
-                            label="Address"
-                            defaultValue="2972 Westheimer Rd. Santa Ana. Illinois 85486"
-                            placeholder="Enter address"
-                        />
-                    </div>
-
-
-                    <FormField
-                        label="Postcode (PLZ)"
-                        defaultValue="5486"
-                        placeholder="Enter postcode"
-                    />
-
                     <FormSelect
-                        label="Street"
-                        value="Street"
+                        label="Street Address"
+                        value="2972 Westheimer Rd."
+                        options={[
+                            { label: "2972 Westheimer Rd.", value: "2972 Westheimer Rd." },
+                            { label: "2E2 West.", value: "2972 Westheimer Rd." },
+                            { label: "293 Westheime.", value: "2972 Westheimer Rd." },
+                        ]}
+                        onValueChange={(value) => console.log(value)}
+                    />
+                    <FormSelect
+                        label="City"
+                        value="Santa Ana"
                         options={[
                             { label: "2972 Westheimer Rd.", value: "2972 Westheimer Rd." },
                             { label: "2E2 West.", value: "2972 Westheimer Rd." },
@@ -148,23 +143,15 @@ export default function Page() {
                     />
 
                     <FormField
-                        label="Place of Residence"
-                        defaultValue="Santa Ana, Illinois 85486"
-                        placeholder="Enter residence"
+                        label="State"
+                        defaultValue="state"
+                        placeholder="Enter State"
                     />
 
-
-
-
-                    <FormSelect
-                        label="Canton"
-                        value="canton"
-                        options={[
-                            { label: "Canton", value: "canton" },
-                            { label: "Zurich", value: "zurich" },
-                            { label: "Geneva", value: "geneva" },
-                        ]}
-                        onValueChange={(value) => console.log(value)}
+                    <FormField
+                        label="Zip Code"
+                        defaultValue="5486"
+                        placeholder="Enter postcode"
                     />
 
 

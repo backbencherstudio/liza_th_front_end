@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -31,13 +32,19 @@ export default function DiscountChart() {
         </h3>
 
         {/* COMPACT FILTER DROPDOWN */}
-        <button
-          type="button"
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium font-[Archivo] text-[#2563EB] bg-white border border-solid border-[#2563EB] rounded-xl hover:bg-blue-50 transition-colors shadow-sm"
-        >
-          <span>This month</span>
-          <ChevronDown size={16} />
-        </button>
+        <div>
+
+          <div className="relative ">
+            <select className="appearance-none w-full h-12 pl-4 pr-10 border border-[#2563EB] rounded-lg text-[#2563EB] bg-white">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+            </select>
+
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-[#2563EB]" />
+          </div>
+
+        </div>
       </div>
 
       {/* CHART CANVAS ENGINE */}

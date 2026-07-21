@@ -1,7 +1,8 @@
 "use client"
-import { Switch } from '@/components/ui/switch'
+
 import React, { useState } from 'react'
 
+import { Switch } from '@/components/ui/switch'
 
 export default function page() {
     const [emailNotification, setEmailNotification] = useState(true);

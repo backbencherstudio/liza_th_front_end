@@ -1,13 +1,13 @@
-import AboutUs from '@/components/landing/AboutUs'
-import Features from '@/components/landing/Features'
-import HowItWork from '@/components/landing/HowItWork'
-import WorksWithTools from '@/components/landing/Works-with-tools'
 import React from 'react'
 
-import HeroSection from "@/components/landing/HeroSection";
-import ReadYourData from '@/components/landing/ReadYourData'
+import AboutUs from '@/components/landing/AboutUs'
 import ContactUs from '@/components/landing/ContactUs'
-import OverView from '@/components/landing/pricing/OverView'
+import Features from '@/components/landing/Features'
+import HeroSection from "@/components/landing/HeroSection";
+import HowItWork from '@/components/landing/HowItWork'
+import OverView from '@/components/landing/OverView'
+import ReadYourData from '@/components/landing/ReadYourData'
+import WorksWithTools from '@/components/landing/Works-with-tools'
 
 export default function page() {
   return (

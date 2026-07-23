@@ -169,7 +169,7 @@ export default function Features() {
                         {/* Left */}
 
                         <motion.div
-                            className="flex-1 w-full"
+                            className="flex flex-1 w-full justify-center lg:justify-start "
                             variants={fadeLeft}
                             transition={{ duration: 0.75, ease }}
                         >
@@ -178,7 +178,7 @@ export default function Features() {
                                 alt=""
                                 width={1000}
                                 height={800}
-                                className="w-[534px] h-auto "
+                                className="w-[534px] min h-auto "
                             />
                         </motion.div>
 

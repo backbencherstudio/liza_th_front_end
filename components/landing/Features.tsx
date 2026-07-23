@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import StarIcon from "../icons/StarIcon";
+
 import SettinCorectIcon from "../icons/SettingCorectIcon";
+import StarIcon from "../icons/StarIcon";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -61,7 +62,7 @@ export default function Features() {
                         <motion.p
                             variants={fadeRight}
                             transition={{ duration: 0.7, ease }}
-                            className=" text-xl text-start leading-8 text-[#3D3D3C]"
+                            className=" text-xl text-start leading-8 text-[#3D3D3C] max-w-[560px]"
                         >
                             Spike transforms complex financial reports into clear dashboards and
                             AI-powered insights your team can act on.
@@ -72,7 +73,7 @@ export default function Features() {
 
 
                     <motion.div
-                        className="py-5 md:py-0 px-0 md:px-6 flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px]   lg:flex-row"
+                        className="py-5 md:py-6 px-0  flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px] lg:gap-20  lg:flex-row"
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.3 }}
@@ -80,7 +81,7 @@ export default function Features() {
                     >
 
                         <motion.div
-                            className=" flex-1 order-2 md:order-1"
+                            className=" flex-1 order-2 md:order-1 "
                             variants={fadeLeft}
                             transition={{ duration: 0.7, ease }}
                         >
@@ -143,18 +144,20 @@ export default function Features() {
                             transition={{ duration: 0.75, ease }}
                         >
                             <Image
-                                src="/assets/worksWithTools/Frame 2147226707.png"
+                                src="/images/dataAnalytic.jpg"
                                 alt="Dashboard"
                                 width={650}
                                 height={500}
-                                className="h-auto w-full max-w-[650px]  "
+                                className="h-auto w-full max-w-[486px]  "
                             />
                         </motion.div>
 
 
                     </motion.div>
 
-
+                    <div className="py-8">
+                        <hr className="w-full h-full border-[#C4D2EE] " />
+                    </div>
 
                     <motion.div
                         className="pt-6  flex flex-col-reverse items-center gap-8 md:gap-16 rounded-[32px] lg:flex-row"
@@ -171,11 +174,11 @@ export default function Features() {
                             transition={{ duration: 0.75, ease }}
                         >
                             <Image
-                                src="/assets/worksWithTools/Frame 2147226709.png"
+                                src="/images/comAnalisis.jpg"
                                 alt=""
-                                width={1200}
+                                width={1000}
                                 height={800}
-                                className="w-full h-auto "
+                                className="w-[534px] h-auto "
                             />
                         </motion.div>
 
@@ -218,7 +221,7 @@ export default function Features() {
                                     transition={{ duration: 0.5, ease }}
                                 >
                                     <SettinCorectIcon className="shrink-0" />
-                                    <p>Insights and raw data are always shown separately,exactly what's calculated and what's AI-interpreted.</p>
+                                    <p>Insights and raw data are always shown separately,exactly what`&lsquo;`s calculated and what's AI-interpreted.</p>
                                 </motion.div>
 
                                 <motion.div

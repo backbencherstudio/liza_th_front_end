@@ -18,7 +18,7 @@ const ExecuitiveSummeryKpiTable: React.FC = () => {
     return (
         <div className="w-full h-full  rounded-3xl bg-white p-7  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
             <h2 className="mb-6 mt-1 text-[#1C1C1E] font-medium text-[18px] sm:text-[20px] leading-[24px] sm:leading-[26px]">
-                Spend Variance by Category
+            Key Performance Indicators (KPIs)
             </h2>
 
             <div className="overflow-x-auto rounded-xl">

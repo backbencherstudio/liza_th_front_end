@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import { StatusItem } from './CustomStatusUpdateData';
 import { FormField } from '@/components/reusable/FormInput';
-import { Plus, X } from 'lucide-react';
+import { FormSelect } from '@/components/reusable/FormSelect';
 
 interface UpdateModalProps {
     editingItem: StatusItem | null;
@@ -9,32 +8,16 @@ interface UpdateModalProps {
     onSave: () => void;
 }
 
+const STATUS_OPTIONS: Array<{ label: StatusItem["status"]; value: StatusItem["status"] }> = [
+    { label: "On Track", value: "On Track" },
+    { label: "Watch", value: "Watch" },
+    { label: "Complete", value: "Complete" },
+    { label: "Not Started", value: "Not Started" },
+    { label: "On Hold", value: "On Hold" },
+];
+
 export default function UpdateModal({ editingItem, onChange, onSave }: UpdateModalProps) {
-    const [newTag, setNewTag] = useState("");
-    const [tags, setTags] = useState<string[]>([]); // You can later sync with editingItem if needed
-
     if (!editingItem) return null;
-
-    const addTag = () => {
-        if (!newTag.trim()) return;
-        const trimmed = newTag.trim();
-        if (!tags.includes(trimmed)) {
-            setTags(prev => [...prev, trimmed]);
-        }
-        setNewTag("");
-    };
-
-    const removeTag = (index: number) => {
-        setTags(prev => prev.filter((_, i) => i !== index));
-    };
-
-    // Optional: Handle Enter key
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            addTag();
-        }
-    };
 
     return (
         <div className="space-y-6 w-full">
@@ -48,49 +31,27 @@ export default function UpdateModal({ editingItem, onChange, onSave }: UpdateMod
                 />
             </div>
 
-            {/* Status Update - Dynamic Tags */}
+            {/* Status Description */}
             <div>
+                <FormField
+                    label="Status Description"
+                    value={editingItem.description}
+                    onChange={(e) => onChange("description", e.target.value)}
+                    placeholder="Enter status description"
+                />
+            </div>
 
-
-                {/* Input Field */}
-                <div className="relative flex gap-3">
-                    <FormField
-                        label="Status Update"
-                        value={newTag}
-                        onChange={(e) => setNewTag(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        placeholder="Input features name / status"
-
-                    />
-                    <button
-                        type="button"
-                        onClick={addTag}
-                        className="text-blue-600 absolute right-2 top-12"
-                    >
-                        <Plus size={20} />
-                    </button>
-                </div>
-
-                {/* Display Tags */}
-                {tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
-                        {tags.map((tag, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium"
-                            >
-                                {tag}
-
-                                <button
-                                    onClick={() => removeTag(index)}
-                                    className="hover:text-blue-900 transition"
-                                >
-                                    <X size={16} />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                )}
+            {/* Status Update */}
+            <div>
+                <FormSelect
+                    label="Status Update"
+                    placeholder="Select status"
+                    options={STATUS_OPTIONS}
+                    value={editingItem.status}
+                    onValueChange={(value) =>
+                        onChange("status", value as StatusItem["status"])
+                    }
+                />
             </div>
 
             {/* % Complete */}
@@ -107,7 +68,7 @@ export default function UpdateModal({ editingItem, onChange, onSave }: UpdateMod
             {/* Save Button */}
             <button
                 onClick={onSave}
-                className="w-full  text-lg font-medium bg-gradient-to-br from-[#0A206D] to-[#3B69D0] text-white py-3.5 rounded-xl transition"
+                className="w-full rounded-xl bg-linear-to-br from-[#0A206D] to-[#3B69D0] py-3.5 text-lg font-medium text-white transition"
             >
                 Save
             </button>

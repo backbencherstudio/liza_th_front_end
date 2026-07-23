@@ -1,9 +1,17 @@
+// components/OverviewStats.tsx
+"use client";
+
+import { useState } from "react";
+import { Share2, IterationCcw } from "lucide-react";
+import { DateRange } from "react-day-picker";
+
+import { Button } from "@/components/ui/button";
+import { DateRangePicker } from "@/components/reusable/DateRangePicker";
 import DashboardStatsIcons from "@/components/icons/SupAdminIcon";
 import StatsCard from "@/components/reusable/StatusCard";
-import { Share2 } from "lucide-react";
-import { IterationCcw } from "lucide-react";
 
 export default function OverviewStats() {
+    const [date, setDate] = useState<DateRange | undefined>(undefined);
 
     const overviewData = [
         {
@@ -39,40 +47,43 @@ export default function OverviewStats() {
             trend: "down",
         },
     ];
+
     return (
-        <div className="">
+        <div className="space-y-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between ">
                 {/* Left */}
                 <div>
-                    <h1 className="pb-2 text-2xl font-semibold leading-tight text-[#151513] sm:pb-3 sm:text-[32px] sm:leading-[46px]">
+                    <h1 className="pb-2 text-2xl font-semibold leading-tight text-[#151513] sm:pb-3 sm:text-[32px] sm:leading-11.5">
                         Platform Overview
                     </h1>
-                    <p className="text-base font-normal leading-[22px] text-[#3D3D3C]">
+                    <p className="text-base font-normal leading-5.5 text-[#3D3D3C]">
                         Welcome back! Here's what's happening with your platform today.
                     </p>
                 </div>
 
                 {/* Right */}
-                <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-                    <select className="w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#151513] outline-none sm:w-auto">
-                        <option>Last 7 days</option>
-                        <option>Last 30 days</option>
-                        <option>Last 90 days</option>
-                    </select>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 ">
+                    <DateRangePicker date={date} setDate={setDate} />
 
-                    <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm text-[#151513] transition hover:bg-gray-50 sm:w-auto">
+                    <Button
+                        variant="outline"
+                        className="flex w-full items-center justify-center gap-2 border-[#E5E7EB] px-4 py-2 text-sm text-[#151513] hover:bg-gray-50 sm:w-auto"
+                    >
                         <span>Share</span>
-                        <Share2 size={18} />
-                    </button>
+                        <Share2 size={18} className="shrink-0" />
+                    </Button>
 
-                    <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm text-[#151513] transition hover:bg-gray-50 sm:w-auto">
+                    <Button
+                        variant="outline"
+                        className="flex w-full items-center justify-center gap-2 border-[#E5E7EB] px-4 py-2 text-sm text-[#151513] hover:bg-gray-50 sm:w-auto"
+                    >
                         <span>Export</span>
-                        <IterationCcw size={18} />
-                    </button>
+                        <IterationCcw size={18} className="shrink-0" />
+                    </Button>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 pt-6 pb-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {overviewData.map((item) => (
                     <StatsCard
                         key={item.id}

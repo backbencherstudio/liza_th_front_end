@@ -42,12 +42,13 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
 
     return (
         <div>
-            <h2 className="text-[20px] font-medium leading-[34px] text-gray-900">Generated : {dateOnly}</h2>
-            {/* Centered vertically on desktop (lg:items-center) to line up title & filters */}
+           
+           
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between text-sm ">
                 
                 {/* Left: Title & Subtitle */}
                 <div className="flex-1">
+                <h2 className="text-[20px] font-medium leading-[34px] text-gray-900">Generated : {dateOnly}</h2>
                     <DashboardPageTitle
                         title={title}
                         description={subtitle}
@@ -55,7 +56,7 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                 </div>
 
                 {/* Right: Controls & Actions aligned on the same horizontal line */}
-                <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+                <div className="flex flex-wrap items-center  gap-2 lg:justify-end border">
                     
                     {/* Location Filter */}
                     <div className="w-36">
@@ -112,17 +113,17 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                     </div>
 
                     {/* Compact Action Buttons */}
-                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
                         <button className="sf-btn whitespace-nowrap">Save</button>
                         <ArrowDownToLine className="h-3.5 w-3.5 text-[#575855]" />
                     </div>
 
-                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
                         <button className="sf-btn whitespace-nowrap">Share</button>
                         <UserDashboardIcons.ShareIcon className="h-3.5 w-3.5" />
                     </div>
 
-                    <div className="flex h-[40px] shrink-0 items-center gap-1.5 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-xs text-white">
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-xs text-white">
                         <button className="sf-btn whitespace-nowrap font-medium">Export</button>
                         <ArrowDownToLine className="h-3.5 w-3.5" />
                     </div>

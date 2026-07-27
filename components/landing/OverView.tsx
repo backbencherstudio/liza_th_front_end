@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+
 import {
     motion,
     useScroll,
@@ -11,9 +12,13 @@ import {
 } from "framer-motion";
 
 const images: string[] = [
-    "/images/finance.png",
-    "/images/execuitive.png",
+
+
+    "/images/exui.png",
     "/images/operational.png",
+    "/images/finencila.png",
+
+
 ];
 
 const ImageCard = ({

@@ -22,6 +22,7 @@ interface AuthFlowData {
 }
 
 
+
 interface AuthModalStore {
   isOpen: boolean
   flow: AuthFlow

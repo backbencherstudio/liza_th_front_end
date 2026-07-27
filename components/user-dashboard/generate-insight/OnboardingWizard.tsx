@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+
+import GeneratingScreen from "./GeneratingScreen";
 import Step1Upload from "./Step1Upload";
 import Step2Mapping from "./Step2Mapping";
 import Step3Goals from "./Step3Goals";
-import GeneratingScreen from "./GeneratingScreen";
 import { saveDashboard, DASHBOARD_LABELS, DASHBOARD_THUMBNAILS } from "@/lib/dashboardStorage";
 import { DashboardType } from "@/types/dashboard";
 

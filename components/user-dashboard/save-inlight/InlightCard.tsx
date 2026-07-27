@@ -1,9 +1,10 @@
 "use client";
 
-import SaveInlightIcon from "@/components/icons/SaveInlightIcon";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+
+import SaveInlightIcon from "@/components/icons/SaveInlightIcon";
 
 interface InlightCardProps {
   id: string;
@@ -28,12 +29,14 @@ export function InlightCard({
   isSelected = false,
   onSelect,
 }: InlightCardProps) {
+
+
   return (
     <div
       onClick={() => onSelect?.(id)}
       className={`cursor-pointer rounded-xl p-4 transition-all ${isSelected
-          ? "border-2 border-[#2563EB] bg-[#F2F5FB]"
-          : "border-2 border-transparent bg-[#F2F5FB] hover:border-[#2563EB]/50"
+        ? "border-2 border-[#2563EB] bg-[#F2F5FB]"
+        : "border-2 border-transparent bg-[#F2F5FB] hover:border-[#2563EB]/50"
         }`}
     >
       <div className="relative">

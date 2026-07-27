@@ -27,6 +27,7 @@ export default function RecentInsights() {
             id={d.id}
             title={d.title}
             img={d.thumbnailUrl}
+            type={d.type.toString()}
             description={DASHBOARD_LABELS[d.type]}
             industry={`Goals: ${d.goals.length} selected`}
             date={new Date(d.createdAt).toLocaleDateString("en-GB")}

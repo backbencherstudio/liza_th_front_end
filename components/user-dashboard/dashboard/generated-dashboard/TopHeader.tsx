@@ -21,14 +21,14 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
 
 
     const options = [
-        { label: "All Locations", value: "all" },
+        { label: "All Locations", value: "All Locations" },
         { label: "Location 1", value: "location1" },
         { label: "Location 2", value: "location2" },
         { label: "Location 3", value: "location3" },
     ];
 
     const months = [
-        { label: "All Months", value: "all" },
+        { label: "All Months", value: "All Months" },
         { label: "January", value: "january" },
         { label: "February", value: "february" },
         { label: "March", value: "march" },
@@ -59,7 +59,7 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                 </div>
 
                 {/* Right: Controls & Actions aligned on the same horizontal line */}
-                <div className="flex flex-wrap items-center  gap-2 lg:justify-end border">
+                <div className="flex flex-wrap items-center  gap-2 lg:justify-end ">
 
                     {/* Location Filter */}
                     <div className="w-36">
@@ -103,7 +103,7 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                     <div className="w-36">
                         <FormSelect
                             label=""
-                            placeholder="Edit Type"
+                            placeholder="Edits"
                             options={editTypes}
                             value={editType ?? undefined}
                             onValueChange={(value) => {
@@ -116,17 +116,17 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                     </div>
 
                     {/* Compact Action Buttons */}
-                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
-                        <button className="sf-btn whitespace-nowrap">Save</button>
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-base font-medium">
+                        <button className="sf-btn whitespace-nowrap text">Save</button>
                         <ArrowDownToLine className="h-3.5 w-3.5 text-[#575855]" />
                     </div>
 
-                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-xs">
-                        <button className="sf-btn whitespace-nowrap">Share</button>
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg border border-[#E9E9E9] px-3 text-base font-medium">
+                        <button className="sf-btn whitespace-nowrap text-[#151513]">Share</button>
                         <UserDashboardIcons.ShareIcon className="h-3.5 w-3.5" />
                     </div>
 
-                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-xs text-white">
+                    <div className="flex h-[48px] shrink-0 items-center gap-1.5 rounded-lg bg-[linear-gradient(144deg,#0A206D_0%,#3B69D0_100%)] px-3 text-base text-white">
                         <button className="sf-btn whitespace-nowrap font-medium">Export</button>
                         <ArrowDownToLine className="h-3.5 w-3.5" />
                     </div>

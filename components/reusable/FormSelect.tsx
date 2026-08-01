@@ -27,7 +27,7 @@ interface FormSelectProps {
   disabled?: boolean;
   className?: string;
   isActive?: boolean;
-  
+
 }
 
 export function FormSelect({
@@ -40,7 +40,7 @@ export function FormSelect({
   disabled,
   className,
   isActive = false,
- 
+
 }: FormSelectProps) {
   return (
     <div className={className}>

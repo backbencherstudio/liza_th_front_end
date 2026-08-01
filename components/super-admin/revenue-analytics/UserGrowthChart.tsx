@@ -47,7 +47,7 @@ export default function UserGrowthChart() {
         </div>
 
         {/* Right Side - Filter Dropdown (at the end) */}
-        <div>
+        {/* <div>
 
           <div className="relative ">
             <select className="appearance-none w-full h-12 pl-4 pr-10 border border-[#2563EB] rounded-lg text-[#2563EB] bg-white">
@@ -59,7 +59,7 @@ export default function UserGrowthChart() {
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-[#2563EB]" />
           </div>
 
-        </div>
+        </div> */}
       </div>
 
       {/* CHART CANVAS ENGINE */}

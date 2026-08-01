@@ -11,19 +11,19 @@ const insightCards: InsightCardProps[] = [
   {
     title: "Executive Summary",
     description:
-      "Your AI CFO overview of business performance, featuring cash flow, cash flow forecast, burn rate, profit margin, net profit and top spend drivers.",
+      "Your AI CFO overview of business performance, featuring cash flow, cash flow forecast, burn rate, profit margin, net profit and top spend drivers. Recommended reports: Profit & Loss, Balance Sheet, General Ledger.",
     Icon: FinancialInsights.ExecutiveSummary,
   },
   {
     title: "Financial Performance",
     description:
-      "Understand your financial health through revenue, spend, cash balance, financial health score, category spend variance, and budget vs spend trends.",
+      "Understand your financial health through revenue, spend, cash balance, financial health score, category spend variance, and budget vs spend trends. Recommended reports: Profit & Loss, Monthly Budget, Monthly Spend, Bank Statement, Balance Sheet. ",
     Icon: FinancialInsights.FinancialPerformance,
   },
   {
     title: "Operational KPI",
     description:
-      "Understand your monthly operating performance with clear visibility into expenses by department and vendor, while creating custom status updates to keep leadership informed.",
+      "Understand your financial health through revenue, spend, cash balance, financial health score, category spend variance, and budget vs spend trends. Recommended reports: Custom KPI Tracker, Status Update, Monthly Trend.",
     Icon: FinancialInsights.OperationalKPI,
   },
 ];

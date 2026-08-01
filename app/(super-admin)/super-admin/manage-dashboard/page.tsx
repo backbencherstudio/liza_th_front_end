@@ -55,19 +55,19 @@ export default function page() {
         {
             id: 1,
             title: "Financial Performance Dashboard",
-            img: "/assets/SuperAdmin/SuperAnalytic.png",
+            img: "/images/financial-summary.png",
             description: "1245 uses",
         },
         {
             id: 2,
             title: "Executive SUMMARY Dashboard",
-            img: "/assets/SuperAdmin/SuperAnalytic.png",
+            img: "/images/executive-summary.png",
             description: "1245 uses"
         },
         {
             id: 3,
             title: "Operational KPI Dashboard",
-            img: "/assets/SuperAdmin/SuperAnalytic.png",
+            img: "/images/operational-template.png",
             description: "1245 uses"
         },
 
@@ -79,10 +79,10 @@ export default function page() {
                     {/* Left */}
                     <div>
                         <h1 className="pb-3 text-2xl font-semibold leading-11.5 text-[#151513] sm:pb-3 sm:text-[32px] sm:leading-11.5">
-                        Manage Dashboard
+                            Manage Dashboard
                         </h1>
                         <p className="text-base font-normal leading-5.5 text-[#3D3D3C]">
-                        Create, edit, and organize your template library
+                            Create, edit, and organize your template library
                         </p>
                     </div>
 

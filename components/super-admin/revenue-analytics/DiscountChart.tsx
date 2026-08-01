@@ -24,7 +24,7 @@ const data = [
 export default function DiscountChart() {
   return (
     <div className="w-full  bg-white p-6 rounded-[20px] border border-solid border-[#E9E9EA] shadow-[0_4px_12px_0_rgba(0,0,0,0.02)]">
-      
+
       {/* HEADER CONTROLS SECTION */}
       <div className="flex items-center justify-between w-full mb-6">
         <h3 className="text-2xl font-bold font-[Archivo] text-[#1A1A1A] tracking-tight">
@@ -32,7 +32,7 @@ export default function DiscountChart() {
         </h3>
 
         {/* COMPACT FILTER DROPDOWN */}
-        <div>
+        {/* <div>
 
           <div className="relative ">
             <select className="appearance-none w-full h-12 pl-4 pr-10 border border-[#2563EB] rounded-lg text-[#2563EB] bg-white">
@@ -44,7 +44,7 @@ export default function DiscountChart() {
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-[#2563EB]" />
           </div>
 
-        </div>
+        </div> */}
       </div>
 
       {/* CHART CANVAS ENGINE */}

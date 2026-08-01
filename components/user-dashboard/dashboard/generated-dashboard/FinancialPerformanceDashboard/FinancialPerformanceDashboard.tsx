@@ -32,18 +32,18 @@ export default function FinancialPerformanceDashboard({ dashboard }: { dashboard
   const dateOnly = dashboard.title.split('–')[1]?.trim();
   return (
     <div className=''>
-   
+
 
       <div className='py-8 '>
         <TopHeader title={"Financial Performance"} subtitle={"State, Discover trends, identify risks and uncover growth opportunities."} handleOpen={handleOpen} editTypes={editTypes} editType={editType} setEditType={(val: string | null) => setEditType(val ?? "")} dateOnly={dateOnly} />
       </div>
 
-      <div className='bg-[#F8FAFB] rounded-[20px] p-4.5'>
+      <div className='bg-[#F8FAFB] rounded-[20px] p-4.5 w-full'>
         <div className='mb-5  px-4'>
           <FinancialStatsKpi />
         </div>
 
-        <section className="flex flex-col gap-4 lg:flex-row ">
+        <section className="grid grid-cols-12 sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-4 ">
           {/* 60% */}
           <div className="flex flex-3 flex-col gap-4">
             <SpendExpenseChart />

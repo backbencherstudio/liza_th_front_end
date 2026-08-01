@@ -46,7 +46,7 @@ export default function RevenueGrowthChart() {
         {/* COMPACT FILTER DROPDOWN */}
         <div>
 
-          <div className="relative ">
+          {/* <div className="relative ">
             <select className="appearance-none w-full h-12 pl-4 pr-10 border border-[#2563EB] rounded-lg text-[#2563EB] bg-white">
               <option>Last 7 days</option>
               <option>Last 30 days</option>
@@ -54,7 +54,7 @@ export default function RevenueGrowthChart() {
             </select>
 
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-[#2563EB]" />
-          </div>
+          </div> */}
 
         </div>
       </div>

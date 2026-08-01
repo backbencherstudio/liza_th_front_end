@@ -1,12 +1,18 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 
 import DiscountChart from '@/components/super-admin/revenue-analytics/DiscountChart'
 import RevenueGrowth from '@/components/super-admin/revenue-analytics/RevenueGrowth'
 import RevenuePerPlan from '@/components/super-admin/revenue-analytics/RevenuePerPlan'
 import RevenueStatus from '@/components/super-admin/revenue-analytics/RevenueStatus'
 import UserGrowthChart from '@/components/super-admin/revenue-analytics/UserGrowthChart'
+import { DateRangePicker } from '@/components/reusable/DateRangePicker'
+import { DateRange } from 'react-day-picker'
 
 export default function page() {
+
+  const [date, setDate] = useState<DateRange | undefined>(undefined);
   return (
     <section className="w-full">
       {/* 
@@ -17,6 +23,10 @@ export default function page() {
       */}
       <div className='w-full'>
         <RevenueStatus />
+      </div>
+
+      <div className='flex justify-end pb-12 w-full'>
+        <DateRangePicker date={date} setDate={setDate} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 w-full">
 

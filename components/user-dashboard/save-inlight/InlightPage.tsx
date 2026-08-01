@@ -20,7 +20,7 @@ export default function InlightPage() {
 
     return (
         <div>
-            <DashboardPageTitle title="Save Inlight" />
+            <DashboardPageTitle title="Save Insights" />
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 py-8'>
                 {templateAnalyticsData.map((item) => (

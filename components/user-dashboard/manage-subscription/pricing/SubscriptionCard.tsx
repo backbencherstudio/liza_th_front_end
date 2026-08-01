@@ -54,6 +54,13 @@ export default function PricingCard({ plan, billingPeriod }: CardProps) {
             </>
           )}
         </div>
+        {
+          billingPeriod === "yearly" && (
+            <div className="text-[#151513] font-['Archivo'] text-sm font-normal leading-6">
+              Billed annually
+            </div>
+          )
+        }
       </div>
 
       <div className="w-full h-px bg-[#EDEDED]" />

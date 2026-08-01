@@ -30,7 +30,11 @@ export default function RecentInsights() {
             type={d.type.toString()}
             description={DASHBOARD_LABELS[d.type]}
             industry={`Goals: ${d.goals.length} selected`}
-            date={new Date(d.createdAt).toLocaleDateString("en-GB")}
+            date={new Date(d.createdAt).toLocaleDateString("en-US", {
+              month: "2-digit",
+              day: "2-digit",
+              year: "numeric",
+            })}
             href={`/user-dashboard/dashboard/${d.id}`}
           />
         ))}

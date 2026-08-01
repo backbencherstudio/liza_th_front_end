@@ -1,6 +1,7 @@
 "use client";
 
 
+import { formatDate } from "@/lib/dateFomate";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,6 +32,7 @@ export function InlightCard({
   isSelected = false,
   onSelect,
 }: InlightCardProps) {
+
 
 
 
@@ -75,7 +77,7 @@ export function InlightCard({
           </p>
           <p className="text-[#3D3D3C] font-archivo text-[14px] font-normal leading-[20px]">
 
-            {date}
+            {formatDate(date)}
           </p>
         </div>
       </div>

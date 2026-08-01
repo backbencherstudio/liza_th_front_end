@@ -1,6 +1,5 @@
 "use client"
-import PricingIcon from "@/components/icons/PricingIcon";
-import FeatureIcon from "@/components/icons/FeatureIcon";
+
 import { overviewData, pricingPlans } from "./DemoSubsData";
 import StatsCard from "@/components/reusable/StatusCard";
 import { Plus } from "lucide-react";
@@ -10,7 +9,6 @@ import CustomModal from "@/components/reusable/CustomModal";
 import SubscriptionForm from "@/components/super-admin/manage-subscription/CreatePlan";
 import RecentSubscriptionsTable from "@/components/super-admin/manage-subscription/RecentSubscriptons";
 import type { EditablePlan } from "@/components/super-admin/manage-subscription/subscription.types";
-import SubscriptionCard from "@/components/super-admin/manage-subscription/SubscriptionCard";
 import SuperAdminSubscriptionCard from "@/components/super-admin/manage-subscription/SubscriptionCard";
 
 export default function PricingSection() {

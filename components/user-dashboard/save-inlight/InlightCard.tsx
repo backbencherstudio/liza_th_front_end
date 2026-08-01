@@ -1,15 +1,16 @@
 "use client";
 
-import React from "react";
+
+import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import SaveInlightIcon from "@/components/icons/SaveInlightIcon";
 
 interface InlightCardProps {
   id: string;
   title: string;
   img: string;
+  type: string;
   description: string;
   industry: string;
   date: string;
@@ -22,6 +23,7 @@ export function InlightCard({
   id,
   title,
   img,
+  type,
   description,
   industry,
   date,
@@ -30,6 +32,12 @@ export function InlightCard({
   onSelect,
 }: InlightCardProps) {
 
+
+
+
+  console.log(type);
+
+  const imgUrl = type === "EXEC" ? "/images/executive-summary.png" : type === "FIN" ? "/images/financial-summary.png" : "/images/operational-template.png";
 
   return (
     <div
@@ -41,14 +49,16 @@ export function InlightCard({
     >
       <div className="relative">
         <Image
-          src={img}
+          src={imgUrl}
           alt={title}
           width={328}
           height={158}
           className="w-full h-[158px] object-cover rounded-md"
         />
-        <div className="absolute top-2 right-2 bg-white rounded-sm border border-[#BBCFF9] p-2">
-          <SaveInlightIcon.DotIcon />
+        <div className="absolute top-2 right-2 bg-white rounded-sm border border-[#BBCFF9] p-1">
+
+
+          <Trash2 className="w-4 h-4 text-[#3D3D3C] cursor-pointer" />
         </div>
       </div>
 

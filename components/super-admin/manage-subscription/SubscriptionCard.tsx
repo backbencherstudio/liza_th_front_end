@@ -1,7 +1,6 @@
-import React from "react";
 import PricingIcon from "@/components/icons/PricingIcon";
 import FeatureIcon from "@/components/icons/FeatureIcon";
-import CustomButton from "@/components/reusable/CustomButton";
+
 
 interface PricingPlan {
     title: string;
@@ -128,7 +127,7 @@ function PricingCard({ plan }: PricingCardProps) {
             </div>
 
             {/* CTA Button */}
-            <div className="w-full mt-auto pt-4">
+            {/* <div className="w-full mt-auto pt-4">
                 {plan.isPrimaryCta ? (
                     <button
                         className="w-full flex h-14 items-center justify-center px-6 rounded-xl 
@@ -143,7 +142,7 @@ function PricingCard({ plan }: PricingCardProps) {
                         {plan.ctaText}
                     </CustomButton>
                 )}
-            </div>
+            </div> */}
         </div>
     );
 }

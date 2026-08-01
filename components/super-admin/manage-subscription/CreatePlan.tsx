@@ -152,6 +152,7 @@ export default function SubscriptionForm({
                             required: "Price is required",
                         })}
                         error={errors.price}
+                        step="0.01"
                     />
                 </div>
             </div>

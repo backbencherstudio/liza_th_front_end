@@ -24,6 +24,8 @@ interface FormUploadZoneProps extends VariantProps<typeof labelVariants> {
   accept?: string;
   wrapperClassName?: string;
   labelClassName?: string;
+  multiple?: boolean;
+  supportText?: string;
 }
 
 export function FormUploadZone({
@@ -34,6 +36,8 @@ export function FormUploadZone({
   variant = "auth",
   wrapperClassName,
   labelClassName,
+  multiple = false,
+  supportText = "Supports: Images (PNG, JPG), Documents (PDF, Word), Spreadsheets (CSV, Excel)...",
 }: FormUploadZoneProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
@@ -138,6 +142,7 @@ export function FormUploadZone({
           accept={accept}
           className="hidden"
           onChange={handleInputChange}
+          multiple={multiple}
         />
 
         {fileDetails && (
@@ -162,7 +167,7 @@ export function FormUploadZone({
           <span className="text-xs text-[#8A8D99] font-[Archivo] mt-1.5 max-w-[340px] leading-normal">
             {fileDetails 
               ? `File details: Size is roughly ${fileDetails.size}` 
-              : "Supports: Images (PNG, JPG), Documents (PDF, Word), Spreadsheets (CSV, Excel)..."
+              : supportText  
             }
           </span>
         </div>

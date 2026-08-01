@@ -1,5 +1,4 @@
 import { GeneratedDashboard } from '@/types/dashboard'
-import React from 'react'
 import OperationalSatusCard from './operationalTemplate/OperationalSatusCard'
 import OperationalSummeryTag from './operationalTemplate/OperationalSummeryTag'
 import CustomStatusUpdate from './operationalTemplate/CustomStatusUpdateData'
@@ -19,10 +18,11 @@ const editTypes = [
 ];
 
 export default function OperationalKPIDashboard({ dashboard }: { dashboard: GeneratedDashboard }) {
+  const dateOnly = dashboard.title.split('–')[1]?.trim();
   return (
     <div className=''>
-      <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
-      <TopHeader title={"Operational KPIs"} subtitle={"Track key performance indicators for your operations"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} />
+      
+      <TopHeader title={"Operational KPIs"} subtitle={"Track key performance indicators for your operations"} handleOpen={() => { }} editTypes={editTypes} editType={null} setEditType={() => { }} dateOnly={dateOnly} />
 
       <div className='bg-[#F8FAFB] rounded-xl p-4.5 mt-6'>
         <div className='mt-4'>
@@ -32,7 +32,7 @@ export default function OperationalKPIDashboard({ dashboard }: { dashboard: Gene
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-4'>
           <div className="w-full  bg-white p-7 pb-5  font-sans border [background:var(--W,#FFF)] px-4 py-5 rounded-2xl border-solid border-[#EDEDED]">
             <h2 className="mb-6 mt-1 font-[Archivo] font-medium text-[#1C1C1E] text-[18px] leading-[24px] md:text-[20px] md:leading-[26px]">
-              Monthly Trend by Category
+            Monthly Trend by Department
             </h2>
 
             <div className=''>

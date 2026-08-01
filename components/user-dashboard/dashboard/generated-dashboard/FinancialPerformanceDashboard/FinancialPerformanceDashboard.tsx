@@ -29,12 +29,13 @@ export default function FinancialPerformanceDashboard({ dashboard }: { dashboard
     setOpen(true);
   }
   console.log(editType);
+  const dateOnly = dashboard.title.split('–')[1]?.trim();
   return (
     <div className=''>
-      <h2 className="text-[26px] font-medium leading-[34px] text-gray-900">{dashboard.title}</h2>
+   
 
       <div className='py-8 '>
-        <TopHeader title={"Financial Performance"} subtitle={"State, Discover trends, identify risks and uncover growth opportunities."} handleOpen={handleOpen} editTypes={editTypes} editType={editType} setEditType={(val: string | null) => setEditType(val ?? "")} />
+        <TopHeader title={"Financial Performance"} subtitle={"State, Discover trends, identify risks and uncover growth opportunities."} handleOpen={handleOpen} editTypes={editTypes} editType={editType} setEditType={(val: string | null) => setEditType(val ?? "")} dateOnly={dateOnly} />
       </div>
 
       <div className='bg-[#F8FAFB] rounded-[20px] p-4.5'>

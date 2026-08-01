@@ -17,6 +17,14 @@ export default function page() {
     const [selectedId, setSelectedId] = useState<number | null>(null);
     const templateOverviewData = [
         {
+            id: 1,
+            title: "Total Templates",
+            icon: DashboardStatsIcons.TotalTemplates,
+            value: "12, 453",
+            description: "+8.2% from last month",
+            trend: "up",
+        },
+        {
             id: 2,
             title: "Published",
             icon: DashboardStatsIcons.Published,
@@ -52,13 +60,13 @@ export default function page() {
         },
         {
             id: 2,
-            title: "Financial Performance Dashboard",
+            title: "Executive SUMMARY Dashboard",
             img: "/assets/SuperAdmin/SuperAnalytic.png",
             description: "1245 uses"
         },
         {
             id: 3,
-            title: "Financial Performance Dashboard",
+            title: "Operational KPI Dashboard",
             img: "/assets/SuperAdmin/SuperAnalytic.png",
             description: "1245 uses"
         },
@@ -70,11 +78,11 @@ export default function page() {
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     {/* Left */}
                     <div>
-                        <h1 className="pb-3 text-[32px] font-semibold leading-[46px] text-[#151513]">
-                            Platform Overview
+                        <h1 className="pb-3 text-2xl font-semibold leading-11.5 text-[#151513] sm:pb-3 sm:text-[32px] sm:leading-11.5">
+                        Manage Dashboard
                         </h1>
-                        <p className="text-base font-normal leading-[22px] text-[#3D3D3C]">
-                            Welcome back! Here's what's happening with your platform today.
+                        <p className="text-base font-normal leading-5.5 text-[#3D3D3C]">
+                        Create, edit, and organize your template library
                         </p>
                     </div>
 
@@ -122,7 +130,7 @@ export default function page() {
             </div>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-4'>
                 {templateOverviewData.map((item) => (
                     <StatsCard
                         key={item.id}

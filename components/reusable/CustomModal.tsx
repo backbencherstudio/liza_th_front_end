@@ -20,14 +20,14 @@ type CustomModalProps = {
 
 interface FormData {
     companySize: string;
-  }
-  
-  const COMPANY_SIZE_OPTIONS = [
+}
+
+const COMPANY_SIZE_OPTIONS = [
     { value: "1-10", label: "1 - 10 employees" },
     { value: "11-50", label: "11 - 50 employees" },
     { value: "51-200", label: "51 - 200 employees" },
     { value: "201+", label: "201+ employees" },
-  ];
+];
 
 export default function CustomModal(props: CustomModalProps) {
     const {
@@ -65,15 +65,16 @@ export default function CustomModal(props: CustomModalProps) {
             <DialogContent
                 showCloseButton={false}
                 className={clsx(
-                    "flex flex-col items-start gap-8 [background:var(--Greyscale-0,#FFF)] px-4 py-5 md:px-8 md:py-[42px] rounded-2xl",
-                    "max-h-[calc(100dvh-2rem)] overflow-hidden md:max-h-none md:overflow-visible",
+                    "flex flex-col items-start gap-6 [background:var(--Greyscale-0,#FFF)] px-4 py-5 md:px-8 md:py-8 rounded-2xl",
+                    // Allow max-h-[90vh] across ALL screens (including md and up)
+                    "max-h-[95vh] overflow-hidden",
                     sizeClasses[size],
                     className
                 )}
             >
                 {/* Header Section */}
                 {title && (
-                    <div className="flex justify-between items-center ">
+                    <div className="flex justify-between items-center w-full">
                         <h3 className="text-2xl font-medium tracking-[-0.36px]">{title}</h3>
                     </div>
                 )}
@@ -104,9 +105,11 @@ export default function CustomModal(props: CustomModalProps) {
                     )
                 )}
                 {/* Content Area */}
-                <div className="w-full min-h-0 flex-1 overflow-y-auto overscroll-contain md:overflow-visible md:flex-none max-md:pr-1 max-md:[scrollbar-width:thin] max-md:[&::-webkit-scrollbar]:w-1.5 max-md:[&::-webkit-scrollbar-track]:rounded-full max-md:[&::-webkit-scrollbar-thumb]:rounded-full max-md:[&::-webkit-scrollbar-thumb]:bg-[rgba(8,14,30,0.15)]">
+                {/* Content Area - Enable scroll dynamically */}
+                <div className="w-full min-h-0 flex-1 overflow-y-auto overscroll-contain pr-1 [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[rgba(8,14,30,0.15)]">
                     {children}
                 </div>
+
             </DialogContent>
         </Dialog>
     );

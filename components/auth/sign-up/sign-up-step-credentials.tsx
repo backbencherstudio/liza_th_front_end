@@ -69,13 +69,13 @@ export function SignUpStepCredentials() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6  overflow-y-auto">
 
       <div>
         <h2 className="auth-title max-w-[320px] mx-auto">
           Start your 14 <span className="auth-link">day free trial</span> today
         </h2>
-        <p className="auth-subtitle mt-3">
+        <p className="auth-subtitle mt-2.5">
           Please enter details by Creating New Account
         </p>
       </div>
@@ -84,7 +84,7 @@ export function SignUpStepCredentials() {
 
 
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <FormField
           label="Your Name"
           type="text"
@@ -136,27 +136,27 @@ export function SignUpStepCredentials() {
           {...register("email")}
         />
 
-        <FormField
-          label="Password"
-          type={showPassword ? "text" : "password"}
-          placeholder="Min 8 characters"
-          error={errors.password}
-          className="relative"
-          {...register("password")}
-
-        />
-        <button
-          className="absolute right-12 top-[70%] -translate-y-1/2"
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          aria-label={showPassword ? "Hide password" : "Show password"}
-        >
-          {showPassword ? (
-            <EyeOff className="h-4 w-4 text-muted-foreground" />
-          ) : (
-            <Eye className="h-4 w-4 text-muted-foreground" />
-          )}
-        </button>
+<div className="relative">
+  <FormField
+    label="Password"
+    type={showPassword ? "text" : "password"}
+    placeholder="Min 8 characters"
+    error={errors.password}
+    {...register("password")}
+  />
+  <button
+    className="absolute right-3 top-15 -translate-y-1/2 p-1" // Adjust top offset depending on FormField label height
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    aria-label={showPassword ? "Hide password" : "Show password"}
+  >
+    {showPassword ? (
+      <EyeOff className="h-4 w-4 text-muted-foreground" />
+    ) : (
+      <Eye className="h-4 w-4 text-muted-foreground" />
+    )}
+  </button>
+</div>
 
 
 

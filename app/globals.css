@@ -135,11 +135,11 @@ button {
 
 @layer components {
   .auth-title {
-    @apply text-center font-semibold text-3xl leading-[46px] text-[#151513];
+    @apply text-center font-semibold text-3xl leading-[40px] text-[#151513];
   }
 
   .auth-subtitle {
-    @apply self-stretch text-center text-lg leading-6 text-[#4A4C56];
+    @apply self-stretch text-center text-lg leading-5 text-[#4A4C56];
   }
 
   .auth-link {
@@ -147,7 +147,7 @@ button {
   }
 
   .auth-footer {
-    @apply text-center text-lg leading-6 text-gray-400;
+    @apply text-center text-lg leading-5 text-gray-400;
   }
 
   .auth-footer-note {

@@ -49,7 +49,7 @@ export default function PricingCard({ plan, billingPeriod }: CardProps) {
                 ${Number(displayPrice).toFixed(2)}
               </span>
               <span className="text-[#151513] font-['Archivo'] text-base font-normal leading-6">
-                /{billingPeriod === "monthly" ? "month" : "year"}
+                /{billingPeriod === "monthly" ? "month" : "month"}
               </span>
             </>
           )}

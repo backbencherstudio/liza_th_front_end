@@ -44,15 +44,14 @@ export default function SummeryTag() {
                         Disclaimer:
                     </h4>
                     <p className="font-archivo text-[14px] font-normal leading-[20px] text-[#424750]">
-                        To ensure cost control, the Professional oversight should focus on strict adherence to the 30-day "Client Review
-                        and Approval" window in Phase 1. Implement d 10% contingency buffer ($950) for potential API integration
-                        complexities in Phase 3. Regularly audit the "Stripe Integration" and "AI Insights" milestones as these represent
-                        the core value-drivers for revenue generation.
+                        This automated summary is intended to assist with internal reviews and data synthesis. It is not an official financial audit or a substitute for professional accounting review. Always cross reference the generated insights with source financial models before reporting.
+
+
                     </p>
                 </div>
 
 
-         </div>
+            </div>
         </div>
     );
 }

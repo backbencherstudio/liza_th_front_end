@@ -109,23 +109,21 @@ export default function Step3Goals({
               key={goal.id}
               type="button"
               onClick={() => toggleGoal(goal.id)}
-              className={`group relative flex min-h-[120px] w-full flex-col items-center justify-center gap-3 rounded-[10px] border-2 border-solid p-6 text-center transition-all hover:border-[#A3B8FF] ${
-                isSelected
-                  ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
-                  : "border-[#E9E9EA] bg-white hover:bg-[#F8FAFC]"
-              }`}
+              className={`group relative flex min-h-[120px] w-full flex-col items-center justify-center gap-3 rounded-[10px] border-2 border-solid p-6 text-center transition-all hover:border-[#A3B8FF] ${isSelected
+                ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
+                : "border-[#E9E9EA] bg-white hover:bg-[#F8FAFC]"
+                }`}
             >
               {/* Checkmark indicator */}
               <div
-                className={`absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full border-2 border-solid transition-all ${
-                  isSelected
-                    ? "border-[#2563EB] bg-[#2563EB]"
-                    : "border-[#CBD5E1] bg-white"
-                }`}
+                className={`absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full border-2 border-solid transition-all ${isSelected
+                  ? "border-[#2563EB] bg-[#2563EB]"
+                  : "border-[#CBD5E1] bg-white"
+                  }`}
               >
                 {isSelected && (
-                //  
-                <DashboardTypeIcon.TickIcon/>
+                  //  
+                  <DashboardTypeIcon.TickIcon />
                 )}
               </div>
 
@@ -136,9 +134,8 @@ export default function Step3Goals({
 
               {/* Title */}
               <span
-                className={`font-[Archivo] text-base font-medium leading-snug transition-colors ${
-                  isSelected ? "text-[#1D1F2C]" : "text-[#1D1F2C]"
-                }`}
+                className={`font-[Archivo] text-base font-medium leading-snug transition-colors ${isSelected ? "text-[#1D1F2C]" : "text-[#1D1F2C]"
+                  }`}
               >
                 {goal.title}
               </span>
@@ -147,7 +144,7 @@ export default function Step3Goals({
         })}
       </div>
 
-      <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:justify-between">
+      <div className="flex flex-col gap-3 pt-6 sm:flex-row ">
         <button
           type="button"
           onClick={onBack}

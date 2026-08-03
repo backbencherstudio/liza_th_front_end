@@ -47,9 +47,9 @@ export default function Step2Mapping({
           const currentValue = mappings[field.label] ?? "";
           const options = currentValue
             ? [
-                { label: currentValue, value: currentValue },
-                ...COLUMN_OPTIONS.filter((o) => o.value !== currentValue),
-              ]
+              { label: currentValue, value: currentValue },
+              ...COLUMN_OPTIONS.filter((o) => o.value !== currentValue),
+            ]
             : COLUMN_OPTIONS;
 
           return (
@@ -68,7 +68,7 @@ export default function Step2Mapping({
         })}
       </div>
 
-      <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:justify-between">
+      <div className="flex flex-col gap-3 pt-6 sm:flex-row ">
         <button
           type="button"
           onClick={onBack}
@@ -76,7 +76,7 @@ export default function Step2Mapping({
         >
           Back
         </button>
-        
+
         <CustomButton
           type="button"
           onClick={onNext}

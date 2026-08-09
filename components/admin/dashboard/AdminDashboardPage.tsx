@@ -1,3 +1,4 @@
+"use client"
 import DashboardPageTitle from "@/components/reusable/DashboardPageTitle";
 import { ArrowDownToLine } from "lucide-react";
 import StatusCard from "../../reusable/StatusCard";
@@ -6,6 +7,9 @@ import RecentCustomTable from "./DasboardRecentCustomTable";
 import SubscriptionStatus from "./SubscriptionStatus";
 import MonthlySubscriptionChart from "./MonthlySubscription";
 import { FormSelect } from "@/components/reusable/FormSelect";
+import { useState } from "react";
+import { DateRange } from "react-day-picker";
+import { DateRangePicker } from "@/components/reusable/DateRangePicker";
 
 interface AdminStatus {
     id: number;
@@ -16,6 +20,7 @@ interface AdminStatus {
 }
 
 export default function AdminDashboardPage() {
+    const [date, setDate] = useState<DateRange | undefined>(undefined);
     const adminStatus: AdminStatus[] =
 
         [
@@ -59,12 +64,14 @@ export default function AdminDashboardPage() {
                 </div>
 
                 <div className="flex  gap-4 cursor-pointer mt-3 md:mt-0">
-                    <FormSelect
+                    {/* <FormSelect
                         label=""
                         options={timeRangeOptions}
                         placeholder="1 Month"
 
-                    />
+                    /> */}
+
+                    <DateRangePicker date={date} setDate={setDate} className="h-12 " />
                     <button className="rounded-lg bg-[linear-gradient(144deg,_#0A206D_0%,_#3B69D0_100%)] px-6 py-3 text-white flex items-center gap-2">
                         Export <ArrowDownToLine />
                     </button>

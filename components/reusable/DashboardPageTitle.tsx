@@ -18,7 +18,7 @@ export default function DashboardPageTitle({
             </h2>
 
             {description && (
-                <p className="mt-3 max-w-[448px] font-archivo text-base leading-[22px] text-[#3D3D3C]">
+                <p className="mt-3 font-archivo text-base leading-[22px] text-[#3D3D3C]">
                     {description}
                 </p>
             )}

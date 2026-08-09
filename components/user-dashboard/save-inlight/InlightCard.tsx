@@ -33,10 +33,6 @@ export function InlightCard({
   onSelect,
 }: InlightCardProps) {
 
-
-
-
-
   console.log(type);
 
   const imgUrl = type === "EXEC" ? "/images/executive-summary.png" : type === "FIN" ? "/images/financial-summary.png" : "/images/operational-template.png";

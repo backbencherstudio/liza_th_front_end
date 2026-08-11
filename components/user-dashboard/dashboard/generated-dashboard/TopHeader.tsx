@@ -36,8 +36,8 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
 
     const { control, formState: { errors } } = useForm({
         defaultValues: {
-            location: "",
-            month: "",
+            location: "All Locations",
+            month: "All Months",
             editType: editType,
         },
         mode: "onChange",
@@ -62,7 +62,7 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
                 <div className="flex flex-wrap items-center  gap-2 lg:justify-end ">
 
                     {/* Location Filter */}
-                    <div className="w-36">
+                    <div className="w-40">
                         <Controller
                             name="location"
                             control={control}

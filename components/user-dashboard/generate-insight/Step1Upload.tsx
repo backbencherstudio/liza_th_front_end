@@ -59,6 +59,8 @@ export default function Step1Upload({
     const [isDragging, setIsDragging] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    
+
     const validateAndAdd = (files: File[]) => {
         const validNames = files
             .filter(

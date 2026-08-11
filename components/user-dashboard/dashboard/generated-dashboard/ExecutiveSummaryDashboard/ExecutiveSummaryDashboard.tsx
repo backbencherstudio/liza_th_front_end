@@ -15,6 +15,7 @@ import CashFlowCharts from '@/components/user-dashboard/dashboard/generated-dash
 import { Controller, useForm } from 'react-hook-form'
 import ExecuitiveSummeryKpiTable from '@/components/user-dashboard/dashboard/generated-dashboard/ExecutiveSummaryDashboard/execuitive-summery/KpiTable'
 import TopHeader from '../TopHeader'
+import { formatDate2 } from '@/lib/dateFomate'
 
 
 type FormValues = {
@@ -60,12 +61,15 @@ export default function ExecutiveSummaryDashboard({ dashboard }: { dashboard: Ge
     console.log(data);
   };
   const dateOnly = dashboard.title.split('–')[1]?.trim();
+  const formattedDate = dateOnly
+  ? formatDate2(dateOnly)
+  : "";
   return (
     <div>
       
 
       <div>
-        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} dateOnly={dateOnly} />
+        <TopHeader title={"Executive Summary"} subtitle={"Company performance, cash flow and strategic intelligence"} handleOpen={() => {}} editTypes={editTypes} editType={null} setEditType={() => {}} dateOnly={formattedDate} />
 
 
 

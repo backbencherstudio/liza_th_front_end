@@ -31,7 +31,7 @@ export default function Step2Mapping({
 }: Step2Props) {
   const fields = getMappingFieldsForType(dashboardType);
   const title = MAPPING_STEP_TITLE[dashboardType];
-
+const periodOptions = ["Monthly", "Annual"];
   const handleChange = (label: string, value: string) => {
     setMappings((prev) => ({ ...prev, [label]: value }));
   };
@@ -45,6 +45,82 @@ export default function Step2Mapping({
       <div className="space-y-5">
         {fields.map((field) => {
           const currentValue = mappings[field.label] ?? "";
+
+          if (field.type === "Number Input") {
+            const budgetPeriod = mappings[`${field.label} Period`] ?? "Monthly";
+
+            return (
+              <div key={field.label} className="space-y-2">
+               
+                {/* <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value={currentValue}
+                    onChange={(event) => handleChange(field.label, event.target.value)}
+                    placeholder={`Enter ${field.label.toLowerCase()}`}
+                    className="h-12 w-full rounded-xl border border-[#E4E4E7] px-4 text-sm text-[#1D1F2C] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:flex-1"
+                  />
+                  <select
+                    aria-label={`${field.label} period`}
+                    value={budgetPeriod}
+                    onChange={(event) =>
+                      handleChange(`${field.label} Period`, event.target.value)
+                    }
+                    className="h-12 w-full rounded-xl border border-[#E4E4E7] bg-white px-4 text-sm text-[#1D1F2C] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:w-40"
+                  >
+                    <option value="Monthly">Monthly</option>
+                    <option value="Annual">Annual</option>
+                  </select>
+                </div> */}
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+  <div className="flex-1">
+     <label className="text-[#151513] font-[Archivo] text-[18px] font-normal leading-[26px] mb-2 block ">
+                  {field.label} {field.isRequired ? "" : "(Optional)"}
+                </label>
+    <input
+      type="number"
+      min="0"
+      step="0.01"
+      value={currentValue}
+      onChange={(event) =>
+        handleChange(field.label, event.target.value)
+      }
+      placeholder={`Enter ${field.label.toLowerCase()}`}
+      className="h-12 w-full rounded-xl border border-[#E4E4E7] px-4 text-sm text-[#1D1F2C] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+    />
+  </div>
+
+  <div className="w-full sm:w-40">
+    <label className="mb-2 text-[#151513] font-[Archivo] text-[18px] font-normal leading-[26px]  block">
+      Budget period
+    </label>
+
+    <select
+      aria-label={`${field.label} period`}
+      value={budgetPeriod}
+      onChange={(event) =>
+        handleChange(
+          `${field.label} Period`,
+          event.target.value
+        )
+      }
+      className="h-12 w-full rounded-xl border border-[#E4E4E7] bg-white px-4 text-sm text-[#1D1F2C] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+    >
+      {periodOptions.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
+              </div>
+            );
+          }
+
           const options = currentValue
             ? [
               { label: currentValue, value: currentValue },

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import GeneratingScreen from "./GeneratingScreen";
 import Step1Upload from "./Step1Upload";
@@ -14,9 +14,18 @@ export type Step = 1 | 2 | 3 | "PROCESSING";
 
 export default function OnboardingWizard() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState<Step>(1);
   const [fileNames, setFileNames] = useState<string[]>([]);
-  const [dashboardType, setDashboardType] = useState<DashboardType>("EXEC");
+  const requestedDashboard = searchParams.get("dashboard");
+  const initialDashboardType: DashboardType =
+    requestedDashboard === "EXEC" ||
+    requestedDashboard === "FIN" ||
+    requestedDashboard === "OPS"
+      ? requestedDashboard
+      : "EXEC";
+  const [dashboardType, setDashboardType] =
+    useState<DashboardType>(initialDashboardType);
   const [mappings, setMappings] = useState<Record<string, string>>({});
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
 

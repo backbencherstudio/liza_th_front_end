@@ -1,7 +1,7 @@
 "use client";
 
 
-import { formatDate } from "@/lib/dateFomate";
+import { formatDate, formatDate2 } from "@/lib/dateFomate";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,6 +34,7 @@ export function InlightCard({
 }: InlightCardProps) {
 
   console.log(type);
+
 
   const imgUrl = type === "EXEC" ? "/images/executive-summary.png" : type === "FIN" ? "/images/financial-summary.png" : "/images/operational-template.png";
 
@@ -73,7 +74,7 @@ export function InlightCard({
           </p>
           <p className="text-[#3D3D3C] font-archivo text-[14px] font-normal leading-[20px]">
 
-            {formatDate(date)}
+            {formatDate2(date)}
           </p>
         </div>
       </div>

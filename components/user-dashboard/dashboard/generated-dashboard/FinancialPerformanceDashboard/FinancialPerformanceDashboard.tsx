@@ -12,6 +12,7 @@ import CashBalanceForm from './editTypeForm/CashBalance'
 import BudgetedSpendForm from './editTypeForm/BudgetedSpend'
 import FinancialStatsKpi from './financial-perfomance/FinancialStatsKpi'
 import OperationalSummeryTag from '../OperationalKPIDashboard/operationalTemplate/OperationalSummeryTag'
+import { formatDate2 } from '@/lib/dateFomate'
 
 
 
@@ -30,12 +31,18 @@ export default function FinancialPerformanceDashboard({ dashboard }: { dashboard
   }
   console.log(editType);
   const dateOnly = dashboard.title.split('–')[1]?.trim();
+  const formattedDate = dateOnly?.includes("/")
+    ? dateOnly
+    : dateOnly
+      ? formatDate2(dateOnly)
+      : "";
+  
   return (
     <div className=''>
 
 
       <div className='py-8 '>
-        <TopHeader title={"Financial Performance"} subtitle={"State, Discover trends, identify risks and uncover growth opportunities."} handleOpen={handleOpen} editTypes={editTypes} editType={editType} setEditType={(val: string | null) => setEditType(val ?? "")} dateOnly={dateOnly} />
+        <TopHeader title={"Financial Performance"} subtitle={"State, Discover trends, identify risks and uncover growth opportunities."} handleOpen={handleOpen} editTypes={editTypes} editType={editType} setEditType={(val: string | null) => setEditType(val ?? "")} dateOnly={formattedDate} />
       </div>
 
       <div className='bg-[#F8FAFB] rounded-[20px] p-4.5 w-full'>

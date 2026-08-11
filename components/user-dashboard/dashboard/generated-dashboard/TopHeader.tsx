@@ -34,6 +34,8 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
         { label: "March", value: "march" },
     ];
 
+    
+
     const { control, formState: { errors } } = useForm({
         defaultValues: {
             location: "All Locations",
@@ -51,7 +53,7 @@ export default function TopHeader({ title, subtitle, handleOpen, editTypes, edit
 
                 {/* Left: Title & Subtitle */}
                 <div className="flex-1">
-                    <h2 className="text-[20px] font-medium leading-[34px] text-gray-900">Generated : {dateOnly}</h2>
+                    {/* <h2 className="text-[20px] font-medium leading-[34px] text-gray-900">Generated : {dateOnly}</h2> */}
                     <DashboardPageTitle
                         title={title}
                         description={subtitle}

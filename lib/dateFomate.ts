@@ -5,7 +5,13 @@ export const formatDate = (date: string) => {
 };
 
 export const formatDate2 = (date: string) => {
-  const [year, month, day] = date.split("T")[0].split("-");
+  const datePart = date.split("T")[0];
+
+  if (datePart.includes("/")) {
+    return datePart;
+  }
+
+  const [year, month, day] = datePart.split("-");
 
   return `${month}/${day}/${year}`;
 };

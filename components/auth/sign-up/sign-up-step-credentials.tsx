@@ -9,6 +9,7 @@ import { FormField } from "@/components/reusable/FormInput";
 import CustomButton from "@/components/reusable/CustomButton";
 import { FormSelect } from "@/components/reusable/FormSelect";
 import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 // Schema mapped directly to your UI layout blueprint requirements
 const signUpSchema = z.object({
@@ -37,7 +38,7 @@ export function SignUpStepCredentials() {
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { nextStep, switchFlow, setFlowData } = useAuthModalStore();
+  const { nextStep, switchFlow, setFlowData,close } = useAuthModalStore();
 
 
   const {
@@ -63,7 +64,7 @@ export function SignUpStepCredentials() {
       console.log("submitted data:", data);
       nextStep();
       // Next step would go here
-    } catch (err: any) {
+    } catch (err) {
       setError("Something went wrong. Please try again.");
     }
   };
@@ -185,7 +186,10 @@ export function SignUpStepCredentials() {
 
       <p className="auth-footer">
         By continuing, you acknowledge that you understand and agree to the
-        <span className="auth-link"> Terms & Conditions</span> and <span className="auth-link">Privacy-Policy.</span>
+        <Link href="terms-condition"
+        onClick={() => close()}
+         className="auth-link"> Terms & Conditions</Link> and <Link href="privecy-policy" 
+         onClick={() => close()}className="auth-link">Privacy-Policy.</Link>
       </p>
 
       <p className="auth-footer-note">

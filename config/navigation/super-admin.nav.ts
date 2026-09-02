@@ -7,7 +7,7 @@ import { FileText, LayoutDashboard, Tag, Users } from "lucide-react";
 import type { DashboardNavConfig } from "./types";
 
 export const superAdminNavigation: DashboardNavConfig = {
-  role: "super_admin",
+  role: "super-admin",
   dashboardHref: "/super-admin/dashboard",
   settingsHref: "/super-admin/settings/edit-profile",
   items: [

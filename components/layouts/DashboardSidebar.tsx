@@ -7,6 +7,7 @@ import { Settings } from "lucide-react";
 
 import LogoutIcon from "@/components/icons/LogoutIcon";
 import type { DashboardNavConfig } from "@/config/navigation/types";
+import { useAuth } from "@/hooks/useAuth";
 
 interface DashboardSidebarProps {
   navigation: DashboardNavConfig;
@@ -18,6 +19,7 @@ export default function DashboardSidebar({
   onClose,
 }: DashboardSidebarProps) {
   const pathname = usePathname();
+  const { logout, isLoggingOut } = useAuth();
   const showFooter = navigation.showSidebarFooter ?? true;
   // const settingsBasePath = navigation.settingsHref.replace(/\/[^/]+$/, "");
   const isSettingsActive =
@@ -81,8 +83,8 @@ export default function DashboardSidebar({
         })}
       </nav>
 
-      {showFooter && (
-        <div className="mt-auto space-y-1 pt-6">
+      <div className="mt-auto space-y-1 pt-6">
+        {showFooter && (
           <Link
             href={navigation.settingsHref}
             onClick={onClose}
@@ -107,16 +109,21 @@ export default function DashboardSidebar({
               Setting
             </span>
           </Link>
+        )}
 
-          <button
-            type="button"
-            className="flex w-full items-center gap-3 rounded-[10px] px-3 py-[14px] text-[15px] font-medium text-[#374151] transition-all hover:bg-gray-100"
-          >
-            <LogoutIcon size={20} />
-            <span>Log out</span>
-          </button>
-        </div>
-      )}
+        <button
+          type="button"
+          onClick={async () => {
+            onClose?.();
+            await logout();
+          }}
+          disabled={isLoggingOut}
+          className="flex w-full items-center gap-3 rounded-[10px] px-3 py-[14px] text-[15px] font-medium text-[#374151] transition-all hover:bg-gray-100 disabled:opacity-60"
+        >
+          <LogoutIcon size={20} />
+          <span>{isLoggingOut ? "Logging out..." : "Log out"}</span>
+        </button>
+      </div>
     </aside>
   );
 }

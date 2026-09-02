@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import type { DashboardNavConfig, DashboardUser } from "@/config/navigation/types";
+import { useAuth } from "@/hooks/useAuth";
 
 import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
@@ -17,7 +18,7 @@ interface DashboardShellProps {
 }
 
 const defaultUsers: Record<DashboardNavConfig["role"], DashboardUser> = {
-  super_admin: {
+  "super-admin": {
     name: "B. Cooper",
     roleLabel: "Super Admin",
     avatarSrc: "/assets/SuperAdmin/SuperAdmin.png",
@@ -40,7 +41,16 @@ export default function DashboardShell({
   user,
 }: DashboardShellProps) {
   const [open, setOpen] = useState(false);
-  const headerUser = user ?? defaultUsers[navigation.role];
+  const { user: authUser, roleLabel } = useAuth();
+  const headerUser =
+    user ??
+    (authUser
+      ? {
+          name: authUser.full_name || defaultUsers[navigation.role].name,
+          roleLabel: roleLabel ?? defaultUsers[navigation.role].roleLabel,
+          avatarSrc: defaultUsers[navigation.role].avatarSrc,
+        }
+      : defaultUsers[navigation.role]);
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const isUserDashboard = navigation.role === "user";
 

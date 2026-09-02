@@ -1,7 +1,8 @@
 "use client";
 
+import { RequireRole } from "@/components/auth/RequireRole";
 import DashboardShell from "@/components/layouts/DashboardShell";
-import { adminNavigation, userNavigation } from "@/config/navigation";
+import { userNavigation } from "@/config/navigation";
 
 export default function Layout({
   children,
@@ -9,8 +10,10 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <DashboardShell navigation={userNavigation}>
-      {children}
-    </DashboardShell>
+    <RequireRole role="user">
+      <DashboardShell navigation={userNavigation}>
+        {children}
+      </DashboardShell>
+    </RequireRole>
   );
 }

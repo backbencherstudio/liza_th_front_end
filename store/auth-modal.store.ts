@@ -16,9 +16,11 @@ const FLOW_STEPS: Record<AuthFlow, readonly Step[]> = {
 
 
 // persisted between steps so OTP verify can use it
-interface AuthFlowData {
+export interface AuthFlowData {
   email?: string;
   mfaMethod?: "email" | "authenticator";
+  challengeId?: string;
+  maskedDestination?: string;
 }
 
 

@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-export type DashboardRole = "super_admin" | "admin" | "user";
+export type DashboardRole = "super-admin" | "admin" | "user";
 
 export type NavIcon = ComponentType<{ size?: number; className?: string }>;
 

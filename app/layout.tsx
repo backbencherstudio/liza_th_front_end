@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Archivo } from "next/font/google";
 import "./globals.css";
+import { StoreProvider } from "@/store/provider";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -27,7 +28,9 @@ export default function RootLayout({
       lang="en"
       className={`${archivo.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <StoreProvider>{children}</StoreProvider>
+      </body>
     </html>
   );
 }

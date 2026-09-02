@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
   //     },
   //   ],
   // },
+
+  // /api/proxy is handled by app/api/proxy/[...path]/route.ts
+  // so Set-Cookie can be rewritten onto localhost. Next rewrites
+  // cannot change cookie Domain, so they cannot persist the refresh cookie.
 };
 
 export default nextConfig;

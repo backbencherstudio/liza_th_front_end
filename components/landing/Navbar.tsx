@@ -7,6 +7,7 @@ import { Menu, X, Bell } from "lucide-react";
 import { useAuthModalStore } from "@/store/auth-modal.store";
 import { cn } from "@/lib/utils";
 import CustomButton from "../reusable/CustomButton";
+import { useAuth } from "@/hooks/useAuth";
 
 const NAV_LINKS = [
     { label: "About Us", href: "/#about-us" },
@@ -18,6 +19,7 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { open } = useAuthModalStore();
+    const { user, roleLabel, isAuthenticated, isLoading, dashboardHref, displayName, initials } = useAuth();
 
     return (
         <div className="[background:#F9FAFF] backdrop-blur-[20px] sticky top-0 z-[50] relative">
@@ -67,29 +69,50 @@ export default function Navbar() {
                         </span>
                     </div>
 
-                    {/* Log In */}
-                    <button
-                        onClick={() => open("sign-in")}
-                        className="relative flex h-14 items-center justify-center gap-1.5 rounded-xl border border-[#0A206D] px-8 py-3 cursor-pointer overflow-hidden bg-white hover:bg-[#f0f4ff] transition-colors"
-                    >
-                        <span className="bg-gradient-to-br from-[#0A206D] to-[#3B69D0] bg-clip-text text-lg font-semibold text-transparent z-10">
-                            Log In
-                        </span>
-                        <div
-                            className="absolute inset-[3px] rounded-xl border border-[#0A206D] pointer-events-none"
-                            style={{
-                                maskImage:
-                                    "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
-                                WebkitMaskImage:
-                                    "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
-                            }}
-                        />
-                    </button>
+                    {isAuthenticated ? (
+                        <Link
+                        href={dashboardHref}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E9EFFD] text-sm font-semibold text-[#1E40AF]">
+                          {initials}
+                        </div>
+                      
+                        <div className="text-left">
+                          <p className="text-base font-medium leading-5 text-[#151513]">
+                            {displayName}
+                          </p>
+                      
+                          <p className="text-sm text-[#777980]">
+                            {roleLabel ?? user?.role ?? "User"}
+                          </p>
+                        </div>
+                      </Link>
+                    ) : isLoading ? null : (
+                        <>
+                            <button
+                                onClick={() => open("sign-in")}
+                                className="relative flex h-14 items-center justify-center gap-1.5 rounded-xl border border-[#0A206D] px-8 py-3 cursor-pointer overflow-hidden bg-white hover:bg-[#f0f4ff] transition-colors"
+                            >
+                                <span className="bg-gradient-to-br from-[#0A206D] to-[#3B69D0] bg-clip-text text-lg font-semibold text-transparent z-10">
+                                    Log In
+                                </span>
+                                <div
+                                    className="absolute inset-[3px] rounded-xl border border-[#0A206D] pointer-events-none"
+                                    style={{
+                                        maskImage:
+                                            "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
+                                        WebkitMaskImage:
+                                            "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
+                                    }}
+                                />
+                            </button>
 
-                    {/* Sign Up */}
-                    <CustomButton onClick={() => open("sign-up")}>
-                        Sign Up for free
-                    </CustomButton>
+                            <CustomButton onClick={() => open("sign-up")}>
+                                Sign Up for free
+                            </CustomButton>
+                        </>
+                    )}
                 </div>
 
                 {/* Mobile right side — bell + hamburger */}
@@ -138,39 +161,35 @@ export default function Navbar() {
                         <div className="h-px bg-[#eaeaea]/60" />
                     </div>
 
-                    {/* Bottom: Auth Buttons */}
                     <div className="flex flex-col gap-3 w-full mt-auto">
-                        {/* Log In Button */}
-                        {/* <button
-                            onClick={() => {
-                                open("sign-in");
-                                setMenuOpen(false);
-                            }}
-                            className="relative w-full flex justify-center items-center h-14 rounded-xl border border-[#0A206D] bg-white cursor-pointer transition-colors hover:bg-[#f0f4ff]"
-                        >
-                            <span className="bg-gradient-to-br from-[#0A206D] to-[#3B69D0] bg-clip-text text-lg font-semibold text-transparent z-10">
-                                Log In
-                            </span>
-                            <div
-                                className="absolute inset-[3px] rounded-xl border border-[#0A206D] pointer-events-none"
-                                style={{
-                                    maskImage:
-                                        "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
-                                    WebkitMaskImage:
-                                        "linear-gradient(to bottom right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 40%)",
-                                }}
-                            />
-                        </button> */}
-
-                        <CustomButton variant="outline" onClick={() => open("sign-in")}>
-                            Login
-                        </CustomButton>
-
-
-                        {/* Sign Up Button */}
-                        <CustomButton onClick={() => open("sign-up")}>
-                            Sign Up for free
-                        </CustomButton>
+                        {isAuthenticated ? (
+                            <Link
+                                href={dashboardHref}
+                                onClick={() => setMenuOpen(false)}
+                                className="flex items-center gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3"
+                            >
+                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E9EFFD] text-sm font-semibold text-[#1E40AF]">
+                                    {initials}
+                                </div>
+                                <div>
+                                    <p className="text-base font-medium text-[#151513]">
+                                        {displayName}
+                                    </p>
+                                    <p className="text-sm text-[#777980]">
+                                        {roleLabel ?? user?.role}
+                                    </p>
+                                </div>
+                            </Link>
+                        ) : isLoading ? null : (
+                            <>
+                                <CustomButton variant="outline" onClick={() => { open("sign-in"); setMenuOpen(false); }}>
+                                    Login
+                                </CustomButton>
+                                <CustomButton onClick={() => { open("sign-up"); setMenuOpen(false); }}>
+                                    Sign Up for free
+                                </CustomButton>
+                            </>
+                        )}
                     </div>
 
                 </div>

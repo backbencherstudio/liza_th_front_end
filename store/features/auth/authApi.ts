@@ -19,7 +19,21 @@ export const authApi = baseApi.injectEndpoints({
       AuthUser,
       { full_name: string; email: string; password: string; industry: string; job_role: string }
     >({
-      query: (body) => ({ url: "/signup", method: "POST", body }),
+      query: (body) => ({ url: "/auth/register", method: "POST", body }),
+    }),
+
+    verifyEmail: builder.mutation<
+      { verified: boolean },
+      { email: string; otp: string }
+    >({
+      query: (body) => ({ url: "/auth/verify-email", method: "POST", body }),
+    }),
+
+    resendVerification: builder.mutation<
+      { message: string },
+      { email: string }
+    >({
+      query: (body) => ({ url: "/auth/resend-verification", method: "POST", body }),
     }),
 
     me: builder.query<AuthUser, void>({
@@ -50,4 +64,6 @@ export const {
   useLazyMeQuery,
   useLogoutMutation,
   useVerifyOtpMutation,
+  useVerifyEmailMutation,
+  useResendVerificationMutation,
 } = authApi;

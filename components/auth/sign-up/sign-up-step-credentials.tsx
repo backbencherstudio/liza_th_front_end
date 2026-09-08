@@ -10,6 +10,9 @@ import CustomButton from "@/components/reusable/CustomButton";
 import { FormSelect } from "@/components/reusable/FormSelect";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { useSignupMutation } from "@/store/features/auth/authApi";
+import { getApiErrorMessage } from "@/lib/getApiErrorMessage";
+import { INDUSTRY_OPTIONS, ROLE_OPTIONS } from "../data";
 
 // Schema mapped directly to your UI layout blueprint requirements
 const signUpSchema = z.object({
@@ -25,20 +28,13 @@ type SignUpInput = z.infer<typeof signUpSchema>;
 
 
 
-
-const ROLE_OPTIONS = [
-  { label: "CFO / Finance Director", value: "cfo" },
-  { label: "Accountant / CPA", value: "accountant" },
-  { label: "Founder / CEO", value: "founder" },
-];
-
-
 export function SignUpStepCredentials() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { nextStep, switchFlow, setFlowData,close } = useAuthModalStore();
+  const { nextStep, switchFlow, setFlowData, close } = useAuthModalStore();
+  const [signup, {isLoading: isSigningUp}] = useSignupMutation();
 
 
   const {
@@ -54,18 +50,20 @@ export function SignUpStepCredentials() {
     setError("");
     setSuccess(false);
 
-    try {
-      // Mock API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Sign up data:", data);
-      setSuccess(true);
-      setFlowData({ email: data.email });
+    const payload = {
+      full_name: data.name,
+      email: data.email,
+      password: data.password,
+      industry: data.industry,
+      job_role: data.role,
+    }
 
-      console.log("submitted data:", data);
+    try {
+      const user = await signup(payload).unwrap();
+      setFlowData({ email: data.email });
       nextStep();
-      // Next step would go here
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(getApiErrorMessage(err));
     }
   };
 
@@ -104,11 +102,7 @@ export function SignUpStepCredentials() {
               value={field.value}
               onValueChange={field.onChange}
               error={errors.industry}
-              options={[
-                { label: "Accounting", value: "accounting" },
-                { label: "Bookkeeping", value: "bookkeeping" },
-                { label: "Finance", value: "finance" },
-              ]}
+              options={INDUSTRY_OPTIONS}
             />
           )}
         />
@@ -137,27 +131,27 @@ export function SignUpStepCredentials() {
           {...register("email")}
         />
 
-<div className="relative">
-  <FormField
-    label="Password"
-    type={showPassword ? "text" : "password"}
-    placeholder="Min 8 characters"
-    error={errors.password}
-    {...register("password")}
-  />
-  <button
-    className="absolute right-3 top-15 -translate-y-1/2 p-1" // Adjust top offset depending on FormField label height
-    type="button"
-    onClick={() => setShowPassword(!showPassword)}
-    aria-label={showPassword ? "Hide password" : "Show password"}
-  >
-    {showPassword ? (
-      <EyeOff className="h-4 w-4 text-muted-foreground" />
-    ) : (
-      <Eye className="h-4 w-4 text-muted-foreground" />
-    )}
-  </button>
-</div>
+        <div className="relative">
+          <FormField
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Min 8 characters"
+            error={errors.password}
+            {...register("password")}
+          />
+          <button
+            className="absolute right-3 top-15 -translate-y-1/2 p-1" // Adjust top offset depending on FormField label height
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? (
+              <EyeOff className="h-4 w-4 text-muted-foreground" />
+            ) : (
+              <Eye className="h-4 w-4 text-muted-foreground" />
+            )}
+          </button>
+        </div>
 
 
 
@@ -187,9 +181,9 @@ export function SignUpStepCredentials() {
       <p className="auth-footer">
         By continuing, you acknowledge that you understand and agree to the
         <Link href="terms-condition"
-        onClick={() => close()}
-         className="auth-link"> Terms & Conditions</Link> and <Link href="privecy-policy" 
-         onClick={() => close()}className="auth-link">Privacy-Policy.</Link>
+          onClick={() => close()}
+          className="auth-link"> Terms & Conditions</Link> and <Link href="privecy-policy"
+            onClick={() => close()} className="auth-link">Privacy-Policy.</Link>
       </p>
 
       <p className="auth-footer-note">
